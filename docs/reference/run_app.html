@@ -80,6 +80,8 @@ results.</p>
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">run_app</span><span class="op">(</span></span>
+<span>  analytics <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  keep_alive <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  onStart <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  options <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>  enableBookmarking <span class="op">=</span> <span class="cn">NULL</span>,</span>
@@ -92,7 +94,21 @@ results.</p>
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
 
 
-<dl><dt id="arg-onstart">onStart<a class="anchor" aria-label="anchor" href="#arg-onstart"></a></dt>
+<dl><dt id="arg-analytics">analytics<a class="anchor" aria-label="anchor" href="#arg-analytics"></a></dt>
+<dd><p><code>TRUE</code> to add Google Analytics, through the cookie banner shared with
+the sites of sedzinfo.github.io, which loads it only after the visitor accepts. Meant for the
+public deployment (see <code>app.R</code>); off by default, so that running the app yourself sends
+nothing.</p></dd>
+
+
+<dt id="arg-keep-alive">keep_alive<a class="anchor" aria-label="anchor" href="#arg-keep-alive"></a></dt>
+<dd><p><code>TRUE</code> (the default) to ping the server every 15 seconds while the page
+is open, so that proxies do not close idle connections. <code>FALSE</code> lets the app go to sleep
+when nobody uses it, as <code>app.R</code> does on shinyapps.io, where an app that stays awake uses
+up the active hours of the plan.</p></dd>
+
+
+<dt id="arg-onstart">onStart<a class="anchor" aria-label="anchor" href="#arg-onstart"></a></dt>
 <dd><p>A function that will be called before the app is actually run. See
 <code><a href="https://rdrr.io/pkg/shiny/man/shinyApp.html" class="external-link">shinyApp()</a></code>.</p></dd>
 
