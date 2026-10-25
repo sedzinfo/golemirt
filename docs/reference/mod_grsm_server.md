@@ -1,7 +1,7 @@
 # RSM-GRSM module - server
 
 Plots the category response curves of
-[`prob_grsm()`](https://sedzinfo.github.io/irtexplorer/reference/prob_grsm.md),
+[`prob_grsm()`](https://sedzinfo.github.io/golemirt/reference/prob_grsm.md),
 titled Rating Scale Model when the discrimination is 1 and Generalized
 Rating Scale Model otherwise. A discrimination of 0 is rejected with a
 message in place of the plot.
@@ -17,7 +17,7 @@ mod_grsm_server(id)
 - id:
 
   Character. Module namespace id, must match the id used in
-  [`mod_grsm_ui()`](https://sedzinfo.github.io/irtexplorer/reference/mod_grsm_ui.md).
+  [`mod_grsm_ui()`](https://sedzinfo.github.io/golemirt/reference/mod_grsm_ui.md).
 
 ## Value
 

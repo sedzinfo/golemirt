@@ -1,9 +1,9 @@
 # EAP-MAP Rasch module - server
 
 Estimates the ability of the chosen raw score with
-[`eap_map()`](https://sedzinfo.github.io/irtexplorer/reference/eap_map.md)
+[`eap_map()`](https://sedzinfo.github.io/golemirt/reference/eap_map.md)
 and draws the five plots of
-[`plot_prior()`](https://sedzinfo.github.io/irtexplorer/reference/plot_prior.md)
+[`plot_prior()`](https://sedzinfo.github.io/golemirt/reference/plot_prior.md)
 and its siblings.
 
 ## Usage
@@ -17,7 +17,7 @@ mod_eap_map_server(id)
 - id:
 
   Character. Module namespace id, must match the id used in
-  [`mod_eap_map_ui()`](https://sedzinfo.github.io/irtexplorer/reference/mod_eap_map_ui.md).
+  [`mod_eap_map_ui()`](https://sedzinfo.github.io/golemirt/reference/mod_eap_map_ui.md).
 
 ## Value
 

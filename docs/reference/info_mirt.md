@@ -2,7 +2,7 @@
 
 The item information at each point: the squared slope of the response
 surface of
-[`prob_mirt()`](https://sedzinfo.github.io/irtexplorer/reference/prob_mirt.md),
+[`prob_mirt()`](https://sedzinfo.github.io/golemirt/reference/prob_mirt.md),
 in the direction in which it rises fastest, divided by \\P (1 - P)\\,
 \$\$I(\theta_1, \theta_2) = \frac{(\partial P / \partial \theta_1)^2 +
 (\partial P / \partial \theta_2)^2}{P (1 - P)}.\$\$ For the compensatory

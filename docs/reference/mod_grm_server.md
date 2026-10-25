@@ -1,7 +1,7 @@
 # GRM module - server
 
 Plots the category response curves of
-[`prob_grm()`](https://sedzinfo.github.io/irtexplorer/reference/prob_grm.md).
+[`prob_grm()`](https://sedzinfo.github.io/golemirt/reference/prob_grm.md).
 
 ## Usage
 
@@ -14,7 +14,7 @@ mod_grm_server(id)
 - id:
 
   Character. Module namespace id, must match the id used in
-  [`mod_grm_ui()`](https://sedzinfo.github.io/irtexplorer/reference/mod_grm_ui.md).
+  [`mod_grm_ui()`](https://sedzinfo.github.io/golemirt/reference/mod_grm_ui.md).
 
 ## Value
 
