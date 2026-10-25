@@ -1,9 +1,9 @@
 .github
 .Rbuildignore
 _pkgdown.yml
-irtexplorer.code-workspace
-irtexplorer.pdf
-irtexplorer_0.0.0.9000.tar.gz
+golemirt.code-workspace
+golemirt.pdf
+golemirt_0.0.0.9000.tar.gz
 docs
 generate_package.R
 LICENSE
