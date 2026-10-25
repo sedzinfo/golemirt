@@ -8,7 +8,10 @@
 #' being a Shiny module.
 #'
 #' @param request Internal parameter for \code{shiny}. DO NOT REMOVE.
-#'
+#' @param analytics `TRUE` to add Google Analytics and its cookie banner,
+#'   see `analytics_resources()`.
+#' @param keep_alive `TRUE` to ping the server every 15 seconds while the
+#'   page is open, so that proxies do not close idle connections.
 #' @import shiny
 #' @noRd
 #'
@@ -16,15 +19,16 @@
 #' \dontrun{
 #' shiny::shinyApp(ui = app_ui, server = app_server)
 #' }
-app_ui <- function(request) {
+app_ui <- function(request, analytics = FALSE, keep_alive = TRUE) {
   tagList(
-    # Leave this function for adding external resources
-    golem_add_external_resources(),
-    # Application UI logic
+    add_external_resources(analytics, keep_alive),
     navbarPage(
       title = "IRT Models and Estimation using IRTDemo",
       windowTitle = "IRT Explorer",
       collapsible = TRUE,
+      # Bootstrap 5, whose classes the cookie banner of consent.js is styled with
+      theme = bslib::bs_theme(version = 5),
+      footer = if (analytics) analytics_footer(),
       navbarMenu(
         "Models",
         tabPanel("Rasch-4PL", mod_rasch_4pl_ui("rasch_4pl")),
@@ -42,7 +46,8 @@ app_ui <- function(request) {
         tabPanel("MLE 3PL", mod_mle_3pl_ui("mle_3pl")),
         tabPanel("EAP-MAP Rasch", mod_eap_map_ui("eap_map"))
       )
-    )
+    ),
+    if (keep_alive) div(style = "display:none", textOutput("keep_alive"))
   )
 }
 ##########################################################################################
@@ -62,16 +67,12 @@ app_ui <- function(request) {
 #' # called from inside app_ui():
 #' shiny::tagList(golem_add_external_resources(), shiny::fluidPage())
 #' }
-golem_add_external_resources <- function() {
-  add_resource_path("www",app_sys("app/www"))
-
+add_external_resources <- function(analytics = FALSE, keep_alive = TRUE) {
+  addResourcePath("www", app_sys("app/www"))
   tags$head(
-    favicon(),
-    bundle_resources(
-      path = app_sys("app/www"),
-      app_title = "IRT Explorer"
-    )
-    # Add here other external resources
-    # for example, you can add shinyalert::useShinyalert()
+    tags$link(rel = "icon", type = "image/svg+xml", href = "www/favicon.svg"),
+    tags$link(rel = "stylesheet", href = "www/styles.css"),
+    if (keep_alive) tags$script(src = "www/keep_alive.js"),
+    if (analytics) analytics_resources()
   )
 }

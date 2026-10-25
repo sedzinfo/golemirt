@@ -394,6 +394,14 @@
 #' PCM-GPCM, RSM-GRSM and MLE 3PL tabs are credited to Metin Bulus, the EAP-MAP Rasch tab to
 #' Metin Bulus and Wes Bonifay, and the GRM, NRM, MIRT Dichotomous, MLE Rasch and MLE 2PL tabs
 #' to an unknown contributor.
+#' @param analytics \code{TRUE} to add Google Analytics, through the cookie banner shared with
+#'   the sites of sedzinfo.github.io, which loads it only after the visitor accepts. Meant for the
+#'   public deployment (see \code{app.R}); off by default, so that running the app yourself sends
+#'   nothing.
+#' @param keep_alive \code{TRUE} (the default) to ping the server every 15 seconds while the page
+#'   is open, so that proxies do not close idle connections. \code{FALSE} lets the app go to sleep
+#'   when nobody uses it, as \code{app.R} does on shinyapps.io, where an app that stays awake uses
+#'   up the active hours of the plan.
 #' @param onStart A function that will be called before the app is actually run. See
 #'   \code{\link[shiny]{shinyApp}()}.
 #' @param options Named options passed to \code{\link[shiny]{runApp}()}, for example
@@ -439,22 +447,13 @@
 #'
 #' # on a fixed port
 #' if (interactive()) run_app(options = list(port = 8080))
-run_app <- function(
-  onStart = NULL,
-  options = list(),
-  enableBookmarking = NULL,
-  uiPattern = "/",
-  ...
-) {
+run_app <- function(analytics = FALSE, keep_alive = TRUE, onStart = NULL, options = list(),
+  enableBookmarking = NULL, uiPattern = "/", ...) {
   with_golem_options(
-    app = shinyApp(
-      ui = app_ui,
-      server = app_server,
-      onStart = onStart,
-      options = options,
-      enableBookmarking = enableBookmarking,
-      uiPattern = uiPattern
-    ),
+    # shiny calls the ui function with the request only, so the two settings are passed in here
+    app = shinyApp(ui = function(request) app_ui(request, analytics, keep_alive), server = app_server, onStart = onStart,
+      options = options, enableBookmarking = enableBookmarking, 
+      uiPattern = uiPattern),
     golem_opts = list(...)
   )
 }

@@ -14,4 +14,10 @@ Sys.unsetenv("RSTUDIO")
 
 pkgload::load_all(export_all = FALSE, helpers = FALSE, attach_testthat = FALSE)
 options("golem.app.prod" = TRUE)
-run_app() # add parameters here (if any)
+run_app(
+  analytics = TRUE,    # Google Analytics, after the visitor accepts the cookie banner
+  keep_alive = FALSE   # let the app sleep when nobody uses it, so it does not use up the hours of the plan
+)
+
+
+

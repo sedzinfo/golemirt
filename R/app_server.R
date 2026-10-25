@@ -27,4 +27,10 @@ app_server <- function(input, output, session) {
   mod_mle_2pl_server("mle_2pl")
   mod_mle_3pl_server("mle_3pl")
   mod_eap_map_server("eap_map")
+
+  # answers the pings of keep_alive.js, so that proxies do not close an idle connection
+  output$keep_alive <- renderText({
+    req(input$count)
+    paste("keep alive", input$count)
+  })
 }

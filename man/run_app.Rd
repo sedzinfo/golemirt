@@ -5,6 +5,8 @@
 \title{Explore IRT models and how their parameters are estimated}
 \usage{
 run_app(
+  analytics = FALSE,
+  keep_alive = TRUE,
   onStart = NULL,
   options = list(),
   enableBookmarking = NULL,
@@ -13,6 +15,16 @@ run_app(
 )
 }
 \arguments{
+\item{analytics}{\code{TRUE} to add Google Analytics, through the cookie banner shared with
+the sites of sedzinfo.github.io, which loads it only after the visitor accepts. Meant for the
+public deployment (see \code{app.R}); off by default, so that running the app yourself sends
+nothing.}
+
+\item{keep_alive}{\code{TRUE} (the default) to ping the server every 15 seconds while the page
+is open, so that proxies do not close idle connections. \code{FALSE} lets the app go to sleep
+when nobody uses it, as \code{app.R} does on shinyapps.io, where an app that stays awake uses
+up the active hours of the plan.}
+
 \item{onStart}{A function that will be called before the app is actually run. See
 \code{\link[shiny]{shinyApp}()}.}
 

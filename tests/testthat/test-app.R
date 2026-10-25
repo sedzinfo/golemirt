@@ -19,3 +19,14 @@ test_that("run_app() returns a shiny app with the golem options", {
 test_that("the server starts every module", {
   expect_no_error(testServer(app_server, {}))
 })
+
+test_that("Google Analytics and its cookie banner are in the page only when asked for", {
+  page <- function(analytics) htmltools::renderTags(app_ui(NULL, analytics = analytics))
+  with <- page(TRUE)
+  expect_match(with$head, "https://sedzinfo.github.io/consent.js", fixed = TRUE)
+  expect_match(with$head, "www/analytics.js", fixed = TRUE)
+  expect_match(with$html, "#cookie-settings", fixed = TRUE)
+  without <- page(FALSE)
+  expect_no_match(without$head, "consent.js", fixed = TRUE)
+  expect_no_match(without$html, "cookie-settings", fixed = TRUE)
+})
