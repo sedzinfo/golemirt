@@ -187,10 +187,6 @@ Special thanks to [Kostas Maistrelis](https://github.com/maisk) for contributing
 - Muraki, E. (1990). Fitting a polytomous item response model to Likert-type data. *Applied Psychological Measurement*, 14(1), 59-71.
 - Muraki, E. (1992). A generalized partial credit model: Application of an EM algorithm. *Applied Psychological Measurement*, 16(2), 159-176.
 
-## License
-
-GPL-3. See the [LICENSE](LICENSE) file for details.
-
 ## Contributing
 
 Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/sedzinfo/golemirt/issues).
