@@ -1,0 +1,90 @@
+url: https://sedzinfo.github.io/irtexplorer/
+
+template:
+  bootstrap: 5
+  bootswatch: flatly
+  math-rendering: katex   # renders the \eqn and \deqn maths of the help pages
+  includes:
+    # cookie banner and Google Analytics, shared by every site under sedzinfo.github.io (consent.js in that repository)
+    after_body: '<script src="/consent.js" defer></script>'
+
+code:
+  width: 200
+
+destination: docs
+
+navbar:
+  structure:
+    left: [intro, reference, articles]
+    right: [sedzinfo, github]
+  components:
+    sedzinfo:
+      icon: fas fa-house
+      text: home
+      href: https://sedzinfo.github.io/
+      aria-label: sedzinfo home page
+    github:
+      icon: fab fa-github
+      href: https://github.com/sedzinfo/irtexplorer
+      aria-label: GitHub
+
+reference:
+
+  - title: "App"
+    contents:
+      - run_app
+
+  - title: "Models"
+    desc: "Response functions of the models in the Models menu"
+    contents:
+      - prob_4pl
+      - prob_gpcm
+      - prob_grsm
+      - prob_grm
+      - prob_nrm
+      - prob_tirt
+      - prob_mirt
+      - info_mirt
+      - item_vector
+
+  - title: "Estimation"
+    desc: "The estimation methods of the Estimation menu"
+    contents:
+      - response_pattern
+      - simulate_responses
+      - loglik_surface
+      - surface_maximum
+      - loglik_rasch
+      - newton_raphson_rasch
+      - prior_weights
+      - eap_map
+
+  - title: "Plots"
+    desc: "The plots of the app"
+    contents:
+      - plot_category_curves
+      - plot_tirt
+      - plot_mirt_surface
+      - plot_mirt_contour
+      - plot_newton_raphson
+      - plot_loglik_surface
+      - plot_loglik_surfaces
+      - plot_prior
+
+  - title: "UI"
+    desc: "Internal functions not meant to run independently"
+    contents:
+      - matches("^mod_.*_ui$")
+
+  - title: "Server"
+    desc: "Internal functions not meant to run independently"
+    contents:
+      - matches("^mod_.*_server$")
+
+footer:
+  structure:
+    left: sedzinfo
+    right: sedzinfo_home
+  components:
+    sedzinfo: '[github.com/sedzinfo](https://github.com/sedzinfo) · [Cookie settings](#cookie-settings)'
+    sedzinfo_home: '[home](https://sedzinfo.github.io/)'

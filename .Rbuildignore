@@ -1,0 +1,16 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+^.*\.code-workspace$
+^generate_package.*\.R$
+^[^/]*\.tar\.gz$
+^[^/]*\.pdf$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^\.github$
+^LICENSE$
+^\.Rd2pdf.*$
+^app\.R$
+^R/_disable_autoload\.R$
+^\.rscignore$
+^rsconnect$

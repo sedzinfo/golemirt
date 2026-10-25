@@ -1,0 +1,41 @@
+Package: irtexplorer
+Title: Interactive Item Response Theory Models and Estimation
+Version: 0.0.0.9000
+Authors@R: c(
+    person("Dimitrios", "Zacharatos", email = "dzacharatos@yahoo.com", role = c("aut", "cre")),
+    person("Wes", "Bonifay", role = "aut", comment = "author of irtDemo, from which the app is adapted"),
+    person("Metin", "Bulus", role = "aut", comment = "author of irtDemo, from which the app is adapted"),
+    person("Kostas", "Maistrelis", role = "ctb", comment = "Thurstonian IRT curves")
+    )
+Maintainer: Dimitrios Zacharatos <dzacharatos@yahoo.com>
+Description: A 'shiny' application, built as a 'golem' package, for learning
+    item response theory (IRT) with interactive 'plotly' charts. It draws the
+    response curves of the Rasch and one- to four-parameter logistic models,
+    the partial credit, generalized partial credit, graded response, rating
+    scale and nominal response models, the probit response functions of
+    Thurstonian IRT, and the response and information surfaces of an item
+    that measures two abilities. It also shows how the estimates are found:
+    a person's ability by maximum likelihood with the Newton-Raphson method,
+    an item's parameters by maximum likelihood on log-likelihood surfaces,
+    and a person's ability by expected and maximum a posteriori estimation.
+    It brings together the 'modelsirt' and 'mleirt' apps, adapted from the
+    'irtDemo' package.
+License: GPL-3
+URL: https://sedzinfo.github.io/irtexplorer/, https://github.com/sedzinfo/irtexplorer
+BugReports: https://github.com/sedzinfo/irtexplorer/issues
+Depends:
+    R (>= 4.1.0)
+Imports:
+    config,
+    fGarch,
+    golem,
+    grDevices,
+    plotly,
+    shiny,
+    stats
+Suggests:
+    htmltools,
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+Encoding: UTF-8
+Config/roxygen2/version: 8.1.1
