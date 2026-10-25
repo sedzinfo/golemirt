@@ -1,8 +1,8 @@
-# irtexplorer: Interactive IRT Models and Estimation
+# Interactive Visualizations for Item Response Theory Models and Estimation
 
 ## Overview
 
-**irtexplorer** is an R package with an interactive Shiny application,
+**golemirt** is an R package with an interactive Shiny application,
 built with [golem](https://thinkr-open.github.io/golem/), for learning
 and teaching Item Response Theory (IRT). It brings together two earlier
 apps in one site:
@@ -73,7 +73,7 @@ The app has eleven tabs in two menus.
 
 Open RStudio (or an R console) and run:
 
-`# Install devtools if you haven't already`` `[`install.packages`](https://rdrr.io/r/utils/install.packages.html)`(``"devtools"``)`` ``# Install irtexplorer from GitHub`` ``devtools``::`[`install_github`](https://devtools.r-lib.org/reference/install-deprecated.html)`(``"sedzinfo/irtexplorer"``)`
+`# Install devtools if you haven't already`` `[`install.packages`](https://rdrr.io/r/utils/install.packages.html)`(``"devtools"``)`` ``# Install golemirt from GitHub`` ``devtools``::`[`install_github`](https://devtools.r-lib.org/reference/install-deprecated.html)`(``"sedzinfo/golemirt"``)`
 
 The dependencies (`shiny`, `golem`, `plotly`, `config` and `fGarch`) are
 installed automatically.
@@ -82,7 +82,7 @@ installed automatically.
 
 Launch the app with two lines of code:
 
-[`library`](https://rdrr.io/r/base/library.html)`(`[`irtexplorer`](https://sedzinfo.github.io/irtexplorer/)`)`` `[`run_app`](https://sedzinfo.github.io/golemirt/reference/run_app.md)`(``)`
+[`library`](https://rdrr.io/r/base/library.html)`(`[`golemirt`](https://sedzinfo.github.io/golemirt/)`)`` `[`run_app`](https://sedzinfo.github.io/golemirt/reference/run_app.md)`(``)`
 
 The app opens in your default web browser. Any
 [`shiny::shinyApp()`](https://shiny.posit.co/r/reference/shiny/latest/shinyapp.html)
@@ -94,7 +94,7 @@ option can be passed on, for example
 The models, estimation methods and plots of the app are also available
 as functions, for scripts, R Markdown reports and teaching material:
 
-[`library`](https://rdrr.io/r/base/library.html)`(`[`irtexplorer`](https://sedzinfo.github.io/irtexplorer/)`)`` `` ``# category response curves of a polytomous item`` ``theta`` ``<-`` `[`seq`](https://rdrr.io/r/base/seq.html)`(``-``6``, ``6``, by ``=`` ``0.1``)`` `[`plot_category_curves`](https://sedzinfo.github.io/golemirt/reference/plot_category_curves.md)`(``theta``, `[`prob_gpcm`](https://sedzinfo.github.io/golemirt/reference/prob_gpcm.md)`(``theta``, a ``=`` ``1.5``)``, ``"Generalized Partial Credit Model"``)`` `[`plot_category_curves`](https://sedzinfo.github.io/golemirt/reference/plot_category_curves.md)`(``theta``, `[`prob_grm`](https://sedzinfo.github.io/golemirt/reference/prob_grm.md)`(``theta``, b ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``-``1.5``, ``0``, ``1.5``)``)``, ``"Graded Response Model"``)`` `` ``# an item that measures mostly the first of two abilities`` ``grid`` ``<-`` `[`seq`](https://rdrr.io/r/base/seq.html)`(``-``4``, ``4``, length.out ``=`` ``50``)`` ``a`` ``<-`` `[`c`](https://rdrr.io/r/base/c.html)`(``2``, ``0.5``)`` `[`plot_mirt_contour`](https://sedzinfo.github.io/golemirt/reference/plot_mirt_contour.md)`(``grid``, ``grid``, `[`prob_mirt`](https://sedzinfo.github.io/golemirt/reference/prob_mirt.md)`(``grid``, ``grid``, a ``=`` ``a``)``, level ``=`` ``0.5``, arrow ``=`` `[`item_vector`](https://sedzinfo.github.io/golemirt/reference/item_vector.md)`(``a``)``)`` `` ``# Newton-Raphson steps towards the maximum likelihood estimate of ability`` ``nr`` ``<-`` `[`newton_raphson_rasch`](https://sedzinfo.github.io/golemirt/reference/newton_raphson_rasch.md)`(`[`response_pattern`](https://sedzinfo.github.io/golemirt/reference/response_pattern.md)`(``2``)``, iterations ``=`` ``5``)`` ``nr``$``steps``[``, `[`c`](https://rdrr.io/r/base/c.html)`(``"start"``, ``"end"``)``]`` `[`plot_newton_raphson`](https://sedzinfo.github.io/golemirt/reference/plot_newton_raphson.md)`(``nr``)`` `` ``# EAP and MAP estimates with 40 quadrature points`` ``estimate`` ``<-`` `[`eap_map`](https://sedzinfo.github.io/golemirt/reference/eap_map.md)`(`[`response_pattern`](https://sedzinfo.github.io/golemirt/reference/response_pattern.md)`(``2``)``, quadrature ``=`` ``40``)`` `[`c`](https://rdrr.io/r/base/c.html)`(``EAP ``=`` ``estimate``$``eap``, MAP ``=`` ``estimate``$``map``)`` `[`plot_eap_combined`](https://sedzinfo.github.io/golemirt/reference/plot_prior.md)`(``estimate``)`
+[`library`](https://rdrr.io/r/base/library.html)`(`[`golemirt`](https://sedzinfo.github.io/golemirt/)`)`` `` ``# category response curves of a polytomous item`` ``theta`` ``<-`` `[`seq`](https://rdrr.io/r/base/seq.html)`(``-``6``, ``6``, by ``=`` ``0.1``)`` `[`plot_category_curves`](https://sedzinfo.github.io/golemirt/reference/plot_category_curves.md)`(``theta``, `[`prob_gpcm`](https://sedzinfo.github.io/golemirt/reference/prob_gpcm.md)`(``theta``, a ``=`` ``1.5``)``, ``"Generalized Partial Credit Model"``)`` `[`plot_category_curves`](https://sedzinfo.github.io/golemirt/reference/plot_category_curves.md)`(``theta``, `[`prob_grm`](https://sedzinfo.github.io/golemirt/reference/prob_grm.md)`(``theta``, b ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``-``1.5``, ``0``, ``1.5``)``)``, ``"Graded Response Model"``)`` `` ``# an item that measures mostly the first of two abilities`` ``grid`` ``<-`` `[`seq`](https://rdrr.io/r/base/seq.html)`(``-``4``, ``4``, length.out ``=`` ``50``)`` ``a`` ``<-`` `[`c`](https://rdrr.io/r/base/c.html)`(``2``, ``0.5``)`` `[`plot_mirt_contour`](https://sedzinfo.github.io/golemirt/reference/plot_mirt_contour.md)`(``grid``, ``grid``, `[`prob_mirt`](https://sedzinfo.github.io/golemirt/reference/prob_mirt.md)`(``grid``, ``grid``, a ``=`` ``a``)``, level ``=`` ``0.5``, arrow ``=`` `[`item_vector`](https://sedzinfo.github.io/golemirt/reference/item_vector.md)`(``a``)``)`` `` ``# Newton-Raphson steps towards the maximum likelihood estimate of ability`` ``nr`` ``<-`` `[`newton_raphson_rasch`](https://sedzinfo.github.io/golemirt/reference/newton_raphson_rasch.md)`(`[`response_pattern`](https://sedzinfo.github.io/golemirt/reference/response_pattern.md)`(``2``)``, iterations ``=`` ``5``)`` ``nr``$``steps``[``, `[`c`](https://rdrr.io/r/base/c.html)`(``"start"``, ``"end"``)``]`` `[`plot_newton_raphson`](https://sedzinfo.github.io/golemirt/reference/plot_newton_raphson.md)`(``nr``)`` `` ``# EAP and MAP estimates with 40 quadrature points`` ``estimate`` ``<-`` `[`eap_map`](https://sedzinfo.github.io/golemirt/reference/eap_map.md)`(`[`response_pattern`](https://sedzinfo.github.io/golemirt/reference/response_pattern.md)`(``2``)``, quadrature ``=`` ``40``)`` `[`c`](https://rdrr.io/r/base/c.html)`(``EAP ``=`` ``estimate``$``eap``, MAP ``=`` ``estimate``$``map``)`` `[`plot_eap_combined`](https://sedzinfo.github.io/golemirt/reference/plot_prior.md)`(``estimate``)`
 
 The help page of
 [`run_app()`](https://sedzinfo.github.io/golemirt/reference/run_app.md)
@@ -106,78 +106,78 @@ control and plot shows.
 ### Rasch-4PL
 
 ![Item characteristic curves of the Rasch
-model](reference/figures/irtexplorer1.png)
+model](reference/figures/golemirt1.png)
 
 Item characteristic curves of the Rasch model
 
 ### PCM-GPCM
 
 ![Category response curves of the partial credit
-model](reference/figures/irtexplorer2.png)
+model](reference/figures/golemirt2.png)
 
 Category response curves of the partial credit model
 
 ### GRM
 
 ![Category response curves of the graded response
-model](reference/figures/irtexplorer3.png)
+model](reference/figures/golemirt3.png)
 
 Category response curves of the graded response model
 
 ### RSM-GRSM
 
 ![Category response curves of the rating scale
-model](reference/figures/irtexplorer4.png)
+model](reference/figures/golemirt4.png)
 
 Category response curves of the rating scale model
 
 ### NRM
 
 ![Category response curves of the nominal response
-model](reference/figures/irtexplorer5.png)
+model](reference/figures/golemirt5.png)
 
 Category response curves of the nominal response model
 
 ### TIRT
 
 ![Probit response function of Thurstonian
-IRT](reference/figures/irtexplorer6.png)
+IRT](reference/figures/golemirt6.png)
 
 Probit response function of Thurstonian IRT
 
 ### MIRT Dichotomous
 
 ![Item response surface of a compensatory two-dimensional
-item](reference/figures/irtexplorer7.png)![Contour plot of a
-compensatory two-dimensional item with its item
-vector](reference/figures/irtexplorer8.png)
+item](reference/figures/golemirt7.png)![Contour plot of a compensatory
+two-dimensional item with its item
+vector](reference/figures/golemirt8.png)
 
 ### MLE Rasch
 
 ![Newton-Raphson step on the log-likelihood of a Rasch response
-pattern](reference/figures/irtexplorer9.png)
+pattern](reference/figures/golemirt9.png)
 
 Newton-Raphson step on the log-likelihood of a Rasch response pattern
 
 ### MLE 2PL
 
 ![Log-likelihood surface of discrimination and difficulty with its
-maximum](reference/figures/irtexplorer10.png)
+maximum](reference/figures/golemirt10.png)
 
 Log-likelihood surface of discrimination and difficulty with its maximum
 
 ### MLE 3PL
 
 ![Log-likelihood surfaces for twelve guessing
-values](reference/figures/irtexplorer11.png)
+values](reference/figures/golemirt11.png)
 
 Log-likelihood surfaces for twelve guessing values
 
 ### EAP-MAP Rasch
 
 ![Prior, item trace lines, likelihood and posterior of an EAP and MAP
-estimation](reference/figures/irtexplorer12.png)![Prior, likelihood and
-posterior in one plot](reference/figures/irtexplorer13.png)
+estimation](reference/figures/golemirt12.png)![Prior, likelihood and
+posterior in one plot](reference/figures/golemirt13.png)
 
 ## Development
 
@@ -212,7 +212,7 @@ builds the website, the PDF manual and the tarball.
 1.  Connect your account once, with the
     [`rsconnect::setAccountInfo()`](https://rstudio.github.io/rsconnect/reference/setAccountInfo.html)
     line from Account, Tokens on shinyapps.io.
-2.  Run `rsconnect::deployApp(appName = "irtexplorer")` from the package
+2.  Run `rsconnect::deployApp(appName = "golemirt")` from the package
     folder, or open `app.R` in RStudio and click Publish.
 
 ## Background and Attribution
@@ -220,7 +220,7 @@ builds the website, the PDF manual and the tarball.
 The plots were originally developed by **Wes Bonifay** and **Metin
 Bulus** for the **irtDemo** package, which is available on CRAN.
 **Dimitrios Zacharatos** modified and expanded them in the modelsirt and
-mleirt packages, which irtexplorer brings together as one golem app:
+mleirt packages, which golemirt brings together as one golem app:
 
 - consolidating the IRT models and estimation methods into a single
   interface
@@ -268,15 +268,15 @@ file for details.
 ## Contributing
 
 Contributions, issues, and feature requests are welcome! Feel free to
-check the [issues page](https://github.com/sedzinfo/irtexplorer/issues).
+check the [issues page](https://github.com/sedzinfo/golemirt/issues).
 
 ------------------------------------------------------------------------
 
-![Stars](https://img.shields.io/github/stars/sedzinfo/irtexplorer)![Watchers](https://img.shields.io/github/watchers/sedzinfo/irtexplorer)![Repo
-Size](https://img.shields.io/github/repo-size/sedzinfo/irtexplorer)![Open
-Issues](https://img.shields.io/github/issues/sedzinfo/irtexplorer)![Forks](https://img.shields.io/github/forks/sedzinfo/irtexplorer)![Last
-Commit](https://img.shields.io/github/last-commit/sedzinfo/irtexplorer)![Contributors](https://img.shields.io/github/contributors/sedzinfo/irtexplorer)![License](https://img.shields.io/github/license/sedzinfo/irtexplorer)![Workflow
-Status](https://img.shields.io/github/actions/workflow/status/sedzinfo/irtexplorer/build-tarball.yml)![R-CMD-check](https://github.com/sedzinfo/irtexplorer/actions/workflows/R-CMD-check.yaml/badge.svg)
+![Stars](https://img.shields.io/github/stars/sedzinfo/golemirt)![Watchers](https://img.shields.io/github/watchers/sedzinfo/golemirt)![Repo
+Size](https://img.shields.io/github/repo-size/sedzinfo/golemirt)![Open
+Issues](https://img.shields.io/github/issues/sedzinfo/golemirt)![Forks](https://img.shields.io/github/forks/sedzinfo/golemirt)![Last
+Commit](https://img.shields.io/github/last-commit/sedzinfo/golemirt)![Contributors](https://img.shields.io/github/contributors/sedzinfo/golemirt)![License](https://img.shields.io/github/license/sedzinfo/golemirt)![Workflow
+Status](https://img.shields.io/github/actions/workflow/status/sedzinfo/golemirt/build-tarball.yml)![R-CMD-check](https://github.com/sedzinfo/golemirt/actions/workflows/R-CMD-check.yaml/badge.svg)
 
 # Package index
 

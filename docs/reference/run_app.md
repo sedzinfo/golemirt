@@ -23,6 +23,8 @@ settings reproduce his published results.
 
 ``` r
 run_app(
+  analytics = FALSE,
+  keep_alive = TRUE,
   onStart = NULL,
   options = list(),
   enableBookmarking = NULL,
@@ -32,6 +34,21 @@ run_app(
 ```
 
 ## Arguments
+
+- analytics:
+
+  `TRUE` to add Google Analytics, through the cookie banner shared with
+  the sites of sedzinfo.github.io, which loads it only after the visitor
+  accepts. Meant for the public deployment (see `app.R`); off by
+  default, so that running the app yourself sends nothing.
+
+- keep_alive:
+
+  `TRUE` (the default) to ping the server every 15 seconds while the
+  page is open, so that proxies do not close idle connections. `FALSE`
+  lets the app go to sleep when nobody uses it, as `app.R` does on
+  shinyapps.io, where an app that stays awake uses up the active hours
+  of the plan.
 
 - onStart:
 
