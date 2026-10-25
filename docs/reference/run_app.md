@@ -114,11 +114,11 @@ PCM-GPCM, GRM, RSM-GRSM, NRM, TIRT and MIRT Dichotomous in the Models
 menu, and MLE Rasch, MLE 2PL, MLE 3PL and EAP-MAP Rasch in the
 Estimation menu. The models and estimation methods are also available as
 functions, such as
-[`prob_gpcm()`](https://sedzinfo.github.io/irtexplorer/reference/prob_gpcm.md)
+[`prob_gpcm()`](https://sedzinfo.github.io/golemirt/reference/prob_gpcm.md)
 and
-[`eap_map()`](https://sedzinfo.github.io/irtexplorer/reference/eap_map.md),
+[`eap_map()`](https://sedzinfo.github.io/golemirt/reference/eap_map.md),
 and each plot of the app as a `plot_*()` function, such as
-[`plot_category_curves()`](https://sedzinfo.github.io/irtexplorer/reference/plot_category_curves.md).
+[`plot_category_curves()`](https://sedzinfo.github.io/golemirt/reference/plot_category_curves.md).
 
 ## Rasch-4PL
 

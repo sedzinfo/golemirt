@@ -16,7 +16,7 @@ mod_mle_2pl_server(id)
 - id:
 
   Character. Module namespace id, must match the id used in
-  [`mod_mle_2pl_ui()`](https://sedzinfo.github.io/irtexplorer/reference/mod_mle_2pl_ui.md).
+  [`mod_mle_2pl_ui()`](https://sedzinfo.github.io/golemirt/reference/mod_mle_2pl_ui.md).
 
 ## Value
 

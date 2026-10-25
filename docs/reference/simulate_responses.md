@@ -2,7 +2,7 @@
 
 Draws one response of each person to an item, correct with the
 probability given by
-[`prob_4pl()`](https://sedzinfo.github.io/irtexplorer/reference/prob_4pl.md)
+[`prob_4pl()`](https://sedzinfo.github.io/golemirt/reference/prob_4pl.md)
 (with \\D = 1\\ and \\d = 1\\).
 
 ## Usage

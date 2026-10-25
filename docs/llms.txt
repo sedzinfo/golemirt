@@ -82,7 +82,7 @@ installed automatically.
 
 Launch the app with two lines of code:
 
-[`library`](https://rdrr.io/r/base/library.html)`(`[`irtexplorer`](https://sedzinfo.github.io/irtexplorer/)`)`` `[`run_app`](https://sedzinfo.github.io/irtexplorer/reference/run_app.md)`(``)`
+[`library`](https://rdrr.io/r/base/library.html)`(`[`irtexplorer`](https://sedzinfo.github.io/irtexplorer/)`)`` `[`run_app`](https://sedzinfo.github.io/golemirt/reference/run_app.md)`(``)`
 
 The app opens in your default web browser. Any
 [`shiny::shinyApp()`](https://shiny.posit.co/r/reference/shiny/latest/shinyapp.html)
@@ -94,10 +94,10 @@ option can be passed on, for example
 The models, estimation methods and plots of the app are also available
 as functions, for scripts, R Markdown reports and teaching material:
 
-[`library`](https://rdrr.io/r/base/library.html)`(`[`irtexplorer`](https://sedzinfo.github.io/irtexplorer/)`)`` `` ``# category response curves of a polytomous item`` ``theta`` ``<-`` `[`seq`](https://rdrr.io/r/base/seq.html)`(``-``6``, ``6``, by ``=`` ``0.1``)`` `[`plot_category_curves`](https://sedzinfo.github.io/irtexplorer/reference/plot_category_curves.md)`(``theta``, `[`prob_gpcm`](https://sedzinfo.github.io/irtexplorer/reference/prob_gpcm.md)`(``theta``, a ``=`` ``1.5``)``, ``"Generalized Partial Credit Model"``)`` `[`plot_category_curves`](https://sedzinfo.github.io/irtexplorer/reference/plot_category_curves.md)`(``theta``, `[`prob_grm`](https://sedzinfo.github.io/irtexplorer/reference/prob_grm.md)`(``theta``, b ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``-``1.5``, ``0``, ``1.5``)``)``, ``"Graded Response Model"``)`` `` ``# an item that measures mostly the first of two abilities`` ``grid`` ``<-`` `[`seq`](https://rdrr.io/r/base/seq.html)`(``-``4``, ``4``, length.out ``=`` ``50``)`` ``a`` ``<-`` `[`c`](https://rdrr.io/r/base/c.html)`(``2``, ``0.5``)`` `[`plot_mirt_contour`](https://sedzinfo.github.io/irtexplorer/reference/plot_mirt_contour.md)`(``grid``, ``grid``, `[`prob_mirt`](https://sedzinfo.github.io/irtexplorer/reference/prob_mirt.md)`(``grid``, ``grid``, a ``=`` ``a``)``, level ``=`` ``0.5``, arrow ``=`` `[`item_vector`](https://sedzinfo.github.io/irtexplorer/reference/item_vector.md)`(``a``)``)`` `` ``# Newton-Raphson steps towards the maximum likelihood estimate of ability`` ``nr`` ``<-`` `[`newton_raphson_rasch`](https://sedzinfo.github.io/irtexplorer/reference/newton_raphson_rasch.md)`(`[`response_pattern`](https://sedzinfo.github.io/irtexplorer/reference/response_pattern.md)`(``2``)``, iterations ``=`` ``5``)`` ``nr``$``steps``[``, `[`c`](https://rdrr.io/r/base/c.html)`(``"start"``, ``"end"``)``]`` `[`plot_newton_raphson`](https://sedzinfo.github.io/irtexplorer/reference/plot_newton_raphson.md)`(``nr``)`` `` ``# EAP and MAP estimates with 40 quadrature points`` ``estimate`` ``<-`` `[`eap_map`](https://sedzinfo.github.io/irtexplorer/reference/eap_map.md)`(`[`response_pattern`](https://sedzinfo.github.io/irtexplorer/reference/response_pattern.md)`(``2``)``, quadrature ``=`` ``40``)`` `[`c`](https://rdrr.io/r/base/c.html)`(``EAP ``=`` ``estimate``$``eap``, MAP ``=`` ``estimate``$``map``)`` `[`plot_eap_combined`](https://sedzinfo.github.io/irtexplorer/reference/plot_prior.md)`(``estimate``)`
+[`library`](https://rdrr.io/r/base/library.html)`(`[`irtexplorer`](https://sedzinfo.github.io/irtexplorer/)`)`` `` ``# category response curves of a polytomous item`` ``theta`` ``<-`` `[`seq`](https://rdrr.io/r/base/seq.html)`(``-``6``, ``6``, by ``=`` ``0.1``)`` `[`plot_category_curves`](https://sedzinfo.github.io/golemirt/reference/plot_category_curves.md)`(``theta``, `[`prob_gpcm`](https://sedzinfo.github.io/golemirt/reference/prob_gpcm.md)`(``theta``, a ``=`` ``1.5``)``, ``"Generalized Partial Credit Model"``)`` `[`plot_category_curves`](https://sedzinfo.github.io/golemirt/reference/plot_category_curves.md)`(``theta``, `[`prob_grm`](https://sedzinfo.github.io/golemirt/reference/prob_grm.md)`(``theta``, b ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``-``1.5``, ``0``, ``1.5``)``)``, ``"Graded Response Model"``)`` `` ``# an item that measures mostly the first of two abilities`` ``grid`` ``<-`` `[`seq`](https://rdrr.io/r/base/seq.html)`(``-``4``, ``4``, length.out ``=`` ``50``)`` ``a`` ``<-`` `[`c`](https://rdrr.io/r/base/c.html)`(``2``, ``0.5``)`` `[`plot_mirt_contour`](https://sedzinfo.github.io/golemirt/reference/plot_mirt_contour.md)`(``grid``, ``grid``, `[`prob_mirt`](https://sedzinfo.github.io/golemirt/reference/prob_mirt.md)`(``grid``, ``grid``, a ``=`` ``a``)``, level ``=`` ``0.5``, arrow ``=`` `[`item_vector`](https://sedzinfo.github.io/golemirt/reference/item_vector.md)`(``a``)``)`` `` ``# Newton-Raphson steps towards the maximum likelihood estimate of ability`` ``nr`` ``<-`` `[`newton_raphson_rasch`](https://sedzinfo.github.io/golemirt/reference/newton_raphson_rasch.md)`(`[`response_pattern`](https://sedzinfo.github.io/golemirt/reference/response_pattern.md)`(``2``)``, iterations ``=`` ``5``)`` ``nr``$``steps``[``, `[`c`](https://rdrr.io/r/base/c.html)`(``"start"``, ``"end"``)``]`` `[`plot_newton_raphson`](https://sedzinfo.github.io/golemirt/reference/plot_newton_raphson.md)`(``nr``)`` `` ``# EAP and MAP estimates with 40 quadrature points`` ``estimate`` ``<-`` `[`eap_map`](https://sedzinfo.github.io/golemirt/reference/eap_map.md)`(`[`response_pattern`](https://sedzinfo.github.io/golemirt/reference/response_pattern.md)`(``2``)``, quadrature ``=`` ``40``)`` `[`c`](https://rdrr.io/r/base/c.html)`(``EAP ``=`` ``estimate``$``eap``, MAP ``=`` ``estimate``$``map``)`` `[`plot_eap_combined`](https://sedzinfo.github.io/golemirt/reference/plot_prior.md)`(``estimate``)`
 
 The help page of
-[`run_app()`](https://sedzinfo.github.io/irtexplorer/reference/run_app.md)
+[`run_app()`](https://sedzinfo.github.io/golemirt/reference/run_app.md)
 describes every tab, with the formulas of the models and what each
 control and plot shows.
 
@@ -186,7 +186,7 @@ The package follows the layout of a
 
 | File | Contents |
 |----|----|
-| `R/run_app.R` | [`run_app()`](https://sedzinfo.github.io/irtexplorer/reference/run_app.md), which starts the app, with the help page that describes every tab |
+| `R/run_app.R` | [`run_app()`](https://sedzinfo.github.io/golemirt/reference/run_app.md), which starts the app, with the help page that describes every tab |
 | `R/app_ui.R`, `R/app_server.R` | The navigation bar with the two menus, and the server, which starts the modules |
 | `R/mod_*.R` | One Shiny module per tab |
 | `R/fct_models.R` | The response functions of the models |
@@ -262,7 +262,7 @@ keeps the credit shown in the original apps.
 
 ## License
 
-GPL-3. See the [LICENSE](https://sedzinfo.github.io/irtexplorer/LICENSE)
+GPL-3. See the [LICENSE](https://sedzinfo.github.io/golemirt/LICENSE)
 file for details.
 
 ## Contributing
@@ -282,79 +282,79 @@ Status](https://img.shields.io/github/actions/workflow/status/sedzinfo/irtexplor
 
 ## App
 
-- [`run_app()`](https://sedzinfo.github.io/irtexplorer/reference/run_app.md)
+- [`run_app()`](https://sedzinfo.github.io/golemirt/reference/run_app.md)
   : Explore IRT models and how their parameters are estimated
 
 ## Models
 
 Response functions of the models in the Models menu
 
-- [`prob_4pl()`](https://sedzinfo.github.io/irtexplorer/reference/prob_4pl.md)
+- [`prob_4pl()`](https://sedzinfo.github.io/golemirt/reference/prob_4pl.md)
   : Four-parameter logistic item response function
-- [`prob_gpcm()`](https://sedzinfo.github.io/irtexplorer/reference/prob_gpcm.md)
+- [`prob_gpcm()`](https://sedzinfo.github.io/golemirt/reference/prob_gpcm.md)
   : Category response curves of the generalized partial credit model
-- [`prob_grsm()`](https://sedzinfo.github.io/irtexplorer/reference/prob_grsm.md)
+- [`prob_grsm()`](https://sedzinfo.github.io/golemirt/reference/prob_grsm.md)
   : Category response curves of the generalized rating scale model
-- [`prob_grm()`](https://sedzinfo.github.io/irtexplorer/reference/prob_grm.md)
+- [`prob_grm()`](https://sedzinfo.github.io/golemirt/reference/prob_grm.md)
   : Category response curves of the graded response model
-- [`prob_nrm()`](https://sedzinfo.github.io/irtexplorer/reference/prob_nrm.md)
+- [`prob_nrm()`](https://sedzinfo.github.io/golemirt/reference/prob_nrm.md)
   : Category response curves of the nominal response model
-- [`prob_tirt()`](https://sedzinfo.github.io/irtexplorer/reference/prob_tirt.md)
-  [`prob_tirt_pair()`](https://sedzinfo.github.io/irtexplorer/reference/prob_tirt.md)
-  [`prob_tirt_intercept()`](https://sedzinfo.github.io/irtexplorer/reference/prob_tirt.md)
+- [`prob_tirt()`](https://sedzinfo.github.io/golemirt/reference/prob_tirt.md)
+  [`prob_tirt_pair()`](https://sedzinfo.github.io/golemirt/reference/prob_tirt.md)
+  [`prob_tirt_intercept()`](https://sedzinfo.github.io/golemirt/reference/prob_tirt.md)
   : Probit response functions of Thurstonian IRT
-- [`prob_mirt()`](https://sedzinfo.github.io/irtexplorer/reference/prob_mirt.md)
+- [`prob_mirt()`](https://sedzinfo.github.io/golemirt/reference/prob_mirt.md)
   : Response surface of a two-dimensional dichotomous item
-- [`info_mirt()`](https://sedzinfo.github.io/irtexplorer/reference/info_mirt.md)
+- [`info_mirt()`](https://sedzinfo.github.io/golemirt/reference/info_mirt.md)
   : Information surface of a two-dimensional dichotomous item
-- [`item_vector()`](https://sedzinfo.github.io/irtexplorer/reference/item_vector.md)
+- [`item_vector()`](https://sedzinfo.github.io/golemirt/reference/item_vector.md)
   : Item vector of a compensatory two-dimensional item
 
 ## Estimation
 
 The estimation methods of the Estimation menu
 
-- [`response_pattern()`](https://sedzinfo.github.io/irtexplorer/reference/response_pattern.md)
+- [`response_pattern()`](https://sedzinfo.github.io/golemirt/reference/response_pattern.md)
   : Response pattern of a raw score
-- [`simulate_responses()`](https://sedzinfo.github.io/irtexplorer/reference/simulate_responses.md)
+- [`simulate_responses()`](https://sedzinfo.github.io/golemirt/reference/simulate_responses.md)
   : Simulate dichotomous responses
-- [`loglik_surface()`](https://sedzinfo.github.io/irtexplorer/reference/loglik_surface.md)
+- [`loglik_surface()`](https://sedzinfo.github.io/golemirt/reference/loglik_surface.md)
   : Log-likelihood surface of an item's discrimination and difficulty
-- [`surface_maximum()`](https://sedzinfo.github.io/irtexplorer/reference/surface_maximum.md)
+- [`surface_maximum()`](https://sedzinfo.github.io/golemirt/reference/surface_maximum.md)
   : Highest point of a log-likelihood surface
-- [`loglik_rasch()`](https://sedzinfo.github.io/irtexplorer/reference/loglik_rasch.md)
+- [`loglik_rasch()`](https://sedzinfo.github.io/golemirt/reference/loglik_rasch.md)
   : Log-likelihood of a response pattern under the Rasch model
-- [`newton_raphson_rasch()`](https://sedzinfo.github.io/irtexplorer/reference/newton_raphson_rasch.md)
+- [`newton_raphson_rasch()`](https://sedzinfo.github.io/golemirt/reference/newton_raphson_rasch.md)
   : Newton-Raphson steps towards the maximum likelihood estimate of
   ability
-- [`prior_weights()`](https://sedzinfo.github.io/irtexplorer/reference/prior_weights.md)
+- [`prior_weights()`](https://sedzinfo.github.io/golemirt/reference/prior_weights.md)
   : Prior weights at quadrature points
-- [`eap_map()`](https://sedzinfo.github.io/irtexplorer/reference/eap_map.md)
+- [`eap_map()`](https://sedzinfo.github.io/golemirt/reference/eap_map.md)
   : EAP and MAP estimates of ability by quadrature
 
 ## Plots
 
 The plots of the app
 
-- [`plot_category_curves()`](https://sedzinfo.github.io/irtexplorer/reference/plot_category_curves.md)
+- [`plot_category_curves()`](https://sedzinfo.github.io/golemirt/reference/plot_category_curves.md)
   : Plot category response curves
-- [`plot_tirt()`](https://sedzinfo.github.io/irtexplorer/reference/plot_tirt.md)
+- [`plot_tirt()`](https://sedzinfo.github.io/golemirt/reference/plot_tirt.md)
   : Plot a Thurstonian IRT response function
-- [`plot_mirt_surface()`](https://sedzinfo.github.io/irtexplorer/reference/plot_mirt_surface.md)
+- [`plot_mirt_surface()`](https://sedzinfo.github.io/golemirt/reference/plot_mirt_surface.md)
   : Plot a surface over the ability plane
-- [`plot_mirt_contour()`](https://sedzinfo.github.io/irtexplorer/reference/plot_mirt_contour.md)
+- [`plot_mirt_contour()`](https://sedzinfo.github.io/golemirt/reference/plot_mirt_contour.md)
   : Plot the contours of a two-dimensional item
-- [`plot_newton_raphson()`](https://sedzinfo.github.io/irtexplorer/reference/plot_newton_raphson.md)
+- [`plot_newton_raphson()`](https://sedzinfo.github.io/golemirt/reference/plot_newton_raphson.md)
   : Plot a Newton-Raphson step
-- [`plot_loglik_surface()`](https://sedzinfo.github.io/irtexplorer/reference/plot_loglik_surface.md)
+- [`plot_loglik_surface()`](https://sedzinfo.github.io/golemirt/reference/plot_loglik_surface.md)
   : Plot a log-likelihood surface
-- [`plot_loglik_surfaces()`](https://sedzinfo.github.io/irtexplorer/reference/plot_loglik_surfaces.md)
+- [`plot_loglik_surfaces()`](https://sedzinfo.github.io/golemirt/reference/plot_loglik_surfaces.md)
   : Plot log-likelihood surfaces for several lower asymptotes
-- [`plot_prior()`](https://sedzinfo.github.io/irtexplorer/reference/plot_prior.md)
-  [`plot_tracelines()`](https://sedzinfo.github.io/irtexplorer/reference/plot_prior.md)
-  [`plot_likelihood()`](https://sedzinfo.github.io/irtexplorer/reference/plot_prior.md)
-  [`plot_posterior()`](https://sedzinfo.github.io/irtexplorer/reference/plot_prior.md)
-  [`plot_eap_combined()`](https://sedzinfo.github.io/irtexplorer/reference/plot_prior.md)
+- [`plot_prior()`](https://sedzinfo.github.io/golemirt/reference/plot_prior.md)
+  [`plot_tracelines()`](https://sedzinfo.github.io/golemirt/reference/plot_prior.md)
+  [`plot_likelihood()`](https://sedzinfo.github.io/golemirt/reference/plot_prior.md)
+  [`plot_posterior()`](https://sedzinfo.github.io/golemirt/reference/plot_prior.md)
+  [`plot_eap_combined()`](https://sedzinfo.github.io/golemirt/reference/plot_prior.md)
   : Plot the parts of an EAP and MAP estimation
 
 ## UI

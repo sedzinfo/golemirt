@@ -15,7 +15,7 @@ mod_rasch_4pl_server(id)
 - id:
 
   Character. Module namespace id, must match the id used in
-  [`mod_rasch_4pl_ui()`](https://sedzinfo.github.io/irtexplorer/reference/mod_rasch_4pl_ui.md).
+  [`mod_rasch_4pl_ui()`](https://sedzinfo.github.io/golemirt/reference/mod_rasch_4pl_ui.md).
 
 ## Value
 

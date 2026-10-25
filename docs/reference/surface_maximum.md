@@ -2,7 +2,7 @@
 
 The maximum likelihood estimates of discrimination and difficulty on the
 grid of a surface from
-[`loglik_surface()`](https://sedzinfo.github.io/irtexplorer/reference/loglik_surface.md).
+[`loglik_surface()`](https://sedzinfo.github.io/golemirt/reference/loglik_surface.md).
 
 ## Usage
 
@@ -21,7 +21,7 @@ surface_maximum(loglik, a = attr(loglik, "a"), b = attr(loglik, "b"))
 
   The grids of discriminations and difficulties of the surface; by
   default those that
-  [`loglik_surface()`](https://sedzinfo.github.io/irtexplorer/reference/loglik_surface.md)
+  [`loglik_surface()`](https://sedzinfo.github.io/golemirt/reference/loglik_surface.md)
   keeps with it.
 
 ## Value

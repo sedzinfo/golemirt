@@ -3,7 +3,7 @@
 A partial credit model whose step parameters are split into the
 difficulty of the item and thresholds shared by the items of a response
 scale: \\\delta_v = b + \tau_v\\ in
-[`prob_gpcm()`](https://sedzinfo.github.io/irtexplorer/reference/prob_gpcm.md).
+[`prob_gpcm()`](https://sedzinfo.github.io/golemirt/reference/prob_gpcm.md).
 With \\a = 1\\ this is the rating scale model (Andrich, 1978), otherwise
 the generalized rating scale model (Muraki, 1990).
 

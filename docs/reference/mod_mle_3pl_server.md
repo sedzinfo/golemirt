@@ -17,7 +17,7 @@ mod_mle_3pl_server(id)
 - id:
 
   Character. Module namespace id, must match the id used in
-  [`mod_mle_3pl_ui()`](https://sedzinfo.github.io/irtexplorer/reference/mod_mle_3pl_ui.md).
+  [`mod_mle_3pl_ui()`](https://sedzinfo.github.io/golemirt/reference/mod_mle_3pl_ui.md).
 
 ## Value
 
