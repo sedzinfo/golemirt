@@ -1,8 +1,8 @@
-# irtexplorer: Interactive IRT Models and Estimation
+# golemirt: Interactive IRT Models and Estimation
 
 ## Overview
 
-**irtexplorer** is an R package with an interactive Shiny application, built with [golem](https://thinkr-open.github.io/golem/), for learning and teaching Item Response Theory (IRT). It brings together two earlier apps in one site:
+**golemirt** is an R package with an interactive Shiny application, built with [golem](https://thinkr-open.github.io/golem/), for learning and teaching Item Response Theory (IRT). It brings together two earlier apps in one site:
 
 - **modelsirt**, which draws the response curves of the main IRT models, so that you can see how each item parameter shapes them;
 - **mleirt**, which shows how abilities and item parameters are estimated, by maximum likelihood and by Bayesian EAP and MAP estimation.
@@ -51,8 +51,8 @@ Open RStudio (or an R console) and run:
 ```r
 # Install devtools if you haven't already
 install.packages("devtools")
-# Install irtexplorer from GitHub
-devtools::install_github("sedzinfo/irtexplorer")
+# Install golemirt from GitHub
+devtools::install_github("sedzinfo/golemirt")
 ```
 
 The dependencies (`shiny`, `golem`, `plotly`, `config` and `fGarch`) are installed automatically.
@@ -62,7 +62,7 @@ The dependencies (`shiny`, `golem`, `plotly`, `config` and `fGarch`) are install
 Launch the app with two lines of code:
 
 ```r
-library(irtexplorer)
+library(golemirt)
 run_app()
 ```
 
@@ -73,7 +73,7 @@ The app opens in your default web browser. Any [`shiny::shinyApp()`](https://shi
 The models, estimation methods and plots of the app are also available as functions, for scripts, R Markdown reports and teaching material:
 
 ```r
-library(irtexplorer)
+library(golemirt)
 
 # category response curves of a polytomous item
 theta <- seq(-6, 6, by = 0.1)
@@ -101,39 +101,39 @@ The help page of `run_app()` describes every tab, with the formulas of the model
 ## Screenshots
 
 ### Rasch-4PL
-![Item characteristic curves of the Rasch model](man/figures/irtexplorer1.png)
+![Item characteristic curves of the Rasch model](man/figures/golemirt1.png)
 
 ### PCM-GPCM
-![Category response curves of the partial credit model](man/figures/irtexplorer2.png)
+![Category response curves of the partial credit model](man/figures/golemirt2.png)
 
 ### GRM
-![Category response curves of the graded response model](man/figures/irtexplorer3.png)
+![Category response curves of the graded response model](man/figures/golemirt3.png)
 
 ### RSM-GRSM
-![Category response curves of the rating scale model](man/figures/irtexplorer4.png)
+![Category response curves of the rating scale model](man/figures/golemirt4.png)
 
 ### NRM
-![Category response curves of the nominal response model](man/figures/irtexplorer5.png)
+![Category response curves of the nominal response model](man/figures/golemirt5.png)
 
 ### TIRT
-![Probit response function of Thurstonian IRT](man/figures/irtexplorer6.png)
+![Probit response function of Thurstonian IRT](man/figures/golemirt6.png)
 
 ### MIRT Dichotomous
-![Item response surface of a compensatory two-dimensional item](man/figures/irtexplorer7.png)
-![Contour plot of a compensatory two-dimensional item with its item vector](man/figures/irtexplorer8.png)
+![Item response surface of a compensatory two-dimensional item](man/figures/golemirt7.png)
+![Contour plot of a compensatory two-dimensional item with its item vector](man/figures/golemirt8.png)
 
 ### MLE Rasch
-![Newton-Raphson step on the log-likelihood of a Rasch response pattern](man/figures/irtexplorer9.png)
+![Newton-Raphson step on the log-likelihood of a Rasch response pattern](man/figures/golemirt9.png)
 
 ### MLE 2PL
-![Log-likelihood surface of discrimination and difficulty with its maximum](man/figures/irtexplorer10.png)
+![Log-likelihood surface of discrimination and difficulty with its maximum](man/figures/golemirt10.png)
 
 ### MLE 3PL
-![Log-likelihood surfaces for twelve guessing values](man/figures/irtexplorer11.png)
+![Log-likelihood surfaces for twelve guessing values](man/figures/golemirt11.png)
 
 ### EAP-MAP Rasch
-![Prior, item trace lines, likelihood and posterior of an EAP and MAP estimation](man/figures/irtexplorer12.png)
-![Prior, likelihood and posterior in one plot](man/figures/irtexplorer13.png)
+![Prior, item trace lines, likelihood and posterior of an EAP and MAP estimation](man/figures/golemirt12.png)
+![Prior, likelihood and posterior in one plot](man/figures/golemirt13.png)
 
 ## Development
 
@@ -159,11 +159,11 @@ Run the tests with `devtools::test()`, and the full package check with `devtools
 `app.R` starts the app on [shinyapps.io](https://www.shinyapps.io/), and `.rscignore` keeps the upload to the files the app needs.
 
 1. Connect your account once, with the `rsconnect::setAccountInfo()` line from Account, Tokens on shinyapps.io.
-2. Run `rsconnect::deployApp(appName = "irtexplorer")` from the package folder, or open `app.R` in RStudio and click Publish.
+2. Run `rsconnect::deployApp(appName = "golemirt")` from the package folder, or open `app.R` in RStudio and click Publish.
 
 ## Background and Attribution
 
-The plots were originally developed by **Wes Bonifay** and **Metin Bulus** for the **irtDemo** package, which is available on CRAN. **Dimitrios Zacharatos** modified and expanded them in the modelsirt and mleirt packages, which irtexplorer brings together as one golem app:
+The plots were originally developed by **Wes Bonifay** and **Metin Bulus** for the **irtDemo** package, which is available on CRAN. **Dimitrios Zacharatos** modified and expanded them in the modelsirt and mleirt packages, which golemirt brings together as one golem app:
 
 - consolidating the IRT models and estimation methods into a single interface
 - rebuilding the visualisations with Plotly for interactivity
@@ -193,17 +193,17 @@ GPL-3. See the [LICENSE](LICENSE) file for details.
 
 ## Contributing
 
-Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/sedzinfo/irtexplorer/issues).
+Contributions, issues, and feature requests are welcome! Feel free to check the [issues page](https://github.com/sedzinfo/golemirt/issues).
 
 ---
 
-![Stars](https://img.shields.io/github/stars/sedzinfo/irtexplorer)
-![Watchers](https://img.shields.io/github/watchers/sedzinfo/irtexplorer)
-![Repo Size](https://img.shields.io/github/repo-size/sedzinfo/irtexplorer)
-![Open Issues](https://img.shields.io/github/issues/sedzinfo/irtexplorer)
-![Forks](https://img.shields.io/github/forks/sedzinfo/irtexplorer)
-![Last Commit](https://img.shields.io/github/last-commit/sedzinfo/irtexplorer)
-![Contributors](https://img.shields.io/github/contributors/sedzinfo/irtexplorer)
-![License](https://img.shields.io/github/license/sedzinfo/irtexplorer)
-![Workflow Status](https://img.shields.io/github/actions/workflow/status/sedzinfo/irtexplorer/build-tarball.yml)
-![R-CMD-check](https://github.com/sedzinfo/irtexplorer/actions/workflows/R-CMD-check.yaml/badge.svg)
+![Stars](https://img.shields.io/github/stars/sedzinfo/golemirt)
+![Watchers](https://img.shields.io/github/watchers/sedzinfo/golemirt)
+![Repo Size](https://img.shields.io/github/repo-size/sedzinfo/golemirt)
+![Open Issues](https://img.shields.io/github/issues/sedzinfo/golemirt)
+![Forks](https://img.shields.io/github/forks/sedzinfo/golemirt)
+![Last Commit](https://img.shields.io/github/last-commit/sedzinfo/golemirt)
+![Contributors](https://img.shields.io/github/contributors/sedzinfo/golemirt)
+![License](https://img.shields.io/github/license/sedzinfo/golemirt)
+![Workflow Status](https://img.shields.io/github/actions/workflow/status/sedzinfo/golemirt/build-tarball.yml)
+![R-CMD-check](https://github.com/sedzinfo/golemirt/actions/workflows/R-CMD-check.yaml/badge.svg)

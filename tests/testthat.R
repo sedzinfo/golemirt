@@ -1,4 +1,4 @@
 library(testthat)
-library(irtexplorer)
+library(golemirt)
 
-test_check("irtexplorer")
+test_check("golemirt")

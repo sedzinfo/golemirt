@@ -18,7 +18,7 @@
 #' app_sys("golem-config.yml")
 #' }
 app_sys <- function(...) {
-  system.file(..., package = "irtexplorer")
+  system.file(..., package = "golemirt")
 }
 ##########################################################################################
 #
