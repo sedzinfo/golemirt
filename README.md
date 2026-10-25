@@ -1,4 +1,4 @@
-# golemirt: Interactive IRT Models and Estimation
+# Interactive Visualizations for Item Response Theory Models and Estimation
 
 ## Overview
 
