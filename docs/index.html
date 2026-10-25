@@ -46,12 +46,12 @@
 </nav><div class="container template-home">
 <div class="row">
   <main id="main" class="col-md-9"><div class="section level1">
-<div class="page-header"><h1 id="irtexplorer-interactive-irt-models-and-estimation">irtexplorer: Interactive IRT Models and Estimation<a class="anchor" aria-label="anchor" href="#irtexplorer-interactive-irt-models-and-estimation"></a>
+<div class="page-header"><h1 id="interactive-visualizations-for-item-response-theory-models-and-estimation">Interactive Visualizations for Item Response Theory Models and Estimation<a class="anchor" aria-label="anchor" href="#interactive-visualizations-for-item-response-theory-models-and-estimation"></a>
 </h1></div>
 <div class="section level2">
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h2>
-<p><strong>irtexplorer</strong> is an R package with an interactive Shiny application, built with <a href="https://thinkr-open.github.io/golem/" class="external-link">golem</a>, for learning and teaching Item Response Theory (IRT). It brings together two earlier apps in one site:</p>
+<p><strong>golemirt</strong> is an R package with an interactive Shiny application, built with <a href="https://thinkr-open.github.io/golem/" class="external-link">golem</a>, for learning and teaching Item Response Theory (IRT). It brings together two earlier apps in one site:</p>
 <ul>
 <li>
 <strong>modelsirt</strong>, which draws the response curves of the main IRT models, so that you can see how each item parameter shapes them;</li>
@@ -135,8 +135,8 @@
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Install devtools if you haven't already</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span></span>
-<span><span class="co"># Install irtexplorer from GitHub</span></span>
-<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/install-deprecated.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"sedzinfo/irtexplorer"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="co"># Install golemirt from GitHub</span></span>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/install-deprecated.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"sedzinfo/golemirt"</span><span class="op">)</span></span></code></pre></div>
 <p>The dependencies (<code>shiny</code>, <code>golem</code>, <code>plotly</code>, <code>config</code> and <code>fGarch</code>) are installed automatically.</p>
 </div>
 </div>
@@ -145,7 +145,7 @@
 </h2>
 <p>Launch the app with two lines of code:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://sedzinfo.github.io/irtexplorer/" class="external-link">irtexplorer</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://sedzinfo.github.io/golemirt/">golemirt</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/run_app.html">run_app</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>The app opens in your default web browser. Any <a href="https://shiny.posit.co/r/reference/shiny/latest/shinyapp.html" class="external-link"><code>shiny::shinyApp()</code></a> option can be passed on, for example <code>run_app(options = list(port = 8080))</code>.</p>
 </div>
@@ -154,7 +154,7 @@
 </h2>
 <p>The models, estimation methods and plots of the app are also available as functions, for scripts, R Markdown reports and teaching material:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://sedzinfo.github.io/irtexplorer/" class="external-link">irtexplorer</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://sedzinfo.github.io/golemirt/">golemirt</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># category response curves of a polytomous item</span></span>
 <span><span class="va">theta</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq</a></span><span class="op">(</span><span class="op">-</span><span class="fl">6</span>, <span class="fl">6</span>, by <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span></span>
@@ -184,74 +184,74 @@
 <h3 id="rasch-4pl">Rasch-4PL<a class="anchor" aria-label="anchor" href="#rasch-4pl"></a>
 </h3>
 <div class="float">
-<img src="reference/figures/irtexplorer1.png" alt="Item characteristic curves of the Rasch model"><div class="figcaption">Item characteristic curves of the Rasch model</div>
+<img src="reference/figures/golemirt1.png" alt="Item characteristic curves of the Rasch model"><div class="figcaption">Item characteristic curves of the Rasch model</div>
 </div>
 </div>
 <div class="section level3">
 <h3 id="pcm-gpcm">PCM-GPCM<a class="anchor" aria-label="anchor" href="#pcm-gpcm"></a>
 </h3>
 <div class="float">
-<img src="reference/figures/irtexplorer2.png" alt="Category response curves of the partial credit model"><div class="figcaption">Category response curves of the partial credit model</div>
+<img src="reference/figures/golemirt2.png" alt="Category response curves of the partial credit model"><div class="figcaption">Category response curves of the partial credit model</div>
 </div>
 </div>
 <div class="section level3">
 <h3 id="grm">GRM<a class="anchor" aria-label="anchor" href="#grm"></a>
 </h3>
 <div class="float">
-<img src="reference/figures/irtexplorer3.png" alt="Category response curves of the graded response model"><div class="figcaption">Category response curves of the graded response model</div>
+<img src="reference/figures/golemirt3.png" alt="Category response curves of the graded response model"><div class="figcaption">Category response curves of the graded response model</div>
 </div>
 </div>
 <div class="section level3">
 <h3 id="rsm-grsm">RSM-GRSM<a class="anchor" aria-label="anchor" href="#rsm-grsm"></a>
 </h3>
 <div class="float">
-<img src="reference/figures/irtexplorer4.png" alt="Category response curves of the rating scale model"><div class="figcaption">Category response curves of the rating scale model</div>
+<img src="reference/figures/golemirt4.png" alt="Category response curves of the rating scale model"><div class="figcaption">Category response curves of the rating scale model</div>
 </div>
 </div>
 <div class="section level3">
 <h3 id="nrm">NRM<a class="anchor" aria-label="anchor" href="#nrm"></a>
 </h3>
 <div class="float">
-<img src="reference/figures/irtexplorer5.png" alt="Category response curves of the nominal response model"><div class="figcaption">Category response curves of the nominal response model</div>
+<img src="reference/figures/golemirt5.png" alt="Category response curves of the nominal response model"><div class="figcaption">Category response curves of the nominal response model</div>
 </div>
 </div>
 <div class="section level3">
 <h3 id="tirt">TIRT<a class="anchor" aria-label="anchor" href="#tirt"></a>
 </h3>
 <div class="float">
-<img src="reference/figures/irtexplorer6.png" alt="Probit response function of Thurstonian IRT"><div class="figcaption">Probit response function of Thurstonian IRT</div>
+<img src="reference/figures/golemirt6.png" alt="Probit response function of Thurstonian IRT"><div class="figcaption">Probit response function of Thurstonian IRT</div>
 </div>
 </div>
 <div class="section level3">
 <h3 id="mirt-dichotomous">MIRT Dichotomous<a class="anchor" aria-label="anchor" href="#mirt-dichotomous"></a>
 </h3>
-<p><img src="reference/figures/irtexplorer7.png" alt="Item response surface of a compensatory two-dimensional item"><img src="reference/figures/irtexplorer8.png" alt="Contour plot of a compensatory two-dimensional item with its item vector"></p>
+<p><img src="reference/figures/golemirt7.png" alt="Item response surface of a compensatory two-dimensional item"><img src="reference/figures/golemirt8.png" alt="Contour plot of a compensatory two-dimensional item with its item vector"></p>
 </div>
 <div class="section level3">
 <h3 id="mle-rasch">MLE Rasch<a class="anchor" aria-label="anchor" href="#mle-rasch"></a>
 </h3>
 <div class="float">
-<img src="reference/figures/irtexplorer9.png" alt="Newton-Raphson step on the log-likelihood of a Rasch response pattern"><div class="figcaption">Newton-Raphson step on the log-likelihood of a Rasch response pattern</div>
+<img src="reference/figures/golemirt9.png" alt="Newton-Raphson step on the log-likelihood of a Rasch response pattern"><div class="figcaption">Newton-Raphson step on the log-likelihood of a Rasch response pattern</div>
 </div>
 </div>
 <div class="section level3">
 <h3 id="mle-2pl">MLE 2PL<a class="anchor" aria-label="anchor" href="#mle-2pl"></a>
 </h3>
 <div class="float">
-<img src="reference/figures/irtexplorer10.png" alt="Log-likelihood surface of discrimination and difficulty with its maximum"><div class="figcaption">Log-likelihood surface of discrimination and difficulty with its maximum</div>
+<img src="reference/figures/golemirt10.png" alt="Log-likelihood surface of discrimination and difficulty with its maximum"><div class="figcaption">Log-likelihood surface of discrimination and difficulty with its maximum</div>
 </div>
 </div>
 <div class="section level3">
 <h3 id="mle-3pl">MLE 3PL<a class="anchor" aria-label="anchor" href="#mle-3pl"></a>
 </h3>
 <div class="float">
-<img src="reference/figures/irtexplorer11.png" alt="Log-likelihood surfaces for twelve guessing values"><div class="figcaption">Log-likelihood surfaces for twelve guessing values</div>
+<img src="reference/figures/golemirt11.png" alt="Log-likelihood surfaces for twelve guessing values"><div class="figcaption">Log-likelihood surfaces for twelve guessing values</div>
 </div>
 </div>
 <div class="section level3">
 <h3 id="eap-map-rasch">EAP-MAP Rasch<a class="anchor" aria-label="anchor" href="#eap-map-rasch"></a>
 </h3>
-<p><img src="reference/figures/irtexplorer12.png" alt="Prior, item trace lines, likelihood and posterior of an EAP and MAP estimation"><img src="reference/figures/irtexplorer13.png" alt="Prior, likelihood and posterior in one plot"></p>
+<p><img src="reference/figures/golemirt12.png" alt="Prior, item trace lines, likelihood and posterior of an EAP and MAP estimation"><img src="reference/figures/golemirt13.png" alt="Prior, likelihood and posterior in one plot"></p>
 </div>
 </div>
 <div class="section level2">
@@ -322,14 +322,14 @@
 <p><code>app.R</code> starts the app on <a href="https://www.shinyapps.io/" class="external-link">shinyapps.io</a>, and <code>.rscignore</code> keeps the upload to the files the app needs.</p>
 <ol style="list-style-type: decimal">
 <li>Connect your account once, with the <code><a href="https://rstudio.github.io/rsconnect/reference/setAccountInfo.html" class="external-link">rsconnect::setAccountInfo()</a></code> line from Account, Tokens on shinyapps.io.</li>
-<li>Run <code>rsconnect::deployApp(appName = "irtexplorer")</code> from the package folder, or open <code>app.R</code> in RStudio and click Publish.</li>
+<li>Run <code>rsconnect::deployApp(appName = "golemirt")</code> from the package folder, or open <code>app.R</code> in RStudio and click Publish.</li>
 </ol>
 </div>
 </div>
 <div class="section level2">
 <h2 id="background-and-attribution">Background and Attribution<a class="anchor" aria-label="anchor" href="#background-and-attribution"></a>
 </h2>
-<p>The plots were originally developed by <strong>Wes Bonifay</strong> and <strong>Metin Bulus</strong> for the <strong>irtDemo</strong> package, which is available on CRAN. <strong>Dimitrios Zacharatos</strong> modified and expanded them in the modelsirt and mleirt packages, which irtexplorer brings together as one golem app:</p>
+<p>The plots were originally developed by <strong>Wes Bonifay</strong> and <strong>Metin Bulus</strong> for the <strong>irtDemo</strong> package, which is available on CRAN. <strong>Dimitrios Zacharatos</strong> modified and expanded them in the modelsirt and mleirt packages, which golemirt brings together as one golem app:</p>
 <ul>
 <li>consolidating the IRT models and estimation methods into a single interface</li>
 <li>rebuilding the visualisations with Plotly for interactivity</li>
@@ -362,9 +362,9 @@
 <div class="section level2">
 <h2 id="contributing">Contributing<a class="anchor" aria-label="anchor" href="#contributing"></a>
 </h2>
-<p>Contributions, issues, and feature requests are welcome! Feel free to check the <a href="https://github.com/sedzinfo/irtexplorer/issues" class="external-link">issues page</a>.</p>
+<p>Contributions, issues, and feature requests are welcome! Feel free to check the <a href="https://github.com/sedzinfo/golemirt/issues" class="external-link">issues page</a>.</p>
 <hr>
-<p><img src="https://img.shields.io/github/stars/sedzinfo/irtexplorer" alt="Stars"><img src="https://img.shields.io/github/watchers/sedzinfo/irtexplorer" alt="Watchers"><img src="https://img.shields.io/github/repo-size/sedzinfo/irtexplorer" alt="Repo Size"><img src="https://img.shields.io/github/issues/sedzinfo/irtexplorer" alt="Open Issues"><img src="https://img.shields.io/github/forks/sedzinfo/irtexplorer" alt="Forks"><img src="https://img.shields.io/github/last-commit/sedzinfo/irtexplorer" alt="Last Commit"><img src="https://img.shields.io/github/contributors/sedzinfo/irtexplorer" alt="Contributors"><img src="https://img.shields.io/github/license/sedzinfo/irtexplorer" alt="License"><img src="https://img.shields.io/github/actions/workflow/status/sedzinfo/irtexplorer/build-tarball.yml" alt="Workflow Status"><img src="https://github.com/sedzinfo/irtexplorer/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></p>
+<p><img src="https://img.shields.io/github/stars/sedzinfo/golemirt" alt="Stars"><img src="https://img.shields.io/github/watchers/sedzinfo/golemirt" alt="Watchers"><img src="https://img.shields.io/github/repo-size/sedzinfo/golemirt" alt="Repo Size"><img src="https://img.shields.io/github/issues/sedzinfo/golemirt" alt="Open Issues"><img src="https://img.shields.io/github/forks/sedzinfo/golemirt" alt="Forks"><img src="https://img.shields.io/github/last-commit/sedzinfo/golemirt" alt="Last Commit"><img src="https://img.shields.io/github/contributors/sedzinfo/golemirt" alt="Contributors"><img src="https://img.shields.io/github/license/sedzinfo/golemirt" alt="License"><img src="https://img.shields.io/github/actions/workflow/status/sedzinfo/golemirt/build-tarball.yml" alt="Workflow Status"><img src="https://github.com/sedzinfo/golemirt/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></p>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
