@@ -1,4 +1,4 @@
-Package: irtexplorer
+Package: golemirt
 Title: Interactive Item Response Theory Models and Estimation
 Version: 0.0.0.9000
 Authors@R: c(
@@ -21,8 +21,8 @@ Description: A 'shiny' application, built as a 'golem' package, for learning
     It brings together the 'modelsirt' and 'mleirt' apps, adapted from the
     'irtDemo' package.
 License: GPL-3
-URL: https://sedzinfo.github.io/irtexplorer/, https://github.com/sedzinfo/irtexplorer
-BugReports: https://github.com/sedzinfo/irtexplorer/issues
+URL: https://sedzinfo.github.io/golemirt/, https://github.com/sedzinfo/golemirt
+BugReports: https://github.com/sedzinfo/golemirt/issues
 Depends:
     R (>= 4.1.0)
 Imports:
