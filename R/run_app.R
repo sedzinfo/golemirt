@@ -16,7 +16,7 @@
 #' difficulty by maximum likelihood (two- and three-parameter logistic models), and a person's
 #' ability by Bayesian expected a posteriori (EAP) and maximum a posteriori (MAP) estimation.
 #' Its examples follow de Ayala (2009), and the default settings reproduce his published
-#' results.
+#' results. The app has a dark mode, switched by the button at the right of the navbar.
 #' @details Each tab of the Models menu plots, for a single item, the probability of each
 #' possible response as a function of the person's position on the latent trait (ability),
 #' written \eqn{\theta}{theta} (\eqn{\eta}{eta} in the TIRT tab). The basic building block is

@@ -30,3 +30,12 @@ test_that("Google Analytics and its cookie banner are in the page only when aske
   expect_no_match(without$head, "consent.js", fixed = TRUE)
   expect_no_match(without$html, "cookie-settings", fixed = TRUE)
 })
+
+test_that("the page has the dark mode, and every file of inst/app/www that it names exists", {
+  head <- htmltools::renderTags(app_ui(NULL, analytics = TRUE, keep_alive = TRUE))$head
+  expect_match(head, "www/dark_mode.css", fixed = TRUE)
+  expect_match(head, "www/dark_mode.js", fixed = TRUE)
+  # the files are added by name in add_external_resources(), so a renamed or missing one would go unnoticed
+  files <- unique(regmatches(head, gregexpr("www/[A-Za-z0-9_.-]+", head))[[1]])
+  expect_equal(files[!file.exists(file.path(app_sys("app"), files))], character())
+})

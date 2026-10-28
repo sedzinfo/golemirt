@@ -1,0 +1,37 @@
+/* Dark mode, switched on by dark_mode.js. Bootstrap 5 restyles the page itself (data-bs-theme="dark");
+   this styles the 2D charts, as plotly writes their colors inline, which only !important overrides. */
+#dark-mode-toggle {
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+/* plotly: a transparent background and light text, axes and grid */
+html.dark-mode .js-plotly-plot .main-svg {
+  background: transparent !important;
+}
+html.dark-mode .js-plotly-plot .bg,
+html.dark-mode .js-plotly-plot .legend .bg {
+  fill: transparent !important;
+}
+html.dark-mode .js-plotly-plot .main-svg text:not(.hoverlayer *) {
+  fill: #ddd !important;
+}
+html.dark-mode .js-plotly-plot .gridlayer path {
+  stroke: #444 !important;
+}
+/* the axes at zero, black in the charts of the app */
+html.dark-mode .js-plotly-plot .zerolinelayer path {
+  stroke: #aaa !important;
+}
+html.dark-mode .js-plotly-plot .modebar-btn path {
+  fill: #888 !important;
+}
+
+/* the black curves, outlines and reference lines, and the see-through black areas, would vanish
+   into the dark background: light instead (plotly writes black as rgb(0, 0, 0), with its opacity apart) */
+html.dark-mode .js-plotly-plot .main-svg path[style*="stroke: rgb(0, 0, 0)"]:not(.hoverlayer *) {
+  stroke: #ddd !important;
+}
+html.dark-mode .js-plotly-plot .main-svg path[style*="fill: rgb(0, 0, 0)"]:not(.hoverlayer *) {
+  fill: #fff !important;
+}

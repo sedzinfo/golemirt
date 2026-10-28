@@ -6,7 +6,8 @@
 #' Defines the top-level navbar layout: a Models menu with one tab per IRT
 #' model and an Estimation menu with one tab per estimation method, each tab
 #' being a Shiny module. The page uses Bootstrap 5, whose classes the cookie
-#' banner of consent.js is styled with.
+#' banner of consent.js is styled with, and whose dark color mode the dark mode
+#' button of \code{dark_mode.js} switches on.
 #'
 #' @param request Internal parameter for \code{shiny}. DO NOT REMOVE.
 #' @param analytics \code{TRUE} to add Google Analytics, with its cookie banner
@@ -33,7 +34,8 @@ app_ui <- function(request, analytics = FALSE, keep_alive = TRUE) {
       title = "IRT Models and Estimation using IRTDemo",
       windowTitle = "IRT Explorer",
       collapsible = TRUE,
-      # Bootstrap 5, whose classes the cookie banner of consent.js is styled with
+      # Bootstrap 5, whose classes the cookie banner of consent.js is styled with, and whose dark
+      # color mode dark_mode.js switches on
       theme = bslib::bs_theme(version = 5),
       footer = if (analytics) analytics_footer(),
       navbarMenu(
@@ -63,10 +65,10 @@ app_ui <- function(request, analytics = FALSE, keep_alive = TRUE) {
 #' Add external resources to the application
 #'
 #' Serves \code{inst/app/www} at \code{www/} and adds to the head of the page
-#' the favicon, the stylesheet of the app and, when asked, the script that
-#' pings the server (\code{keep_alive.js}) and the analytics scripts. Each file
-#' is added by name, so a new file in \code{inst/app/www} must be added here
-#' too.
+#' the favicon, the stylesheet of the app, the dark mode (\code{dark_mode.css},
+#' \code{dark_mode.js}) and, when asked, the script that pings the server
+#' (\code{keep_alive.js}) and the analytics scripts. Each file is added by
+#' name, so a new file in \code{inst/app/www} must be added here too.
 #'
 #' @param analytics \code{TRUE} to add the scripts of
 #'   \code{analytics_resources()}.
@@ -88,6 +90,8 @@ add_external_resources <- function(analytics = FALSE, keep_alive = TRUE) {
   tags$head(
     tags$link(rel = "icon", type = "image/svg+xml", href = "www/favicon.svg"),
     tags$link(rel = "stylesheet", href = "www/styles.css"),
+    tags$link(rel = "stylesheet", href = "www/dark_mode.css"),
+    tags$script(src = "www/dark_mode.js"),
     if (keep_alive) tags$script(src = "www/keep_alive.js"),
     if (analytics) analytics_resources()
   )
