@@ -260,11 +260,6 @@ keeps the credit shown in the original apps.
 - Muraki, E. (1992). A generalized partial credit model: Application of
   an EM algorithm. *Applied Psychological Measurement*, 16(2), 159-176.
 
-## License
-
-GPL-3. See the [LICENSE](https://sedzinfo.github.io/golemirt/LICENSE)
-file for details.
-
 ## Contributing
 
 Contributions, issues, and feature requests are welcome! Feel free to

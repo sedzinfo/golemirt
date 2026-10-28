@@ -2,9 +2,9 @@
 
 Loads the cookie banner shared with the sites of sedzinfo.github.io,
 which loads Google Analytics only after the visitor accepts, and the
-script that reports the tabs and the CSV downloads of the app as pages
-and downloads. The stylesheet of the app gives the banner the navy of
-those sites.
+script that reports each tab the visitor opens as a page view
+(`inst/app/www/analytics.js`). The stylesheet of the app gives the
+banner the navy of those sites.
 
 ## Usage
 

@@ -45,13 +45,13 @@ newton_raphson_rasch(
 ## Value
 
 A list with `theta` and `loglik`, the grid and its log-likelihoods, and
-`steps`, a data frame with one row per step: `start` and `end`, the
-estimates the step starts from and ends at; `loglik_start` and
-`loglik_end`, the log-likelihood there; `d1` and `d2`, the first and
-second derivatives at the start; `intercept` and `crossing`, where the
-tangent at the start crosses the vertical and horizontal axes; and
-`angle`, the acute angle in degrees between the tangent and the
-horizontal axis.
+`steps`, a data frame with one row per step: `iteration`, the number of
+the step; `start` and `end`, the estimates the step starts from and ends
+at; `loglik_start` and `loglik_end`, the log-likelihood there; `d1` and
+`d2`, the first and second derivatives at the start; `intercept` and
+`crossing`, where the tangent at the start crosses the vertical and
+horizontal axes; and `angle`, the acute angle in degrees between the
+tangent and the horizontal axis.
 
 ## References
 

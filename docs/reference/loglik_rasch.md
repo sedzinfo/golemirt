@@ -1,6 +1,12 @@
 # Log-likelihood of a response pattern under the Rasch model
 
-Log-likelihood of a response pattern under the Rasch model
+The log of the probability of the given responses to items with known
+difficulties, at each ability, \$\$LL(\theta) = \sum_i \left\[u_i
+(\theta - b_i) - \log(1 + \exp(\theta - b_i))\right\],\$\$ where \\u_i\\
+is 1 for a correct response and 0 for an incorrect one. Its maximum is
+the maximum likelihood estimate of ability, which
+[`newton_raphson_rasch()`](https://sedzinfo.github.io/golemirt/reference/newton_raphson_rasch.md)
+looks for.
 
 ## Usage
 
