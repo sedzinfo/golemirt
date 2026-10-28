@@ -14,10 +14,10 @@ cat("\014")
 ##########################################################################################
 directory <- dirname(rstudioapi::getActiveDocumentContext()$path)
 setwd(directory)
-document()
-test()
 if ("golemirt" %in% loadedNamespaces()) unloadNamespace("golemirt") # an old version still loaded would make the reinstalled one look corrupt
 if ("golemirt" %in% rownames(installed.packages())) remove.packages("golemirt")
+document()
+test()
 install()
 library(golemirt)
 

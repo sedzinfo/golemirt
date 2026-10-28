@@ -17,7 +17,8 @@ method (Rasch model), an item's discrimination and difficulty by maximum
 likelihood (two- and three-parameter logistic models), and a person's
 ability by Bayesian expected a posteriori (EAP) and maximum a posteriori
 (MAP) estimation. Its examples follow de Ayala (2009), and the default
-settings reproduce his published results.
+settings reproduce his published results. The app has a dark mode,
+switched by the button at the right of the navbar.
 
 ## Usage
 
