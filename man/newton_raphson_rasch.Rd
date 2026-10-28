@@ -27,6 +27,7 @@ Ayala (2009, p. 22).}
 \value{
 A list with \code{theta} and \code{loglik}, the grid and its
   log-likelihoods, and \code{steps}, a data frame with one row per step:
+  \code{iteration}, the number of the step;
   \code{start} and \code{end}, the estimates the step starts from and ends
   at; \code{loglik_start} and \code{loglik_end}, the log-likelihood there;
   \code{d1} and \code{d2}, the first and second derivatives at the start;

@@ -1,14 +1,19 @@
 ##########################################################################################
 #
 ##########################################################################################
-#' Access files in the current app
+#' Path to a file installed with the app
 #'
-#' NOTE: If you manually change your package name in the DESCRIPTION,
-#' don't forget to change it here too, and in the config file.
-#' For a safer name change mechanism, use the `golem::set_golem_name()` function.
+#' \code{system.file()} for this package: finds the files of \code{inst/} (the
+#' \code{app/www} folder, \code{golem-config.yml}) whether the package is
+#' installed or loaded with \code{pkgload::load_all()}. The package name is
+#' written here, in DESCRIPTION and in \code{inst/golem-config.yml}; when
+#' renaming the package, change all three, or use
+#' \code{golem::set_golem_name()}.
 #'
-#' @param ... character vectors, specifying subdirectory and file(s)
-#' within your package. The default, none, returns the root of the app.
+#' @param ... Character vectors, giving the subdirectory and file(s) inside
+#'   \code{inst/}. Without any, the root of the installed package.
+#'
+#' @return The full path, or \code{""} if the file does not exist.
 #'
 #' @noRd
 #'
@@ -23,13 +28,20 @@ app_sys <- function(...) {
 ##########################################################################################
 #
 ##########################################################################################
-#' Read App Config
+#' Read a value of the app configuration
 #'
-#' @param value Value to retrieve from the config file.
-#' @param config GOLEM_CONFIG_ACTIVE value. If unset, R_CONFIG_ACTIVE.
-#' If unset, "default".
-#' @param use_parent Logical, scan the parent directory for config file.
-#' @param file Location of the config file
+#' Reads \code{inst/golem-config.yml}, the golem settings of the app (its name,
+#' version, whether it runs in production), for the active configuration.
+#'
+#' @param value Name of the value to read.
+#' @param config Configuration to read: the environment variable
+#'   \code{GOLEM_CONFIG_ACTIVE}, or else \code{R_CONFIG_ACTIVE}, or else
+#'   \code{"default"}.
+#' @param use_parent Logical. Look for the file in the parent directories too.
+#' @param file Path of the configuration file: the environment variable
+#'   \code{GOLEM_CONFIG_PATH}, or else the file installed with the package.
+#'
+#' @return The value, as \code{config::get()} returns it.
 #'
 #' @noRd
 #'

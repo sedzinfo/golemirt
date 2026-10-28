@@ -18,7 +18,12 @@ A numeric vector of log-likelihoods, one for each value of
   \code{theta}.
 }
 \description{
-Log-likelihood of a response pattern under the Rasch model
+The log of the probability of the given responses to items with known
+difficulties, at each ability,
+\deqn{LL(\theta) = \sum_i \left[u_i (\theta - b_i) - \log(1 + \exp(\theta - b_i))\right],}{LL(theta) = sum over items of (u_i * (theta - b_i) - log(1 + exp(theta - b_i))),}
+where \eqn{u_i} is 1 for a correct response and 0 for an incorrect one. Its
+maximum is the maximum likelihood estimate of ability, which
+\code{\link{newton_raphson_rasch}()} looks for.
 }
 \examples{
 loglik_rasch(c(-1, 0, 1), response_pattern(2), b = c(-1.90, -0.60, -0.25, 0.30, 0.45))

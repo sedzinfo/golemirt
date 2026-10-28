@@ -116,6 +116,13 @@ surface_maximum <- function(loglik, a = attr(loglik, "a"), b = attr(loglik, "b")
 ##########################################################################################
 #' Log-likelihood of a response pattern under the Rasch model
 #'
+#' The log of the probability of the given responses to items with known
+#' difficulties, at each ability,
+#' \deqn{LL(\theta) = \sum_i \left[u_i (\theta - b_i) - \log(1 + \exp(\theta - b_i))\right],}{LL(theta) = sum over items of (u_i * (theta - b_i) - log(1 + exp(theta - b_i))),}
+#' where \eqn{u_i} is 1 for a correct response and 0 for an incorrect one. Its
+#' maximum is the maximum likelihood estimate of ability, which
+#' \code{\link{newton_raphson_rasch}()} looks for.
+#'
 #' @param theta Numeric vector of abilities.
 #' @param responses Ones and zeros, the responses to the items.
 #' @param b Difficulties of the items.
@@ -154,6 +161,7 @@ loglik_rasch <- function(theta, responses, b) {
 #'
 #' @return A list with \code{theta} and \code{loglik}, the grid and its
 #'   log-likelihoods, and \code{steps}, a data frame with one row per step:
+#'   \code{iteration}, the number of the step;
 #'   \code{start} and \code{end}, the estimates the step starts from and ends
 #'   at; \code{loglik_start} and \code{loglik_end}, the log-likelihood there;
 #'   \code{d1} and \code{d2}, the first and second derivatives at the start;

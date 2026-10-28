@@ -4,7 +4,9 @@
 #' The application server-side logic
 #'
 #' Wires up the Shiny module server of each tab: the seven tabs of the Models
-#' menu, then the four tabs of the Estimation menu.
+#' menu, then the four tabs of the Estimation menu. Also answers the pings of
+#' \code{keep_alive.js} (see \code{run_app(keep_alive = TRUE)}), which keep
+#' proxies from closing an idle connection.
 #'
 #' @param input,output,session Internal parameters for \code{shiny}.
 #'   DO NOT REMOVE.
