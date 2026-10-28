@@ -35,3 +35,11 @@ html.dark-mode .js-plotly-plot .main-svg path[style*="stroke: rgb(0, 0, 0)"]:not
 html.dark-mode .js-plotly-plot .main-svg path[style*="fill: rgb(0, 0, 0)"]:not(.hoverlayer *) {
   fill: #fff !important;
 }
+/* pure blue (the tangent of MLE Rasch, the item vector of the MIRT contour plot, the likelihood of
+   EAP-MAP) is too dark on dark: the lighter blue of Bootstrap's dark links */
+html.dark-mode .js-plotly-plot .main-svg path[style*="stroke: rgb(0, 0, 255)"]:not(.hoverlayer *) {
+  stroke: #6ea8fe !important;
+}
+html.dark-mode .js-plotly-plot .main-svg path[style*="fill: rgb(0, 0, 255)"]:not(.hoverlayer *) {
+  fill: #6ea8fe !important;
+}

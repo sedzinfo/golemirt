@@ -48,10 +48,11 @@
       label();
       $('.js-plotly-plot').each(function() { sceneColors(this); });
     });
-    // inside the collapsing part of the navbar, so that it sits on the row of the menus, at the right
+    // inside the collapsing part of the navbar, so that it sits on the row of the menus, at the right;
+    // bslib lets each list of the navbar grow (flex-grow 1), which flex-grow-0 stops for this one
     let collapse = $('.navbar .navbar-collapse').first();
     if (!collapse.length) collapse = $('.navbar .container-fluid').first();
-    collapse.append($('<ul class="nav navbar-nav ms-auto"></ul>').append($('<li class="nav-item"></li>').append(button)));
+    collapse.append($('<ul class="nav navbar-nav ms-auto flex-grow-0"></ul>').append($('<li class="nav-item"></li>').append(button)));
     // a 3D chart drawn later, or drawn again
     $(document).on('plotly_afterplot', '.js-plotly-plot', function() { sceneColors(this); });
   });
