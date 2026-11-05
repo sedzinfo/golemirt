@@ -20,7 +20,8 @@
 #' }
 mod_about_ui <- function(id) {
   ns <- NS(id)
-  link <- function(href, text) tags$a(href = href, target = "_blank", rel = "noopener", text)
+  # .noWS: no space between a link and the punctuation after it
+  link <- function(href, text) tags$a(href = href, target = "_blank", rel = "noopener", text, .noWS = "outside")
   references <- c(
     "Andrich, D. (1978). A rating formulation for ordered response categories. Psychometrika, 43(4), 561-573.",
     "Baker, F. B. (1992). Item Response Theory: Parameter Estimation Techniques. Marcel Dekker.",
