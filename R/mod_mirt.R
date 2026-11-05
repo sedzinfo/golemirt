@@ -23,7 +23,6 @@
 mod_mirt_ui <- function(id) {
   ns <- NS(id)
   tagList(
-    credit_line("Unknown Contributor"),
     sidebarLayout(
       sidebarPanel(
         width = 3,

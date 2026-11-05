@@ -20,7 +20,6 @@
 mod_gpcm_ui <- function(id) {
   ns <- NS(id)
   tagList(
-    credit_line("by Metin Bulus"),
     sidebarLayout(
       sidebarPanel(
         selectInput(ns("D"), label = "Scaling Constant", choices = list("1" = 1, "1.702" = 2), selected = 1),

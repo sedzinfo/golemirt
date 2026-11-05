@@ -20,7 +20,6 @@
 mod_mle_rasch_ui <- function(id) {
   ns <- NS(id)
   tagList(
-    credit_line("by unknown contributor"),
     sidebarLayout(
       sidebarPanel(
         width = 4,

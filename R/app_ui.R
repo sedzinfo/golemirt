@@ -4,8 +4,9 @@
 #' The application User-Interface
 #'
 #' Defines the top-level navbar layout: a Models menu with one tab per IRT
-#' model and an Estimation menu with one tab per estimation method, each tab
-#' being a Shiny module. The page uses Bootstrap 5, whose classes the cookie
+#' model, an Estimation menu with one tab per estimation method, each tab
+#' being a Shiny module, and an About tab with the acknowledgments
+#' (\code{mod_about_ui()}). The page uses Bootstrap 5, whose classes the cookie
 #' banner of consent.js is styled with, and whose dark color mode the dark mode
 #' button of \code{dark_mode.js} switches on.
 #'
@@ -54,7 +55,8 @@ app_ui <- function(request, analytics = FALSE, keep_alive = TRUE) {
         tabPanel("MLE 2PL", mod_mle_2pl_ui("mle_2pl")),
         tabPanel("MLE 3PL", mod_mle_3pl_ui("mle_3pl")),
         tabPanel("EAP-MAP Rasch", mod_eap_map_ui("eap_map"))
-      )
+      ),
+      tabPanel("About", mod_about_ui("about"))
     ),
     if (keep_alive) div(style = "display:none", textOutput("keep_alive"))
   )

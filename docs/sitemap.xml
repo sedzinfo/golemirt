@@ -1,8 +1,8 @@
 <urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
 <url><loc>https://sedzinfo.github.io/golemirt/404.html</loc></url>
+<url><loc>https://sedzinfo.github.io/golemirt/LICENSE-text.html</loc></url>
 <url><loc>https://sedzinfo.github.io/golemirt/authors.html</loc></url>
 <url><loc>https://sedzinfo.github.io/golemirt/index.html</loc></url>
-<url><loc>https://sedzinfo.github.io/golemirt/LICENSE-text.html</loc></url>
 <url><loc>https://sedzinfo.github.io/golemirt/reference/analytics_footer.html</loc></url>
 <url><loc>https://sedzinfo.github.io/golemirt/reference/analytics_resources.html</loc></url>
 <url><loc>https://sedzinfo.github.io/golemirt/reference/eap_map.html</loc></url>
@@ -11,6 +11,7 @@
 <url><loc>https://sedzinfo.github.io/golemirt/reference/item_vector.html</loc></url>
 <url><loc>https://sedzinfo.github.io/golemirt/reference/loglik_rasch.html</loc></url>
 <url><loc>https://sedzinfo.github.io/golemirt/reference/loglik_surface.html</loc></url>
+<url><loc>https://sedzinfo.github.io/golemirt/reference/mod_about_ui.html</loc></url>
 <url><loc>https://sedzinfo.github.io/golemirt/reference/mod_eap_map_server.html</loc></url>
 <url><loc>https://sedzinfo.github.io/golemirt/reference/mod_eap_map_ui.html</loc></url>
 <url><loc>https://sedzinfo.github.io/golemirt/reference/mod_gpcm_server.html</loc></url>

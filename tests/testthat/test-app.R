@@ -10,6 +10,16 @@ test_that("the page has the eleven tabs, in a Models and an Estimation menu", {
   for (tab in tabs) expect_match(html, paste0(">", tab, "<"), fixed = TRUE)
 })
 
+test_that("the About tab is in the navbar, with the acknowledgments", {
+  html <- htmltools::renderTags(app_ui(NULL))$html
+  expect_match(html, "data-value=\"About\"", fixed = TRUE)
+  expect_match(html, ">Acknowledgments<", fixed = TRUE)
+  expect_match(html, "Wes Bonifay", fixed = TRUE)
+  expect_match(html, "Metin Bulus", fixed = TRUE)
+  expect_match(html, "Kostas Maistrelis", fixed = TRUE)
+  expect_match(html, "https://cran.r-project.org/package=irtDemo", fixed = TRUE)
+})
+
 test_that("run_app() returns a shiny app with the golem options", {
   app <- run_app(greeting = "hello")
   expect_s3_class(app, "shiny.appobj")

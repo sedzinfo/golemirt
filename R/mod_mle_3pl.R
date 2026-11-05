@@ -19,7 +19,6 @@
 mod_mle_3pl_ui <- function(id) {
   ns <- NS(id)
   tagList(
-    credit_line("by Metin Bulus"),
     sidebarLayout(
       sidebarPanel(
         width = 3,

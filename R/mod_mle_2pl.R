@@ -19,7 +19,6 @@
 mod_mle_2pl_ui <- function(id) {
   ns <- NS(id)
   tagList(
-    credit_line("by unknown contributor"),
     sidebarLayout(
       sidebarPanel(
         width = 3,

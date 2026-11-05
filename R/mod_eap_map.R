@@ -22,7 +22,6 @@
 mod_eap_map_ui <- function(id) {
   ns <- NS(id)
   tagList(
-    credit_line("by Metin Bulus & Wes Bonifay"),
     sidebarLayout(
       sidebarPanel(
         width = 3,

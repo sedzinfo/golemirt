@@ -21,7 +21,7 @@ test()
 install()
 library(golemirt)
 
-pkgdown::build_site(getwd())
+pkgdown::build_site(getwd(), lazy = TRUE)
 system("R CMD Rd2pdf . --force --no-preview --output=golemirt.pdf")
 if (.Platform$OS.type == "windows") shell.exec("golemirt.pdf") else system("evince golemirt.pdf")
 system("R CMD build . --resave-data")
