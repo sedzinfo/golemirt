@@ -73,13 +73,7 @@ The app has eleven tabs in two menus.
 
 Open RStudio (or an R console) and run:
 
-``` r
-
-# Install devtools if you haven't already
-install.packages("devtools")
-# Install golemirt from GitHub
-devtools::install_github("sedzinfo/golemirt")
-```
+`# Install devtools if you haven't already`` `[`install.packages`](https://rdrr.io/r/utils/install.packages.html)`(``"devtools"``)`` ``# Install golemirt from GitHub`` ``devtools``::`[`install_github`](https://devtools.r-lib.org/reference/install-deprecated.html)`(``"sedzinfo/golemirt"``)`
 
 The dependencies (`shiny`, `golem`, `plotly`, `config` and `fGarch`) are
 installed automatically.
@@ -88,11 +82,7 @@ installed automatically.
 
 Launch the app with two lines of code:
 
-``` r
-
-library(golemirt)
-run_app()
-```
+[`library`](https://rdrr.io/r/base/library.html)`(`[`golemirt`](https://sedzinfo.github.io/golemirt/)`)`` `[`run_app`](https://sedzinfo.github.io/golemirt/reference/run_app.md)`(``)`
 
 The app opens in your default web browser. Any
 [`shiny::shinyApp()`](https://shiny.posit.co/r/reference/shiny/latest/shinyapp.html)
@@ -104,30 +94,7 @@ option can be passed on, for example
 The models, estimation methods and plots of the app are also available
 as functions, for scripts, R Markdown reports and teaching material:
 
-``` r
-
-library(golemirt)
-
-# category response curves of a polytomous item
-theta <- seq(-6, 6, by = 0.1)
-plot_category_curves(theta, prob_gpcm(theta, a = 1.5), "Generalized Partial Credit Model")
-plot_category_curves(theta, prob_grm(theta, b = c(-1.5, 0, 1.5)), "Graded Response Model")
-
-# an item that measures mostly the first of two abilities
-grid <- seq(-4, 4, length.out = 50)
-a <- c(2, 0.5)
-plot_mirt_contour(grid, grid, prob_mirt(grid, grid, a = a), level = 0.5, arrow = item_vector(a))
-
-# Newton-Raphson steps towards the maximum likelihood estimate of ability
-nr <- newton_raphson_rasch(response_pattern(2), iterations = 5)
-nr$steps[, c("start", "end")]
-plot_newton_raphson(nr)
-
-# EAP and MAP estimates with 40 quadrature points
-estimate <- eap_map(response_pattern(2), quadrature = 40)
-c(EAP = estimate$eap, MAP = estimate$map)
-plot_eap_combined(estimate)
-```
+[`library`](https://rdrr.io/r/base/library.html)`(`[`golemirt`](https://sedzinfo.github.io/golemirt/)`)`` `` ``# category response curves of a polytomous item`` ``theta`` ``<-`` `[`seq`](https://rdrr.io/r/base/seq.html)`(``-``6``, ``6``, by ``=`` ``0.1``)`` `[`plot_category_curves`](https://sedzinfo.github.io/golemirt/reference/plot_category_curves.md)`(``theta``, `[`prob_gpcm`](https://sedzinfo.github.io/golemirt/reference/prob_gpcm.md)`(``theta``, a ``=`` ``1.5``)``, ``"Generalized Partial Credit Model"``)`` `[`plot_category_curves`](https://sedzinfo.github.io/golemirt/reference/plot_category_curves.md)`(``theta``, `[`prob_grm`](https://sedzinfo.github.io/golemirt/reference/prob_grm.md)`(``theta``, b ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``-``1.5``, ``0``, ``1.5``)``)``, ``"Graded Response Model"``)`` `` ``# an item that measures mostly the first of two abilities`` ``grid`` ``<-`` `[`seq`](https://rdrr.io/r/base/seq.html)`(``-``4``, ``4``, length.out ``=`` ``50``)`` ``a`` ``<-`` `[`c`](https://rdrr.io/r/base/c.html)`(``2``, ``0.5``)`` `[`plot_mirt_contour`](https://sedzinfo.github.io/golemirt/reference/plot_mirt_contour.md)`(``grid``, ``grid``, `[`prob_mirt`](https://sedzinfo.github.io/golemirt/reference/prob_mirt.md)`(``grid``, ``grid``, a ``=`` ``a``)``, level ``=`` ``0.5``, arrow ``=`` `[`item_vector`](https://sedzinfo.github.io/golemirt/reference/item_vector.md)`(``a``)``)`` `` ``# Newton-Raphson steps towards the maximum likelihood estimate of ability`` ``nr`` ``<-`` `[`newton_raphson_rasch`](https://sedzinfo.github.io/golemirt/reference/newton_raphson_rasch.md)`(`[`response_pattern`](https://sedzinfo.github.io/golemirt/reference/response_pattern.md)`(``2``)``, iterations ``=`` ``5``)`` ``nr``$``steps``[``, `[`c`](https://rdrr.io/r/base/c.html)`(``"start"``, ``"end"``)``]`` `[`plot_newton_raphson`](https://sedzinfo.github.io/golemirt/reference/plot_newton_raphson.md)`(``nr``)`` `` ``# EAP and MAP estimates with 40 quadrature points`` ``estimate`` ``<-`` `[`eap_map`](https://sedzinfo.github.io/golemirt/reference/eap_map.md)`(`[`response_pattern`](https://sedzinfo.github.io/golemirt/reference/response_pattern.md)`(``2``)``, quadrature ``=`` ``40``)`` `[`c`](https://rdrr.io/r/base/c.html)`(``EAP ``=`` ``estimate``$``eap``, MAP ``=`` ``estimate``$``map``)`` `[`plot_eap_combined`](https://sedzinfo.github.io/golemirt/reference/plot_prior.md)`(``estimate``)`
 
 The help page of
 [`run_app()`](https://sedzinfo.github.io/golemirt/reference/run_app.md)

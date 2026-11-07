@@ -26,4 +26,4 @@ system("R CMD Rd2pdf . --force --no-preview --output=golemirt.pdf")
 if (.Platform$OS.type == "windows") shell.exec("golemirt.pdf") else system("evince golemirt.pdf")
 system("R CMD build . --resave-data")
 
-golemirt::run_app() # starts the app: the console stays busy until you close it
+golemirt::run_app()
