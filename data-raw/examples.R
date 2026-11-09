@@ -72,5 +72,17 @@ write_questionnaire(check(rows, fit), file.path(out_dir, "sat12_3pl.csv"))
 
 message("nominal")
 fit <- mirt(sat, 1, itemtype = "nominal", verbose = FALSE, SE = FALSE, technical = list(NCYCLES = 20000))
+# mirt identifies the nominal model by fixing the slopes of the first and the last option,
+# so the direction of theta is arbitrary, and here it comes out reversed: theta falls as the
+# number correct rises. Changing the sign of a1 in every item is the same model with theta
+# turned around (P_k is proportional to exp(a1 ak_k theta + d_k)), so theta now rises with
+# the number correct, as in the 3PL example.
+number_correct <- rowSums(key2binary(sat, key), na.rm = TRUE)
+if (cor(fscores(fit, method = "EAP")[, 1], number_correct) < 0) {
+  values <- mod2values(fit)
+  values$value[values$name == "a1"] <- -values$value[values$name == "a1"]
+  fit <- mirt(sat, 1, itemtype = "nominal", pars = values, TOL = NaN, verbose = FALSE, SE = FALSE)
+}
+message(sprintf("  theta and number correct: r = %.3f", cor(fscores(fit, method = "EAP")[, 1], number_correct)))
 rows <- questionnaire_from_mirt(fit, "Science (SAT12)", question = sat_question, options = sat_options, key = key, stem = sat_stem, public = FALSE)
 write_questionnaire(check(rows, fit), file.path(out_dir, "sat12_nrm.csv"))

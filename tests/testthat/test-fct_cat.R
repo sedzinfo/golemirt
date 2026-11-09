@@ -138,3 +138,19 @@ test_that("plot_cat_trajectory() draws a plotly chart, one trace per scale in ea
   expect_equal(unique(stop_line$y), 0.6)
   expect_error(plot_cat_trajectory(cat_start(q, "Openness")), "no answers yet")
 })
+
+test_that("in both SAT12 examples correct answers raise theta and wrong ones lower it", {
+  # the direction of a nominal model is arbitrary in mirt: data-raw/examples.R turns it so
+  # that theta rises with the number correct, as in the 3PL
+  for (nm in c("SAT12 Science · 3PL", "SAT12 Science · NRM")) {
+    for (correct in c(TRUE, FALSE)) {
+      s <- cat_start(banks[[nm]], se_threshold = 0.5)
+      while (s$stage == "testing") {
+        k <- cat_item(s)$key
+        s <- cat_answer(s, if (correct) k else (k %% 5) + 1)
+      }
+      th <- cat_results(s)$theta
+      if (correct) expect_gt(th, 1, label = paste(nm, "always correct")) else expect_lt(th, -1, label = paste(nm, "always wrong"))
+    }
+  }
+})
