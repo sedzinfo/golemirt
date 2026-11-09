@@ -49,3 +49,11 @@ test_that("the page has the dark mode, and every file of inst/app/www that it na
   files <- unique(regmatches(head, gregexpr("www/[A-Za-z0-9_.-]+", head))[[1]])
   expect_equal(files[!file.exists(file.path(app_sys("app"), files))], character())
 })
+
+test_that("the head has the description and the address of the live app for link previews", {
+  head <- htmltools::renderTags(app_ui(NULL))$head
+  expect_match(head, paste0("<meta name=\"description\" content=\"", app_meta$description, "\"/>"), fixed = TRUE)
+  expect_match(head, "<meta property=\"og:url\" content=\"https://sedzinfo-golemirt.share.connect.posit.cloud/\"/>", fixed = TRUE)
+  # search engines cut descriptions longer than about 160 characters
+  expect_lte(nchar(app_meta$description), 160)
+})

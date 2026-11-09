@@ -21,7 +21,7 @@ Description: A 'shiny' application, built as a 'golem' package, for learning
     It brings together the 'modelsirt' and 'mleirt' apps, adapted from the
     'irtDemo' package.
 License: GPL-3
-URL: https://sedzinfo.github.io/golemirt/, https://github.com/sedzinfo/golemirt
+URL: https://sedzinfo.github.io/golemirt/, https://github.com/sedzinfo/golemirt, https://sedzinfo-golemirt.share.connect.posit.cloud/
 BugReports: https://github.com/sedzinfo/golemirt/issues
 Depends:
     R (>= 4.1.0)

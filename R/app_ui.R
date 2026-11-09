@@ -64,10 +64,29 @@ app_ui <- function(request, analytics = FALSE, keep_alive = TRUE) {
 ##########################################################################################
 #
 ##########################################################################################
+#' Address and description of the live app, for search engines and link previews
+#'
+#' Used by \code{add_external_resources()} for the description that search
+#' engines show and the Open Graph tags of the preview that other sites show
+#' for a link to the app. \code{title} is the window title that
+#' \code{app_ui()} gives the page, and \code{image} the first screenshot of the
+#' README.
+#'
+#' @noRd
+app_meta <- list(
+  url = "https://sedzinfo-golemirt.share.connect.posit.cloud/",
+  title = "IRT Explorer",
+  description = "Learn item response theory with interactive charts of the response curves of IRT models and of how abilities and item parameters are estimated.",
+  image = "https://raw.githubusercontent.com/sedzinfo/golemirt/main/man/figures/golemirt1.png"
+)
+##########################################################################################
+#
+##########################################################################################
 #' Add external resources to the application
 #'
 #' Serves \code{inst/app/www} at \code{www/} and adds to the head of the page
-#' the favicon, the stylesheet of the app, the dark mode (\code{dark_mode.css},
+#' the description and Open Graph tags of \code{app_meta}, the favicon, the
+#' stylesheet of the app, the dark mode (\code{dark_mode.css},
 #' \code{dark_mode.js}) and, when asked, the script that pings the server
 #' (\code{keep_alive.js}) and the analytics scripts. Each file is added by
 #' name, so a new file in \code{inst/app/www} must be added here too.
@@ -90,6 +109,14 @@ app_ui <- function(request, analytics = FALSE, keep_alive = TRUE) {
 add_external_resources <- function(analytics = FALSE, keep_alive = TRUE) {
   addResourcePath("www", app_sys("app/www"))
   tags$head(
+    tags$meta(name = "description", content = app_meta$description),
+    tags$meta(property = "og:type", content = "website"),
+    tags$meta(property = "og:site_name", content = "sedzinfo"),
+    tags$meta(property = "og:title", content = app_meta$title),
+    tags$meta(property = "og:description", content = app_meta$description),
+    tags$meta(property = "og:url", content = app_meta$url),
+    tags$meta(property = "og:image", content = app_meta$image),
+    tags$meta(name = "twitter:card", content = "summary_large_image"),
     tags$link(rel = "icon", type = "image/svg+xml", href = "www/favicon.svg"),
     tags$link(rel = "stylesheet", href = "www/styles.css"),
     tags$link(rel = "stylesheet", href = "www/dark_mode.css"),

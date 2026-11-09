@@ -1,5 +1,7 @@
 # Interactive Visualizations for Item Response Theory Models and Estimation
 
+**[Open the live app](https://sedzinfo-golemirt.share.connect.posit.cloud/)** · [Website](https://sedzinfo.github.io/golemirt/)
+
 ## Overview
 
 **golemirt** is an R package with an interactive Shiny application, built with [golem](https://thinkr-open.github.io/golem/), for learning and teaching Item Response Theory (IRT). It brings together two earlier apps in one site:
