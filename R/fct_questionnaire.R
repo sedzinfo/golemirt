@@ -430,8 +430,9 @@ validate_questionnaire_against_mirt <- function(bank_scale, fit, thetas = seq(-4
 #' nominal models use the 32 multiple-choice items of the SAT12 science test of
 #' \code{mirt}, scored right/wrong with its key and as given, option by option.
 #'
-#' @return A named character vector: the label of each questionnaire and the path of
-#'   its csv.
+#' @return A named character vector: the label of each questionnaire (short enough for
+#'   the dropdown of the CAT tab, which shows the full name of the model below it) and the
+#'   path of its csv.
 #' @family questionnaire
 #' @export
 #'
@@ -439,12 +440,12 @@ validate_questionnaire_against_mirt <- function(bank_scale, fit, thetas = seq(-4
 #' example_questionnaires()
 example_questionnaires <- function() {
   files <- c(
-    "IPIP-50 Big Five \u00b7 Rating scale model (RSM)" = "ipip50_rsm.csv",
-    "IPIP-50 Big Five \u00b7 Partial credit model (PCM)" = "ipip50_pcm.csv",
-    "IPIP-50 Big Five \u00b7 Graded response model (GRM)" = "ipip50_grm.csv",
-    "IPIP-50 Big Five \u00b7 Modified graded response model (MGRM)" = "ipip50_mgrm.csv",
-    "SAT12 science test \u00b7 3PL" = "sat12_3pl.csv",
-    "SAT12 science test \u00b7 Nominal response model (NRM)" = "sat12_nrm.csv"
+    "IPIP-50 Big Five \u00b7 RSM" = "ipip50_rsm.csv",
+    "IPIP-50 Big Five \u00b7 PCM" = "ipip50_pcm.csv",
+    "IPIP-50 Big Five \u00b7 GRM" = "ipip50_grm.csv",
+    "IPIP-50 Big Five \u00b7 MGRM" = "ipip50_mgrm.csv",
+    "SAT12 Science \u00b7 3PL" = "sat12_3pl.csv",
+    "SAT12 Science \u00b7 NRM" = "sat12_nrm.csv"
   )
   stats::setNames(vapply(files, function(f) app_sys("extdata", "examples", f), ""), names(files))
 }

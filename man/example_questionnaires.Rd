@@ -7,8 +7,9 @@
 example_questionnaires()
 }
 \value{
-A named character vector: the label of each questionnaire and the path of
-  its csv.
+A named character vector: the label of each questionnaire (short enough for
+  the dropdown of the CAT tab, which shows the full name of the model below it) and the
+  path of its csv.
 }
 \description{
 The questionnaires that come with the app, one for each IRT model, made with

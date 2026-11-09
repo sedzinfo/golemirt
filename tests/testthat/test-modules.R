@@ -119,7 +119,7 @@ test_that("CAT: an example questionnaire, only the chosen scales, with the chose
 
 test_that("CAT: the SAT12 examples show the options and the key", {
   testServer(mod_cat_server, {
-    session$setInputs(source = "SAT12 science test \u00b7 3PL")
+    session$setInputs(source = "SAT12 Science \u00b7 3PL")
     session$flushReact()
     session$setInputs(scales_include = "Science (SAT12)", se_threshold = 0.5, start = 1)
     html <- as.character(output$question_ui$html)
@@ -147,7 +147,7 @@ test_that("CAT: an uploaded csv, and a broken one", {
     session$setInputs(source = "upload")
     session$flushReact()
     expect_null(loaded()$bank)
-    f <- example_questionnaires()[["SAT12 science test \u00b7 Nominal response model (NRM)"]]
+    f <- example_questionnaires()[["SAT12 Science \u00b7 NRM"]]
     session$setInputs(upload = list(datapath = f, name = "mine.csv"))
     expect_equal(unique(loaded()$bank$model), "nrm")
     bad <- tempfile(fileext = ".csv")

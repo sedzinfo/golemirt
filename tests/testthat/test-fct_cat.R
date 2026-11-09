@@ -61,7 +61,7 @@ test_that("a whole test runs on every example", {
 })
 
 test_that("answers are scored by key, by reversal and as given", {
-  sat <- banks[["SAT12 science test · 3PL"]]
+  sat <- banks[["SAT12 Science \u00b7 3PL"]]
   row <- sat[1, ]
   expect_equal(golemirt:::score_answer(row, row$key), 1L)
   expect_equal(golemirt:::score_answer(row, if (row$key == 1) 2L else 1L), 0L)
@@ -70,7 +70,7 @@ test_that("answers are scored by key, by reversal and as given", {
   fwd <- rsm[!rsm$reverse, ][1, ]
   expect_equal(golemirt:::score_answer(fwd, 5L), 4L)
   expect_equal(golemirt:::score_answer(rev, 5L), 0L)
-  nrm <- banks[["SAT12 science test · Nominal response model (NRM)"]]
+  nrm <- banks[["SAT12 Science \u00b7 NRM"]]
   expect_equal(golemirt:::score_answer(nrm[1, ], 3L), 2L)
   expect_error(cat_answer(cat_start(sat, "Science (SAT12)"), 6), "1 to 5")
 })
