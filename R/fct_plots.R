@@ -508,3 +508,87 @@ plot_eap_combined <- function(estimate) {
       )
     )
 }
+##########################################################################################
+# CAT
+##########################################################################################
+#' Plot the course of a CAT session
+#'
+#' An interactive \code{plotly} chart in two panels side by side: the
+#' standardized ability estimate and its standard error after each answer, across the
+#' whole test, one colour per scale. Hovering a point shows the statement and the
+#' answer; a dashed line marks the standard error at which a scale stops.
+#'
+#' @param s A CAT session with at least one answer (see \code{\link{cat_start}}).
+#'
+#' @return A \code{plotly} htmlwidget.
+#' @family CAT session
+#' @export
+#'
+#' @examples
+#' q <- read_questionnaire(example_questionnaires()[3])
+#' s <- cat_start(q, scales = c("Openness", "Extraversion"), se_threshold = 0.5)
+#' while (s$stage == "testing") s <- cat_answer(s, sample(1:5, 1))
+#' plot_cat_trajectory(s)
+plot_cat_trajectory <- function(s) {
+  log <- s$log
+  if (!nrow(log)) stop("no answers yet", call. = FALSE)
+  # Okabe-Ito colours, readable on light and dark and for colour-blind readers
+  palette <- c("#0072B2", "#E69F00", "#009E73", "#CC79A7", "#D55E00", "#56B4E9", "#F0E442", "#999999")
+  colours <- stats::setNames(rep_len(palette, length(s$scales)), s$scales)
+  # dark mode: dark_mode.css lightens the text and grid of every chart
+  ink <- "#343a40"
+  grid <- "#e9ecef"
+  # the texts come from the questionnaire, maybe an uploaded csv: plotly reads hover
+  # and legend text as html, so they are escaped
+  log$hover <- sprintf(
+    "<b>%s</b><br>%s<br>Answer %d (scored %d)<br>\u03b8 = %.2f, SE = %.3f",
+    escape_html(log$scale), escape_html(log$question), log$answer, log$score, log$theta, log$se
+  )
+
+  panel <- function(y, legend) {
+    p <- plotly::plot_ly()
+    for (sc in unique(log$scale)) {
+      d <- log[log$scale == sc, ]
+      p <- plotly::add_trace(p,
+        x = d$step, y = d[[y]], type = "scatter", mode = "lines+markers",
+        name = escape_html(sc), legendgroup = escape_html(sc), showlegend = legend,
+        line = list(color = colours[[sc]], width = 2),
+        marker = list(color = colours[[sc]], size = 8),
+        text = d$hover, hoverinfo = "text"
+      )
+    }
+    p
+  }
+  # the stopping SE, as a dashed line in the SE panel (subplot() drops shapes added to the layout)
+  se_panel <- plotly::add_trace(panel("se", FALSE),
+    x = c(0.5, max(log$step) + 0.5), y = rep(s$se_threshold, 2), type = "scatter", mode = "lines",
+    name = "stopping SE", showlegend = FALSE, hoverinfo = "skip",
+    line = list(color = "#dc3545", dash = "dash", width = 1.5)
+  )
+  axis <- list(color = ink, gridcolor = grid, zerolinecolor = grid, linecolor = grid)
+  # a label on every answer, or every 2nd, 3rd... so that there are at most about 12
+  step <- max(1, ceiling(max(log$step) / 12))
+  # theta on the left, SE on the right, each with its own answer axis
+  fig <- plotly::subplot(panel("theta", TRUE), se_panel,
+    nrows = 1, titleX = TRUE, titleY = TRUE, margin = 0.07
+  )
+  plotly::layout(fig,
+    paper_bgcolor = "rgba(0,0,0,0)",
+    plot_bgcolor = "rgba(0,0,0,0)",
+    font = list(color = ink),
+    legend = list(orientation = "h", x = 0, y = 1.12, font = list(color = ink)),
+    hoverlabel = list(align = "left"),
+    modebar = list(bgcolor = "rgba(0,0,0,0)", color = ink, activecolor = "#0d6efd"),
+    margin = list(t = 40, r = 10, b = 50, l = 60),
+    xaxis = c(axis, list(title = "Answer", dtick = step)),
+    xaxis2 = c(axis, list(title = "Answer", dtick = step)),
+    yaxis = c(axis, list(title = "\u03b8 (standardized)")),
+    yaxis2 = c(axis, list(title = "SE", rangemode = "tozero")),
+    annotations = list(list(
+      xref = "x2 domain", x = 0.01, xanchor = "left", yref = "y2", y = s$se_threshold, yanchor = "bottom",
+      text = sprintf("stop at SE \u2264 %.2f", s$se_threshold), showarrow = FALSE,
+      font = list(color = "#dc3545", size = 11)
+    ))
+  ) |>
+    plotly::config(displaylogo = FALSE, modeBarButtonsToRemove = c("lasso2d", "select2d", "autoScale2d"))
+}

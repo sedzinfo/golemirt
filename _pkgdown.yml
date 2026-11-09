@@ -64,6 +64,27 @@ reference:
       - prior_weights
       - eap_map
 
+  - title: "Adaptive testing"
+    desc: "The CAT tab: questionnaires as csv files and the adaptive test session"
+    contents:
+      - irt_models
+      - read_questionnaire
+      - questionnaire_from_mirt
+      - write_questionnaire
+      - validate_questionnaire_against_mirt
+      - example_questionnaires
+      - cat_start
+      - cat_item
+      - cat_answer
+      - cat_results
+
+  - title: "Adaptive testing engines"
+    desc: "Response probabilities, information, item selection, likelihood and EAP of the six models, the same as catR"
+    contents:
+      - starts_with("compute_")
+      - density_function
+      - integrate_cat
+
   - title: "Plots"
     desc: "The plots of the app"
     contents:
@@ -75,6 +96,7 @@ reference:
       - plot_loglik_surface
       - plot_loglik_surfaces
       - plot_prior
+      - plot_cat_trajectory
 
   - title: "UI"
     desc: "Internal functions not meant to run independently"

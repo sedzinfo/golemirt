@@ -13,7 +13,7 @@ Both were adapted from the **irtDemo** package by Wes Bonifay and Metin Bulus. E
 
 ## Features
 
-The app has eleven tabs in two menus.
+The app has eleven tabs in two menus, and a CAT tab.
 
 ### Models menu
 
@@ -31,6 +31,10 @@ The app has eleven tabs in two menus.
 - **MLE 2PL**: the log-likelihood surface of an item's discrimination and difficulty, from simulated responses, with its maximum
 - **MLE 3PL**: the same surfaces for twelve assumed guessing values, to show how guessing affects the estimation
 - **EAP-MAP Rasch**: Bayesian estimation of ability by quadrature, with the prior, item trace lines, likelihood and posterior
+
+### CAT
+
+- **CAT**: a computerized adaptive test with its workings in view. After every answer the ability is estimated by EAP, the next item is the most informative one at that estimate, and a scale stops when its standard error is small enough; a chart follows the estimate and its standard error answer by answer. It runs any questionnaire given as a csv file under six models (1PL to 4PL, rating scale, partial credit, graded response, modified graded response and nominal response), and comes with an example of each
 
 ### Key Capabilities
 
@@ -98,7 +102,64 @@ c(EAP = estimate$eap, MAP = estimate$map)
 plot_eap_combined(estimate)
 ```
 
+An adaptive test runs the same way outside the app:
+
+```r
+# the IPIP-50 Big Five example under the graded response model
+q <- read_questionnaire(example_questionnaires()[3])
+s <- cat_start(q, scales = "Extraversion", se_threshold = 0.40)
+while (s$stage == "testing") {
+  item <- cat_item(s)
+  s <- cat_answer(s, 4) # the option chosen: "Moderately accurate"
+}
+cat_results(s)
+plot_cat_trajectory(s)
+```
+
 The help page of `run_app()` describes every tab, with the formulas of the models and what each control and plot shows.
+
+## Your own questionnaire: one csv, six models
+
+The CAT tab runs any questionnaire given as a csv file, one row per item, under the six models
+of the [EAP tutorials](https://sedzinfo.github.io/vignettes/cat_irt_eap/):
+
+| Model | mirt `itemtype` | Example in the app |
+|---|---|---|
+| Dichotomous 1PL to 4PL | `Rasch` (2 categories), `2PL`, `3PL`, `4PL` | SAT12 science test, 3PL |
+| Rating scale (RSM) | `rsm` | IPIP-50 Big Five |
+| Partial credit (PCM) | `Rasch` (3+ categories) | IPIP-50 Big Five |
+| Graded response (GRM) | `graded` | IPIP-50 Big Five |
+| Modified graded response (MGRM) | `grsm` | IPIP-50 Big Five |
+| Nominal response (NRM) | `nominal` | SAT12 science test, option by option |
+
+The columns are the item text, its answer options and the coefficients **as mirt names them**,
+so a csv is written straight from a fitted model:
+
+```r
+library(mirt)
+fit <- mirt(responses, 1, itemtype = "graded")       # one model per scale
+q <- questionnaire_from_mirt(fit, "Anxiety",
+  question = c("I worry a lot", "I feel tense", ...),
+  options = c("Never", "Sometimes", "Often", "Always")
+)
+write_questionnaire(q, "anxiety.csv")                # or a list of scales
+```
+
+| Column | |
+|---|---|
+| `scale`, `question`, `itemtype` | required |
+| `item`, `stem` | optional id, and an instruction shown above the item |
+| `option1`, `option2`, … | the answer options in scoring order (numbered when absent) |
+| `key` | right/wrong items given as several options: the correct one |
+| `reverse` | `TRUE` for ordered items scored in reverse |
+| `public` | `FALSE` when the item text is not public and only a placeholder is shown: the CAT tab then highlights the correct option (`key`) in yellow |
+| `a1`, `b1`…, `c`, `d`, `d0`…, `ak0`…, `g`, `u` | the coefficients of `coef(fit, simplify = TRUE)$items` |
+| `prior_mean`, `prior_sd` | mean and sd of the latent trait of the scale (0 and 1 when absent) |
+
+`read_questionnaire()` reads and checks a file, naming the row of any problem, and converts the
+coefficients to the catR parameters of each engine; `validate_questionnaire_against_mirt()`
+compares the result with the fitted model, item by item. The examples are made by
+`data-raw/examples.R` in exactly this way. Download one from the app to see a complete file.
 
 ## Screenshots
 
@@ -137,6 +198,10 @@ The help page of `run_app()` describes every tab, with the formulas of the model
 ![Prior, item trace lines, likelihood and posterior of an EAP and MAP estimation](man/figures/golemirt12.png)
 ![Prior, likelihood and posterior in one plot](man/figures/golemirt13.png)
 
+### CAT
+![An adaptive test of two Big Five traits under the graded response model](man/figures/golemirt14.png)
+![An adaptive test of the SAT12 science questions under the 3PL, with the correct option highlighted](man/figures/golemirt15.png)
+
 ## Development
 
 The package follows the layout of a [golem](https://thinkr-open.github.io/golem/) app:
@@ -149,10 +214,15 @@ The package follows the layout of a [golem](https://thinkr-open.github.io/golem/
 | `R/fct_models.R` | The response functions of the models |
 | `R/fct_estimation.R` | Log-likelihoods, Newton-Raphson steps, and EAP and MAP estimation |
 | `R/fct_plots.R` | The plotly charts |
+| `R/fct_cat_engine_*.R` | The adaptive engines of the six models, ported unchanged from the EAP tutorials |
+| `R/fct_questionnaire.R` | The csv format of a questionnaire: reading, checking, writing from mirt, the examples |
+| `R/fct_cat.R` | The CAT session: start, next item, answer, results |
 | `R/utils_helpers.R` | Small helpers shared by the modules and charts |
 | `R/app_config.R`, `inst/golem-config.yml` | The golem configuration |
 | `inst/app/www/` | The favicon |
-| `tests/testthat/` | Tests of the functions, the modules and the page |
+| `inst/extdata/examples/` | The example questionnaires of the CAT tab, one per model |
+| `data-raw/examples.R` | Fits the example questionnaires with mirt and checks them |
+| `tests/testthat/` | Tests of the functions (the CAT engines against catR), the modules and the page |
 
 Run the tests with `devtools::test()`, and the full package check with `devtools::check()`. `generate_package.R` documents, tests and installs the package, and builds the website, the PDF manual and the tarball.
 
@@ -182,12 +252,18 @@ Special thanks to [Kostas Maistrelis](https://github.com/maisk) for contributing
 
 - Andrich, D. (1978). A rating formulation for ordered response categories. *Psychometrika*, 43(4), 561-573.
 - Baker, F. B. (1992). *Item Response Theory: Parameter Estimation Techniques*. Marcel Dekker.
+- Bock, R. D. (1972). Estimating item parameters and latent ability when responses are scored in two or more nominal categories. *Psychometrika*, 37(1), 29-51.
 - Bulus, M., & Bonifay, W. (2022). irtDemo R Package: Pedagogical Interactive Web Applications for Estimation, Scoring, and Multi Dimensionality in Item Response Theory. *Anadolu University Journal of Education Faculty*, 6(1), 92-108. https://doi.org/10.34056/aujef.913781
+- Chalmers, R. P. (2012). mirt: A multidimensional item response theory package for the R environment. *Journal of Statistical Software*, 48(6), 1-29.
 - de Ayala, R. J. (2009). *The Theory and Practice of Item Response Theory*. Guilford Press.
+- Goldberg, L. R. (1992). The development of markers for the Big-Five factor structure. *Psychological Assessment*, 4(1), 26-42.
 - Magis, D. (2013). A note on the item information function of the four-parameter logistic model. *Applied Psychological Measurement*, 37(4), 304-315.
+- Magis, D., & Barrada, J. R. (2017). Computerized adaptive testing with R: Recent updates of the package catR. *Journal of Statistical Software*, 76(1), 1-19.
 - Masters, G. N. (1982). A Rasch model for partial credit scoring. *Psychometrika*, 47(2), 149-174.
 - Muraki, E. (1990). Fitting a polytomous item response model to Likert-type data. *Applied Psychological Measurement*, 14(1), 59-71.
 - Muraki, E. (1992). A generalized partial credit model: Application of an EM algorithm. *Applied Psychological Measurement*, 16(2), 159-176.
+- Samejima, F. (1969). Estimation of latent ability using a response pattern of graded scores. *Psychometrika Monograph Supplement*, 17.
+- van der Linden, W. J., & Glas, C. A. W. (Eds.) (2010). *Elements of Adaptive Testing*. Springer.
 
 ## Contributing
 

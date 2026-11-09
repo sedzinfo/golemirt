@@ -116,3 +116,21 @@ category_colours <- c("#66C2A5", "#FC8D62", "#8DA0CB", "#E78AC3", "#A6D854")
 credit_line <- function(text) {
   h4(text, style = "margin: 10px 0 20px;")
 }
+##########################################################################################
+#
+##########################################################################################
+#' Escape text for html
+#'
+#' For texts that go where html is read, such as plotly hover and legend text, which
+#' may come from an uploaded csv.
+#'
+#' @param x A character vector.
+#'
+#' @return \code{x} with \code{&}, \code{<}, \code{>} and \code{"} as entities.
+#' @noRd
+escape_html <- function(x) {
+  x <- gsub("&", "&amp;", x, fixed = TRUE)
+  x <- gsub("<", "&lt;", x, fixed = TRUE)
+  x <- gsub(">", "&gt;", x, fixed = TRUE)
+  gsub("\"", "&quot;", x, fixed = TRUE)
+}

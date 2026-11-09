@@ -1,4 +1,4 @@
-test_that("the page has the eleven tabs, in a Models and an Estimation menu", {
+test_that("the page has the eleven tabs of the Models and Estimation menus, and the CAT tab", {
   html <- htmltools::renderTags(app_ui(NULL))$html
   expect_match(html, "IRT Models and Estimation using IRTDemo", fixed = TRUE)
   expect_match(html, "data-value=\"Models\"", fixed = TRUE)
@@ -8,6 +8,7 @@ test_that("the page has the eleven tabs, in a Models and an Estimation menu", {
     "MLE Rasch", "MLE 2PL", "MLE 3PL", "EAP-MAP Rasch"
   )
   for (tab in tabs) expect_match(html, paste0(">", tab, "<"), fixed = TRUE)
+  expect_match(html, "data-value=\"CAT\"", fixed = TRUE)
 })
 
 test_that("the About tab is in the navbar, with the acknowledgments", {

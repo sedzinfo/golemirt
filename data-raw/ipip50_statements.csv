@@ -1,0 +1,51 @@
+item,scale,reverse,statement
+A10,Agreeableness,FALSE,Make people feel at ease.
+A1,Agreeableness,TRUE,Feel little concern for others.
+A2,Agreeableness,FALSE,Am interested in people.
+A3,Agreeableness,TRUE,Insult people.
+A4,Agreeableness,FALSE,Sympathize with others' feelings.
+A5,Agreeableness,TRUE,Am not interested in other people's problems.
+A6,Agreeableness,FALSE,Have a soft heart.
+A7,Agreeableness,TRUE,Am not really interested in others.
+A8,Agreeableness,FALSE,Take time out for others.
+A9,Agreeableness,FALSE,Feel others' emotions.
+C1,Conscientiousness,FALSE,Am always prepared.
+C10,Conscientiousness,FALSE,Am exacting in my work.
+C2,Conscientiousness,TRUE,Leave my belongings around.
+C3,Conscientiousness,FALSE,Pay attention to details.
+C4,Conscientiousness,TRUE,Make a mess of things.
+C5,Conscientiousness,FALSE,Get chores done right away.
+C6,Conscientiousness,TRUE,Often forget to put things back in their proper place.
+C7,Conscientiousness,FALSE,Like order.
+C8,Conscientiousness,TRUE,Shirk my duties.
+C9,Conscientiousness,FALSE,Follow a schedule.
+E1,Extraversion,FALSE,Am the life of the party.
+E10,Extraversion,TRUE,Am quiet around strangers.
+E2,Extraversion,TRUE,Don't talk a lot.
+E3,Extraversion,FALSE,Feel comfortable around people.
+E4,Extraversion,TRUE,Keep in the background.
+E5,Extraversion,FALSE,Start conversations.
+E6,Extraversion,TRUE,Have little to say.
+E7,Extraversion,FALSE,Talk to a lot of different people at parties.
+E8,Extraversion,TRUE,Don't like to draw attention to myself.
+E9,Extraversion,FALSE,Don't mind being the center of attention.
+N1,Neuroticism,FALSE,Get stressed out easily.
+N10,Neuroticism,FALSE,Often feel blue.
+N2,Neuroticism,TRUE,Am relaxed most of the time.
+N3,Neuroticism,FALSE,Worry about things.
+N4,Neuroticism,TRUE,Seldom feel blue.
+N5,Neuroticism,FALSE,Am easily disturbed.
+N6,Neuroticism,FALSE,Get upset easily.
+N7,Neuroticism,FALSE,Change my mood a lot.
+N8,Neuroticism,FALSE,Have frequent mood swings.
+N9,Neuroticism,FALSE,Get irritated easily.
+O1,Openness,FALSE,Have a rich vocabulary.
+O10,Openness,FALSE,Am full of ideas.
+O2,Openness,TRUE,Have difficulty understanding abstract ideas.
+O3,Openness,FALSE,Have a vivid imagination.
+O4,Openness,TRUE,Am not interested in abstract ideas.
+O5,Openness,FALSE,Have excellent ideas.
+O6,Openness,TRUE,Do not have a good imagination.
+O7,Openness,FALSE,Am quick to understand things.
+O8,Openness,FALSE,Use difficult words.
+O9,Openness,FALSE,Spend time reflecting on things.

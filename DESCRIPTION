@@ -18,7 +18,11 @@ Description: A 'shiny' application, built as a 'golem' package, for learning
     a person's ability by maximum likelihood with the Newton-Raphson method,
     an item's parameters by maximum likelihood on log-likelihood surfaces,
     and a person's ability by expected and maximum a posteriori estimation.
-    It brings together the 'modelsirt' and 'mleirt' apps, adapted from the
+    A computerized adaptive test (CAT) shows the estimation at work, item by
+    item, for any questionnaire given as a csv file under six models (1PL to
+    4PL, rating scale, partial credit, graded response, modified graded
+    response and nominal response), with engines that give the same results
+    as 'catR'. It brings together the 'modelsirt' and 'mleirt' apps, adapted from the
     'irtDemo' package.
 License: GPL-3
 URL: https://sedzinfo.github.io/golemirt/, https://github.com/sedzinfo/golemirt, https://sedzinfo-golemirt.share.connect.posit.cloud/
@@ -35,7 +39,10 @@ Imports:
     shiny,
     stats
 Suggests:
+    catR,
     htmltools,
+    htmlwidgets,
+    mirt,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 Encoding: UTF-8
