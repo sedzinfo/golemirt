@@ -13,8 +13,8 @@
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><link href="extra.css" rel="stylesheet">
 <meta property="og:title" content="Interactive Item Response Theory Models and Estimation">
-<meta name="description" content="A shiny application, built as a golem package, for learning item response theory (IRT) with interactive plotly charts. It draws the response curves of the Rasch and one- to four-parameter logistic models, the partial credit, generalized partial credit, graded response, rating scale and nominal response models, the probit response functions of Thurstonian IRT, and the response and information surfaces of an item that measures two abilities. It also shows how the estimates are found: a persons ability by maximum likelihood with the Newton-Raphson method, an items parameters by maximum likelihood on log-likelihood surfaces, and a persons ability by expected and maximum a posteriori estimation. It brings together the modelsirt and mleirt apps, adapted from the irtDemo' package.">
-<meta property="og:description" content="A shiny application, built as a golem package, for learning item response theory (IRT) with interactive plotly charts. It draws the response curves of the Rasch and one- to four-parameter logistic models, the partial credit, generalized partial credit, graded response, rating scale and nominal response models, the probit response functions of Thurstonian IRT, and the response and information surfaces of an item that measures two abilities. It also shows how the estimates are found: a persons ability by maximum likelihood with the Newton-Raphson method, an items parameters by maximum likelihood on log-likelihood surfaces, and a persons ability by expected and maximum a posteriori estimation. It brings together the modelsirt and mleirt apps, adapted from the irtDemo' package.">
+<meta name="description" content="A shiny application, built as a golem package, for learning item response theory (IRT) with interactive plotly charts. It draws the response curves of the Rasch and one- to four-parameter logistic models, the partial credit, generalized partial credit, graded response, rating scale and nominal response models, the probit response functions of Thurstonian IRT, and the response and information surfaces of an item that measures two abilities. It also shows how the estimates are found: a persons ability by maximum likelihood with the Newton-Raphson method, an items parameters by maximum likelihood on log-likelihood surfaces, and a persons ability by expected and maximum a posteriori estimation. A computerized adaptive test (CAT) shows the estimation at work, item by item, for any questionnaire given as a csv file under six models (1PL to 4PL, rating scale, partial credit, graded response, modified graded response and nominal response), with engines that give the same results as catR. It brings together the modelsirt and mleirt apps, adapted from the irtDemo' package.">
+<meta property="og:description" content="A shiny application, built as a golem package, for learning item response theory (IRT) with interactive plotly charts. It draws the response curves of the Rasch and one- to four-parameter logistic models, the partial credit, generalized partial credit, graded response, rating scale and nominal response models, the probit response functions of Thurstonian IRT, and the response and information surfaces of an item that measures two abilities. It also shows how the estimates are found: a persons ability by maximum likelihood with the Newton-Raphson method, an items parameters by maximum likelihood on log-likelihood surfaces, and a persons ability by expected and maximum a posteriori estimation. A computerized adaptive test (CAT) shows the estimation at work, item by item, for any questionnaire given as a csv file under six models (1PL to 4PL, rating scale, partial credit, graded response, modified graded response and nominal response), with engines that give the same results as catR. It brings together the modelsirt and mleirt apps, adapted from the irtDemo' package.">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -65,7 +65,7 @@
 <div class="section level2">
 <h2 id="features">Features<a class="anchor" aria-label="anchor" href="#features"></a>
 </h2>
-<p>The app has eleven tabs in two menus.</p>
+<p>The app has eleven tabs in two menus, and a CAT tab.</p>
 <div class="section level3">
 <h3 id="models-menu">Models menu<a class="anchor" aria-label="anchor" href="#models-menu"></a>
 </h3>
@@ -98,6 +98,14 @@
 <strong>MLE 3PL</strong>: the same surfaces for twelve assumed guessing values, to show how guessing affects the estimation</li>
 <li>
 <strong>EAP-MAP Rasch</strong>: Bayesian estimation of ability by quadrature, with the prior, item trace lines, likelihood and posterior</li>
+</ul>
+</div>
+<div class="section level3">
+<h3 id="cat">CAT<a class="anchor" aria-label="anchor" href="#cat"></a>
+</h3>
+<ul>
+<li>
+<strong>CAT</strong>: a computerized adaptive test with its workings in view. After every answer the ability is estimated by EAP, the next item is the most informative one at that estimate, and a scale stops when its standard error is small enough; a chart follows the estimate and its standard error answer by answer. It runs any questionnaire given as a csv file under six models (1PL to 4PL, rating scale, partial credit, graded response, modified graded response and nominal response), and comes with an example of each</li>
 </ul>
 </div>
 <div class="section level3">
@@ -140,13 +148,19 @@
 <span><span class="co"># Install golemirt from GitHub</span></span>
 <span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/install-deprecated.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"sedzinfo/golemirt"</span><span class="op">)</span></span></code></pre></div>
 <p>The dependencies (<code>shiny</code>, <code>golem</code>, <code>plotly</code>, <code>config</code> and <code>fGarch</code>) are installed automatically.</p>
+<p>Without devtools, install the source tarball of the <a href="https://github.com/sedzinfo/golemirt/releases/tag/latest" class="external-link">latest release</a>, which is rebuilt from <code>main</code> on every change, together with the PDF manual:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span></span>
+<span>  <span class="st">"https://github.com/sedzinfo/golemirt/releases/download/latest/golemirt_0.0.0.9000.tar.gz"</span>,</span>
+<span>  repos <span class="op">=</span> <span class="cn">NULL</span>, type <span class="op">=</span> <span class="st">"source"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
 <h2 id="usage">Usage<a class="anchor" aria-label="anchor" href="#usage"></a>
 </h2>
 <p>Launch the app with two lines of code:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://sedzinfo.github.io/golemirt/">golemirt</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/run_app.html">run_app</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p>The app opens in your default web browser. Any <a href="https://shiny.posit.co/r/reference/shiny/latest/shinyapp.html" class="external-link"><code>shiny::shinyApp()</code></a> option can be passed on, for example <code>run_app(options = list(port = 8080))</code>.</p>
@@ -155,7 +169,7 @@
 <h2 id="using-the-functions-in-r">Using the Functions in R<a class="anchor" aria-label="anchor" href="#using-the-functions-in-r"></a>
 </h2>
 <p>The models, estimation methods and plots of the app are also available as functions, for scripts, R Markdown reports and teaching material:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://sedzinfo.github.io/golemirt/">golemirt</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># category response curves of a polytomous item</span></span>
@@ -177,7 +191,137 @@
 <span><span class="va">estimate</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/eap_map.html">eap_map</a></span><span class="op">(</span><span class="fu"><a href="reference/response_pattern.html">response_pattern</a></span><span class="op">(</span><span class="fl">2</span><span class="op">)</span>, quadrature <span class="op">=</span> <span class="fl">40</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>EAP <span class="op">=</span> <span class="va">estimate</span><span class="op">$</span><span class="va">eap</span>, MAP <span class="op">=</span> <span class="va">estimate</span><span class="op">$</span><span class="va">map</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/plot_prior.html">plot_eap_combined</a></span><span class="op">(</span><span class="va">estimate</span><span class="op">)</span></span></code></pre></div>
+<p>An adaptive test runs the same way outside the app:</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># the IPIP-50 Big Five example under the graded response model</span></span>
+<span><span class="va">q</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_questionnaire.html">read_questionnaire</a></span><span class="op">(</span><span class="fu"><a href="reference/example_questionnaires.html">example_questionnaires</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span><span class="fl">3</span><span class="op">]</span><span class="op">)</span></span>
+<span><span class="va">s</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/cat_start.html">cat_start</a></span><span class="op">(</span><span class="va">q</span>, scales <span class="op">=</span> <span class="st">"Extraversion"</span>, se_threshold <span class="op">=</span> <span class="fl">0.40</span><span class="op">)</span></span>
+<span><span class="kw">while</span> <span class="op">(</span><span class="va">s</span><span class="op">$</span><span class="va">stage</span> <span class="op">==</span> <span class="st">"testing"</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="va">item</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/cat_item.html">cat_item</a></span><span class="op">(</span><span class="va">s</span><span class="op">)</span></span>
+<span>  <span class="va">s</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/cat_answer.html">cat_answer</a></span><span class="op">(</span><span class="va">s</span>, <span class="fl">4</span><span class="op">)</span> <span class="co"># the option chosen: "Moderately accurate"</span></span>
+<span><span class="op">}</span></span>
+<span><span class="fu"><a href="reference/cat_results.html">cat_results</a></span><span class="op">(</span><span class="va">s</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/plot_cat_trajectory.html">plot_cat_trajectory</a></span><span class="op">(</span><span class="va">s</span><span class="op">)</span></span></code></pre></div>
 <p>The help page of <code><a href="reference/run_app.html">run_app()</a></code> describes every tab, with the formulas of the models and what each control and plot shows.</p>
+</div>
+<div class="section level2">
+<h2 id="your-own-questionnaire-one-csv-six-models">Your own questionnaire: one csv, six models<a class="anchor" aria-label="anchor" href="#your-own-questionnaire-one-csv-six-models"></a>
+</h2>
+<p>The CAT tab runs any questionnaire given as a csv file, one row per item, under the six models of the <a href="https://sedzinfo.github.io/vignettes/cat_irt_eap/" class="external-link">EAP tutorials</a>:</p>
+<table class="table">
+<colgroup>
+<col width="33%">
+<col width="33%">
+<col width="33%">
+</colgroup>
+<thead><tr>
+<th>Model</th>
+<th>mirt <code>itemtype</code>
+</th>
+<th>Example in the app</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>Dichotomous 1PL to 4PL</td>
+<td>
+<code>Rasch</code> (2 categories), <code>2PL</code>, <code>3PL</code>, <code>4PL</code>
+</td>
+<td>SAT12 science test, 3PL</td>
+</tr>
+<tr>
+<td>Rating scale (RSM)</td>
+<td><code>rsm</code></td>
+<td>IPIP-50 Big Five</td>
+</tr>
+<tr>
+<td>Partial credit (PCM)</td>
+<td>
+<code>Rasch</code> (3+ categories)</td>
+<td>IPIP-50 Big Five</td>
+</tr>
+<tr>
+<td>Graded response (GRM)</td>
+<td><code>graded</code></td>
+<td>IPIP-50 Big Five</td>
+</tr>
+<tr>
+<td>Modified graded response (MGRM)</td>
+<td><code>grsm</code></td>
+<td>IPIP-50 Big Five</td>
+</tr>
+<tr>
+<td>Nominal response (NRM)</td>
+<td><code>nominal</code></td>
+<td>SAT12 science test, option by option</td>
+</tr>
+</tbody>
+</table>
+<p>The columns are the item text, its answer options and the coefficients <strong>as mirt names them</strong>, so a csv is written straight from a fitted model:</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://philchalmers.github.io/mirt/" class="external-link">mirt</a></span><span class="op">)</span></span>
+<span><span class="va">fit</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://philchalmers.github.io/mirt/reference/mirt.html" class="external-link">mirt</a></span><span class="op">(</span><span class="va">responses</span>, <span class="fl">1</span>, itemtype <span class="op">=</span> <span class="st">"graded"</span><span class="op">)</span>       <span class="co"># one model per scale</span></span>
+<span><span class="va">q</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/questionnaire_from_mirt.html">questionnaire_from_mirt</a></span><span class="op">(</span><span class="va">fit</span>, <span class="st">"Anxiety"</span>,</span>
+<span>  question <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"I worry a lot"</span>, <span class="st">"I feel tense"</span>, <span class="va">...</span><span class="op">)</span>,</span>
+<span>  options <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Never"</span>, <span class="st">"Sometimes"</span>, <span class="st">"Often"</span>, <span class="st">"Always"</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/write_questionnaire.html">write_questionnaire</a></span><span class="op">(</span><span class="va">q</span>, <span class="st">"anxiety.csv"</span><span class="op">)</span>                <span class="co"># or a list of scales</span></span></code></pre></div>
+<table class="table">
+<colgroup>
+<col width="50%">
+<col width="50%">
+</colgroup>
+<thead><tr>
+<th>Column</th>
+<th></th>
+</tr></thead>
+<tbody>
+<tr>
+<td>
+<code>scale</code>, <code>question</code>, <code>itemtype</code>
+</td>
+<td>required</td>
+</tr>
+<tr>
+<td>
+<code>item</code>, <code>stem</code>
+</td>
+<td>optional id, and an instruction shown above the item</td>
+</tr>
+<tr>
+<td>
+<code>option1</code>, <code>option2</code>, …</td>
+<td>the answer options in scoring order (numbered when absent)</td>
+</tr>
+<tr>
+<td><code>key</code></td>
+<td>right/wrong items given as several options: the correct one</td>
+</tr>
+<tr>
+<td><code>reverse</code></td>
+<td>
+<code>TRUE</code> for ordered items scored in reverse</td>
+</tr>
+<tr>
+<td><code>public</code></td>
+<td>
+<code>FALSE</code> when the item text is not public and only a placeholder is shown: the CAT tab then highlights the correct option (<code>key</code>) in yellow</td>
+</tr>
+<tr>
+<td>
+<code>a1</code>, <code>b1</code>…, <code>c</code>, <code>d</code>, <code>d0</code>…, <code>ak0</code>…, <code>g</code>, <code>u</code>
+</td>
+<td>the coefficients of <code>coef(fit, simplify = TRUE)$items</code>
+</td>
+</tr>
+<tr>
+<td>
+<code>prior_mean</code>, <code>prior_sd</code>
+</td>
+<td>mean and sd of the latent trait of the scale (0 and 1 when absent)</td>
+</tr>
+</tbody>
+</table>
+<p><code><a href="reference/read_questionnaire.html">read_questionnaire()</a></code> reads and checks a file, naming the row of any problem, and converts the coefficients to the catR parameters of each engine; <code><a href="reference/validate_questionnaire_against_mirt.html">validate_questionnaire_against_mirt()</a></code> compares the result with the fitted model, item by item. The examples are made by <code>data-raw/examples.R</code> in exactly this way. Download one from the app to see a complete file.</p>
 </div>
 <div class="section level2">
 <h2 id="screenshots">Screenshots<a class="anchor" aria-label="anchor" href="#screenshots"></a>
@@ -255,6 +399,11 @@
 </h3>
 <p><img src="reference/figures/golemirt12.png" alt="Prior, item trace lines, likelihood and posterior of an EAP and MAP estimation"><img src="reference/figures/golemirt13.png" alt="Prior, likelihood and posterior in one plot"></p>
 </div>
+<div class="section level3">
+<h3 id="cat-1">CAT<a class="anchor" aria-label="anchor" href="#cat-1"></a>
+</h3>
+<p><img src="reference/figures/golemirt14.png" alt="An adaptive test of two Big Five traits under the graded response model"><img src="reference/figures/golemirt15.png" alt="An adaptive test of the SAT12 science questions under the 3PL, with the correct option highlighted"></p>
+</div>
 </div>
 <div class="section level2">
 <h2 id="development">Development<a class="anchor" aria-label="anchor" href="#development"></a>
@@ -298,6 +447,18 @@
 <td>The plotly charts</td>
 </tr>
 <tr>
+<td><code>R/fct_cat_engine_*.R</code></td>
+<td>The adaptive engines of the six models, ported unchanged from the EAP tutorials</td>
+</tr>
+<tr>
+<td><code>R/fct_questionnaire.R</code></td>
+<td>The csv format of a questionnaire: reading, checking, writing from mirt, the examples</td>
+</tr>
+<tr>
+<td><code>R/fct_cat.R</code></td>
+<td>The CAT session: start, next item, answer, results</td>
+</tr>
+<tr>
 <td><code>R/utils_helpers.R</code></td>
 <td>Small helpers shared by the modules and charts</td>
 </tr>
@@ -312,8 +473,16 @@
 <td>The favicon</td>
 </tr>
 <tr>
+<td><code>inst/extdata/examples/</code></td>
+<td>The example questionnaires of the CAT tab, one per model</td>
+</tr>
+<tr>
+<td><code>data-raw/examples.R</code></td>
+<td>Fits the example questionnaires with mirt and checks them</td>
+</tr>
+<tr>
 <td><code>tests/testthat/</code></td>
-<td>Tests of the functions, the modules and the page</td>
+<td>Tests of the functions (the CAT engines against catR), the modules and the page</td>
 </tr>
 </tbody>
 </table>
@@ -347,13 +516,19 @@
 <ul>
 <li>Andrich, D. (1978). A rating formulation for ordered response categories. <em>Psychometrika</em>, 43(4), 561-573.</li>
 <li>Baker, F. B. (1992). <em>Item Response Theory: Parameter Estimation Techniques</em>. Marcel Dekker.</li>
+<li>Bock, R. D. (1972). Estimating item parameters and latent ability when responses are scored in two or more nominal categories. <em>Psychometrika</em>, 37(1), 29-51.</li>
 <li>Bulus, M., &amp; Bonifay, W. (2022). irtDemo R Package: Pedagogical Interactive Web Applications for Estimation, Scoring, and Multi Dimensionality in Item Response Theory. <em>Anadolu University Journal of Education Faculty</em>, 6(1), 92-108. <a href="https://doi.org/10.34056/aujef.913781" class="external-link uri">https://doi.org/10.34056/aujef.913781</a>
 </li>
+<li>Chalmers, R. P. (2012). mirt: A multidimensional item response theory package for the R environment. <em>Journal of Statistical Software</em>, 48(6), 1-29.</li>
 <li>de Ayala, R. J. (2009). <em>The Theory and Practice of Item Response Theory</em>. Guilford Press.</li>
+<li>Goldberg, L. R. (1992). The development of markers for the Big-Five factor structure. <em>Psychological Assessment</em>, 4(1), 26-42.</li>
 <li>Magis, D. (2013). A note on the item information function of the four-parameter logistic model. <em>Applied Psychological Measurement</em>, 37(4), 304-315.</li>
+<li>Magis, D., &amp; Barrada, J. R. (2017). Computerized adaptive testing with R: Recent updates of the package catR. <em>Journal of Statistical Software</em>, 76(1), 1-19.</li>
 <li>Masters, G. N. (1982). A Rasch model for partial credit scoring. <em>Psychometrika</em>, 47(2), 149-174.</li>
 <li>Muraki, E. (1990). Fitting a polytomous item response model to Likert-type data. <em>Applied Psychological Measurement</em>, 14(1), 59-71.</li>
 <li>Muraki, E. (1992). A generalized partial credit model: Application of an EM algorithm. <em>Applied Psychological Measurement</em>, 16(2), 159-176.</li>
+<li>Samejima, F. (1969). Estimation of latent ability using a response pattern of graded scores. <em>Psychometrika Monograph Supplement</em>, 17.</li>
+<li>van der Linden, W. J., &amp; Glas, C. A. W. (Eds.) (2010). <em>Elements of Adaptive Testing</em>. Springer.</li>
 </ul>
 </div>
 <div class="section level2">

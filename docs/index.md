@@ -23,7 +23,7 @@ chart that is redrawn as soon as a slider moves.
 
 ## Features
 
-The app has eleven tabs in two menus.
+The app has eleven tabs in two menus, and a CAT tab.
 
 ### Models menu
 
@@ -54,6 +54,17 @@ The app has eleven tabs in two menus.
 - **EAP-MAP Rasch**: Bayesian estimation of ability by quadrature, with
   the prior, item trace lines, likelihood and posterior
 
+### CAT
+
+- **CAT**: a computerized adaptive test with its workings in view. After
+  every answer the ability is estimated by EAP, the next item is the
+  most informative one at that estimate, and a scale stops when its
+  standard error is small enough; a chart follows the estimate and its
+  standard error answer by answer. It runs any questionnaire given as a
+  csv file under six models (1PL to 4PL, rating scale, partial credit,
+  graded response, modified graded response and nominal response), and
+  comes with an example of each
+
 ### Key Capabilities
 
 - **Interactive Parameter Adjustment**: sliders for every item
@@ -77,16 +88,39 @@ The app has eleven tabs in two menus.
 
 Open RStudio (or an R console) and run:
 
-`# Install devtools if you haven't already`` `[`install.packages`](https://rdrr.io/r/utils/install.packages.html)`(``"devtools"``)`` ``# Install golemirt from GitHub`` ``devtools``::`[`install_github`](https://devtools.r-lib.org/reference/install-deprecated.html)`(``"sedzinfo/golemirt"``)`
+``` r
+
+# Install devtools if you haven't already
+install.packages("devtools")
+# Install golemirt from GitHub
+devtools::install_github("sedzinfo/golemirt")
+```
 
 The dependencies (`shiny`, `golem`, `plotly`, `config` and `fGarch`) are
 installed automatically.
+
+Without devtools, install the source tarball of the [latest
+release](https://github.com/sedzinfo/golemirt/releases/tag/latest),
+which is rebuilt from `main` on every change, together with the PDF
+manual:
+
+``` r
+
+install.packages(
+  "https://github.com/sedzinfo/golemirt/releases/download/latest/golemirt_0.0.0.9000.tar.gz",
+  repos = NULL, type = "source"
+)
+```
 
 ## Usage
 
 Launch the app with two lines of code:
 
-[`library`](https://rdrr.io/r/base/library.html)`(`[`golemirt`](https://sedzinfo.github.io/golemirt/)`)`` `[`run_app`](https://sedzinfo.github.io/golemirt/reference/run_app.md)`(``)`
+``` r
+
+library(golemirt)
+run_app()
+```
 
 The app opens in your default web browser. Any
 [`shiny::shinyApp()`](https://shiny.posit.co/r/reference/shiny/latest/shinyapp.html)
@@ -98,12 +132,99 @@ option can be passed on, for example
 The models, estimation methods and plots of the app are also available
 as functions, for scripts, R Markdown reports and teaching material:
 
-[`library`](https://rdrr.io/r/base/library.html)`(`[`golemirt`](https://sedzinfo.github.io/golemirt/)`)`` `` ``# category response curves of a polytomous item`` ``theta`` ``<-`` `[`seq`](https://rdrr.io/r/base/seq.html)`(``-``6``, ``6``, by ``=`` ``0.1``)`` `[`plot_category_curves`](https://sedzinfo.github.io/golemirt/reference/plot_category_curves.md)`(``theta``, `[`prob_gpcm`](https://sedzinfo.github.io/golemirt/reference/prob_gpcm.md)`(``theta``, a ``=`` ``1.5``)``, ``"Generalized Partial Credit Model"``)`` `[`plot_category_curves`](https://sedzinfo.github.io/golemirt/reference/plot_category_curves.md)`(``theta``, `[`prob_grm`](https://sedzinfo.github.io/golemirt/reference/prob_grm.md)`(``theta``, b ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``-``1.5``, ``0``, ``1.5``)``)``, ``"Graded Response Model"``)`` `` ``# an item that measures mostly the first of two abilities`` ``grid`` ``<-`` `[`seq`](https://rdrr.io/r/base/seq.html)`(``-``4``, ``4``, length.out ``=`` ``50``)`` ``a`` ``<-`` `[`c`](https://rdrr.io/r/base/c.html)`(``2``, ``0.5``)`` `[`plot_mirt_contour`](https://sedzinfo.github.io/golemirt/reference/plot_mirt_contour.md)`(``grid``, ``grid``, `[`prob_mirt`](https://sedzinfo.github.io/golemirt/reference/prob_mirt.md)`(``grid``, ``grid``, a ``=`` ``a``)``, level ``=`` ``0.5``, arrow ``=`` `[`item_vector`](https://sedzinfo.github.io/golemirt/reference/item_vector.md)`(``a``)``)`` `` ``# Newton-Raphson steps towards the maximum likelihood estimate of ability`` ``nr`` ``<-`` `[`newton_raphson_rasch`](https://sedzinfo.github.io/golemirt/reference/newton_raphson_rasch.md)`(`[`response_pattern`](https://sedzinfo.github.io/golemirt/reference/response_pattern.md)`(``2``)``, iterations ``=`` ``5``)`` ``nr``$``steps``[``, `[`c`](https://rdrr.io/r/base/c.html)`(``"start"``, ``"end"``)``]`` `[`plot_newton_raphson`](https://sedzinfo.github.io/golemirt/reference/plot_newton_raphson.md)`(``nr``)`` `` ``# EAP and MAP estimates with 40 quadrature points`` ``estimate`` ``<-`` `[`eap_map`](https://sedzinfo.github.io/golemirt/reference/eap_map.md)`(`[`response_pattern`](https://sedzinfo.github.io/golemirt/reference/response_pattern.md)`(``2``)``, quadrature ``=`` ``40``)`` `[`c`](https://rdrr.io/r/base/c.html)`(``EAP ``=`` ``estimate``$``eap``, MAP ``=`` ``estimate``$``map``)`` `[`plot_eap_combined`](https://sedzinfo.github.io/golemirt/reference/plot_prior.md)`(``estimate``)`
+``` r
+
+library(golemirt)
+
+# category response curves of a polytomous item
+theta <- seq(-6, 6, by = 0.1)
+plot_category_curves(theta, prob_gpcm(theta, a = 1.5), "Generalized Partial Credit Model")
+plot_category_curves(theta, prob_grm(theta, b = c(-1.5, 0, 1.5)), "Graded Response Model")
+
+# an item that measures mostly the first of two abilities
+grid <- seq(-4, 4, length.out = 50)
+a <- c(2, 0.5)
+plot_mirt_contour(grid, grid, prob_mirt(grid, grid, a = a), level = 0.5, arrow = item_vector(a))
+
+# Newton-Raphson steps towards the maximum likelihood estimate of ability
+nr <- newton_raphson_rasch(response_pattern(2), iterations = 5)
+nr$steps[, c("start", "end")]
+plot_newton_raphson(nr)
+
+# EAP and MAP estimates with 40 quadrature points
+estimate <- eap_map(response_pattern(2), quadrature = 40)
+c(EAP = estimate$eap, MAP = estimate$map)
+plot_eap_combined(estimate)
+```
+
+An adaptive test runs the same way outside the app:
+
+``` r
+
+# the IPIP-50 Big Five example under the graded response model
+q <- read_questionnaire(example_questionnaires()[3])
+s <- cat_start(q, scales = "Extraversion", se_threshold = 0.40)
+while (s$stage == "testing") {
+  item <- cat_item(s)
+  s <- cat_answer(s, 4) # the option chosen: "Moderately accurate"
+}
+cat_results(s)
+plot_cat_trajectory(s)
+```
 
 The help page of
 [`run_app()`](https://sedzinfo.github.io/golemirt/reference/run_app.md)
 describes every tab, with the formulas of the models and what each
 control and plot shows.
+
+## Your own questionnaire: one csv, six models
+
+The CAT tab runs any questionnaire given as a csv file, one row per
+item, under the six models of the [EAP
+tutorials](https://sedzinfo.github.io/vignettes/cat_irt_eap/):
+
+| Model | mirt `itemtype` | Example in the app |
+|----|----|----|
+| Dichotomous 1PL to 4PL | `Rasch` (2 categories), `2PL`, `3PL`, `4PL` | SAT12 science test, 3PL |
+| Rating scale (RSM) | `rsm` | IPIP-50 Big Five |
+| Partial credit (PCM) | `Rasch` (3+ categories) | IPIP-50 Big Five |
+| Graded response (GRM) | `graded` | IPIP-50 Big Five |
+| Modified graded response (MGRM) | `grsm` | IPIP-50 Big Five |
+| Nominal response (NRM) | `nominal` | SAT12 science test, option by option |
+
+The columns are the item text, its answer options and the coefficients
+**as mirt names them**, so a csv is written straight from a fitted
+model:
+
+``` r
+
+library(mirt)
+fit <- mirt(responses, 1, itemtype = "graded")       # one model per scale
+q <- questionnaire_from_mirt(fit, "Anxiety",
+  question = c("I worry a lot", "I feel tense", ...),
+  options = c("Never", "Sometimes", "Often", "Always")
+)
+write_questionnaire(q, "anxiety.csv")                # or a list of scales
+```
+
+| Column |  |
+|----|----|
+| `scale`, `question`, `itemtype` | required |
+| `item`, `stem` | optional id, and an instruction shown above the item |
+| `option1`, `option2`, … | the answer options in scoring order (numbered when absent) |
+| `key` | right/wrong items given as several options: the correct one |
+| `reverse` | `TRUE` for ordered items scored in reverse |
+| `public` | `FALSE` when the item text is not public and only a placeholder is shown: the CAT tab then highlights the correct option (`key`) in yellow |
+| `a1`, `b1`…, `c`, `d`, `d0`…, `ak0`…, `g`, `u` | the coefficients of `coef(fit, simplify = TRUE)$items` |
+| `prior_mean`, `prior_sd` | mean and sd of the latent trait of the scale (0 and 1 when absent) |
+
+[`read_questionnaire()`](https://sedzinfo.github.io/golemirt/reference/read_questionnaire.md)
+reads and checks a file, naming the row of any problem, and converts the
+coefficients to the catR parameters of each engine;
+[`validate_questionnaire_against_mirt()`](https://sedzinfo.github.io/golemirt/reference/validate_questionnaire_against_mirt.md)
+compares the result with the fitted model, item by item. The examples
+are made by `data-raw/examples.R` in exactly this way. Download one from
+the app to see a complete file.
 
 ## Screenshots
 
@@ -183,6 +304,13 @@ Log-likelihood surfaces for twelve guessing values
 estimation](reference/figures/golemirt12.png)![Prior, likelihood and
 posterior in one plot](reference/figures/golemirt13.png)
 
+### CAT
+
+![An adaptive test of two Big Five traits under the graded response
+model](reference/figures/golemirt14.png)![An adaptive test of the SAT12
+science questions under the 3PL, with the correct option
+highlighted](reference/figures/golemirt15.png)
+
 ## Development
 
 The package follows the layout of a
@@ -196,10 +324,15 @@ The package follows the layout of a
 | `R/fct_models.R` | The response functions of the models |
 | `R/fct_estimation.R` | Log-likelihoods, Newton-Raphson steps, and EAP and MAP estimation |
 | `R/fct_plots.R` | The plotly charts |
+| `R/fct_cat_engine_*.R` | The adaptive engines of the six models, ported unchanged from the EAP tutorials |
+| `R/fct_questionnaire.R` | The csv format of a questionnaire: reading, checking, writing from mirt, the examples |
+| `R/fct_cat.R` | The CAT session: start, next item, answer, results |
 | `R/utils_helpers.R` | Small helpers shared by the modules and charts |
 | `R/app_config.R`, `inst/golem-config.yml` | The golem configuration |
 | `inst/app/www/` | The favicon |
-| `tests/testthat/` | Tests of the functions, the modules and the page |
+| `inst/extdata/examples/` | The example questionnaires of the CAT tab, one per model |
+| `data-raw/examples.R` | Fits the example questionnaires with mirt and checks them |
+| `tests/testthat/` | Tests of the functions (the CAT engines against catR), the modules and the page |
 
 Run the tests with
 [`devtools::test()`](https://devtools.r-lib.org/reference/test.html),
@@ -247,22 +380,37 @@ keeps the credit shown in the original apps.
   categories. *Psychometrika*, 43(4), 561-573.
 - Baker, F. B. (1992). *Item Response Theory: Parameter Estimation
   Techniques*. Marcel Dekker.
+- Bock, R. D. (1972). Estimating item parameters and latent ability when
+  responses are scored in two or more nominal categories.
+  *Psychometrika*, 37(1), 29-51.
 - Bulus, M., & Bonifay, W. (2022). irtDemo R Package: Pedagogical
   Interactive Web Applications for Estimation, Scoring, and Multi
   Dimensionality in Item Response Theory. *Anadolu University Journal of
   Education Faculty*, 6(1), 92-108.
   <https://doi.org/10.34056/aujef.913781>
+- Chalmers, R. P. (2012). mirt: A multidimensional item response theory
+  package for the R environment. *Journal of Statistical Software*,
+  48(6), 1-29.
 - de Ayala, R. J. (2009). *The Theory and Practice of Item Response
   Theory*. Guilford Press.
+- Goldberg, L. R. (1992). The development of markers for the Big-Five
+  factor structure. *Psychological Assessment*, 4(1), 26-42.
 - Magis, D. (2013). A note on the item information function of the
   four-parameter logistic model. *Applied Psychological Measurement*,
   37(4), 304-315.
+- Magis, D., & Barrada, J. R. (2017). Computerized adaptive testing with
+  R: Recent updates of the package catR. *Journal of Statistical
+  Software*, 76(1), 1-19.
 - Masters, G. N. (1982). A Rasch model for partial credit scoring.
   *Psychometrika*, 47(2), 149-174.
 - Muraki, E. (1990). Fitting a polytomous item response model to
   Likert-type data. *Applied Psychological Measurement*, 14(1), 59-71.
 - Muraki, E. (1992). A generalized partial credit model: Application of
   an EM algorithm. *Applied Psychological Measurement*, 16(2), 159-176.
+- Samejima, F. (1969). Estimation of latent ability using a response
+  pattern of graded scores. *Psychometrika Monograph Supplement*, 17.
+- van der Linden, W. J., & Glas, C. A. W. (Eds.) (2010). *Elements of
+  Adaptive Testing*. Springer.
 
 ## Contributing
 

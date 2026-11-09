@@ -17,8 +17,10 @@ method (Rasch model), an item's discrimination and difficulty by maximum
 likelihood (two- and three-parameter logistic models), and a person's
 ability by Bayesian expected a posteriori (EAP) and maximum a posteriori
 (MAP) estimation. Its examples follow de Ayala (2009), and the default
-settings reproduce his published results. The app has a dark mode,
-switched by the button at the right of the navbar.
+settings reproduce his published results. The CAT tab puts the
+estimation to work in a computerized adaptive test, for any
+questionnaire given as a csv file under six models. The app has a dark
+mode, switched by the button at the right of the navbar.
 
 ## Usage
 
@@ -127,10 +129,10 @@ and the three-parameter logistic model (3PL) estimates all three. The
 likelihood of a set of responses is the product of the probabilities of
 the responses given, and the log-likelihood is its logarithm.
 
-The app has eleven tabs, described in the sections below: Rasch-4PL,
+The app has twelve tabs, described in the sections below: Rasch-4PL,
 PCM-GPCM, GRM, RSM-GRSM, NRM, TIRT and MIRT Dichotomous in the Models
-menu, and MLE Rasch, MLE 2PL, MLE 3PL and EAP-MAP Rasch in the
-Estimation menu. The models and estimation methods are also available as
+menu, MLE Rasch, MLE 2PL, MLE 3PL and EAP-MAP Rasch in the Estimation
+menu, and CAT. The models and estimation methods are also available as
 functions, such as
 [`prob_gpcm()`](https://sedzinfo.github.io/golemirt/reference/prob_gpcm.md)
 and
@@ -538,6 +540,43 @@ The default settings replicate de Ayala (2009, p. 79). A narrower prior
 pulls the EAP towards the prior mean, more quadrature points make both
 estimates more precise, and, unlike the maximum likelihood estimate, EAP
 and MAP stay finite for raw scores of 0 and 5.
+
+## CAT
+
+A computerized adaptive test (CAT) with its workings in view, on one of
+the example questionnaires or on a csv file of your own (see
+[`read_questionnaire()`](https://sedzinfo.github.io/golemirt/reference/read_questionnaire.md)).
+Each scale of the questionnaire is tested under its model: the 1PL to
+4PL for right/wrong items, or the rating scale, partial credit, graded
+response, modified graded response or nominal response model for items
+with several options. After every answer the ability is estimated by EAP
+with the normal prior of the scale, the next item is the one left with
+the most Fisher information at that estimate, and a scale stops when its
+standard error, divided by the standard deviation of the prior, is at
+most the threshold chosen, or when its items run out. A threshold \\se\\
+aims at a reliability of about \\1 - se^2\\. The engines are those of
+the EAP tutorials (<https://sedzinfo.github.io/vignettes/cat_irt_eap/>),
+adapted from catR, and give the same results as catR.
+
+- **Controls:** the questionnaire, one of six examples (the 50 IPIP Big
+  Five statements under the rating scale, partial credit, graded
+  response and modified graded response models; the 32 SAT12 science
+  questions under the 3PL and the nominal response model) or a csv file
+  uploaded, with a link to download it; the scales to test; and the
+  standard error at which a scale stops (0.10 to 0.70).
+
+- **Item:** the current question with its answer options. On a
+  right/wrong item whose text is not public, such as those of SAT12, the
+  correct option is highlighted.
+
+- **Plot:** the standardized ability estimate and its standard error
+  after every answer, one colour per scale, with the stopping threshold
+  as a dashed line; hovering a point shows the item and the answer
+  ([`plot_cat_trajectory()`](https://sedzinfo.github.io/golemirt/reference/plot_cat_trajectory.md)).
+
+- **Tables:** the progress of each scale (items answered, estimate,
+  standard error, status) and the history of every answer, with the
+  score it was given.
 
 ## Acknowledgments
 

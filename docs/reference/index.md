@@ -52,6 +52,124 @@ The estimation methods of the Estimation menu
 - [`eap_map()`](https://sedzinfo.github.io/golemirt/reference/eap_map.md)
   : EAP and MAP estimates of ability by quadrature
 
+## Adaptive testing
+
+The CAT tab: questionnaires as csv files and the adaptive test session
+
+- [`irt_models()`](https://sedzinfo.github.io/golemirt/reference/irt_models.md)
+  : The IRT models
+- [`read_questionnaire()`](https://sedzinfo.github.io/golemirt/reference/read_questionnaire.md)
+  : Read a questionnaire
+- [`questionnaire_from_mirt()`](https://sedzinfo.github.io/golemirt/reference/questionnaire_from_mirt.md)
+  : A questionnaire table from a mirt model
+- [`write_questionnaire()`](https://sedzinfo.github.io/golemirt/reference/write_questionnaire.md)
+  : Save a questionnaire table
+- [`validate_questionnaire_against_mirt()`](https://sedzinfo.github.io/golemirt/reference/validate_questionnaire_against_mirt.md)
+  : Check a questionnaire against its mirt model
+- [`example_questionnaires()`](https://sedzinfo.github.io/golemirt/reference/example_questionnaires.md)
+  : The example questionnaires
+- [`cat_start()`](https://sedzinfo.github.io/golemirt/reference/cat_start.md)
+  : Start an adaptive test
+- [`cat_item()`](https://sedzinfo.github.io/golemirt/reference/cat_item.md)
+  : The item to show now
+- [`cat_answer()`](https://sedzinfo.github.io/golemirt/reference/cat_answer.md)
+  : Answer the current item
+- [`cat_results()`](https://sedzinfo.github.io/golemirt/reference/cat_results.md)
+  : Results of a CAT session
+
+## Adaptive testing engines
+
+Response probabilities, information, item selection, likelihood and EAP
+of the six models, the same as catR
+
+- [`compute_eap_dichotomous()`](https://sedzinfo.github.io/golemirt/reference/compute_eap_dichotomous.md)
+  : compute theta EAP estimation
+- [`compute_eap_ggrm()`](https://sedzinfo.github.io/golemirt/reference/compute_eap_ggrm.md)
+  : compute theta EAP estimation under the generalized graded response
+  model
+- [`compute_eap_grm()`](https://sedzinfo.github.io/golemirt/reference/compute_eap_grm.md)
+  : compute theta EAP estimation under the graded response model
+- [`compute_eap_nrm()`](https://sedzinfo.github.io/golemirt/reference/compute_eap_nrm.md)
+  : compute theta EAP estimation under the nominal response model
+- [`compute_eap_pcm()`](https://sedzinfo.github.io/golemirt/reference/compute_eap_pcm.md)
+  : compute theta EAP estimation under the partial credit model
+- [`compute_eap_rsm()`](https://sedzinfo.github.io/golemirt/reference/compute_eap_rsm.md)
+  : compute theta EAP estimation under the rating scale model
+- [`compute_eap_se_dichotomous()`](https://sedzinfo.github.io/golemirt/reference/compute_eap_se_dichotomous.md)
+  : compute standard error of theta EAP estimation
+- [`compute_eap_se_ggrm()`](https://sedzinfo.github.io/golemirt/reference/compute_eap_se_ggrm.md)
+  : compute standard error of theta EAP estimation under the generalized
+  graded response model
+- [`compute_eap_se_grm()`](https://sedzinfo.github.io/golemirt/reference/compute_eap_se_grm.md)
+  : compute standard error of theta EAP estimation under the graded
+  response model
+- [`compute_eap_se_nrm()`](https://sedzinfo.github.io/golemirt/reference/compute_eap_se_nrm.md)
+  : compute standard error of theta EAP estimation under the nominal
+  response model
+- [`compute_eap_se_pcm()`](https://sedzinfo.github.io/golemirt/reference/compute_eap_se_pcm.md)
+  : compute standard error of theta EAP estimation under the partial
+  credit model
+- [`compute_eap_se_rsm()`](https://sedzinfo.github.io/golemirt/reference/compute_eap_se_rsm.md)
+  : compute standard error of theta EAP estimation under the rating
+  scale model
+- [`compute_ii_dichotomous()`](https://sedzinfo.github.io/golemirt/reference/compute_ii_dichotomous.md)
+  : compute item information under the 4PL model
+- [`compute_ii_ggrm()`](https://sedzinfo.github.io/golemirt/reference/compute_ii_ggrm.md)
+  : compute item information under the generalized graded response model
+- [`compute_ii_grm()`](https://sedzinfo.github.io/golemirt/reference/compute_ii_grm.md)
+  : compute item information under the graded response model
+- [`compute_ii_nrm()`](https://sedzinfo.github.io/golemirt/reference/compute_ii_nrm.md)
+  : compute item information under the nominal response model
+- [`compute_ii_pcm()`](https://sedzinfo.github.io/golemirt/reference/compute_ii_pcm.md)
+  : compute item information under the partial credit model
+- [`compute_ii_rsm()`](https://sedzinfo.github.io/golemirt/reference/compute_ii_rsm.md)
+  : compute item information under the rating scale model
+- [`compute_likelihood_dichotomous()`](https://sedzinfo.github.io/golemirt/reference/compute_likelihood_dichotomous.md)
+  : compute the likelihood of a dichotomous response pattern
+- [`compute_likelihood_ggrm()`](https://sedzinfo.github.io/golemirt/reference/compute_likelihood_ggrm.md)
+  : compute the likelihood of a polytomous response pattern
+- [`compute_likelihood_grm()`](https://sedzinfo.github.io/golemirt/reference/compute_likelihood_grm.md)
+  : compute the likelihood of a polytomous response pattern
+- [`compute_likelihood_nrm()`](https://sedzinfo.github.io/golemirt/reference/compute_likelihood_nrm.md)
+  : compute the likelihood of a polytomous response pattern
+- [`compute_likelihood_pcm()`](https://sedzinfo.github.io/golemirt/reference/compute_likelihood_pcm.md)
+  : compute the likelihood of a polytomous response pattern
+- [`compute_likelihood_rsm()`](https://sedzinfo.github.io/golemirt/reference/compute_likelihood_rsm.md)
+  : compute the likelihood of a polytomous response pattern
+- [`compute_next_item_dichotomous()`](https://sedzinfo.github.io/golemirt/reference/compute_next_item_dichotomous.md)
+  : select the next item by maximum Fisher information
+- [`compute_next_item_ggrm()`](https://sedzinfo.github.io/golemirt/reference/compute_next_item_ggrm.md)
+  : select the next item by maximum Fisher information
+- [`compute_next_item_grm()`](https://sedzinfo.github.io/golemirt/reference/compute_next_item_grm.md)
+  : select the next item by maximum Fisher information
+- [`compute_next_item_nrm()`](https://sedzinfo.github.io/golemirt/reference/compute_next_item_nrm.md)
+  : select the next item by maximum Fisher information
+- [`compute_next_item_pcm()`](https://sedzinfo.github.io/golemirt/reference/compute_next_item_pcm.md)
+  : select the next item by maximum Fisher information
+- [`compute_next_item_rsm()`](https://sedzinfo.github.io/golemirt/reference/compute_next_item_rsm.md)
+  : select the next item by maximum Fisher information
+- [`compute_pi_dichotomous()`](https://sedzinfo.github.io/golemirt/reference/compute_pi_dichotomous.md)
+  : compute response probabilities and derivatives
+- [`compute_pi_ggrm()`](https://sedzinfo.github.io/golemirt/reference/compute_pi_ggrm.md)
+  : compute category response probabilities and derivatives under the
+  generalized graded response model
+- [`compute_pi_grm()`](https://sedzinfo.github.io/golemirt/reference/compute_pi_grm.md)
+  : compute category response probabilities and derivatives under the
+  graded response model
+- [`compute_pi_nrm()`](https://sedzinfo.github.io/golemirt/reference/compute_pi_nrm.md)
+  : compute category response probabilities and derivatives under the
+  nominal response model
+- [`compute_pi_pcm()`](https://sedzinfo.github.io/golemirt/reference/compute_pi_pcm.md)
+  : compute category response probabilities and derivatives under the
+  partial credit model
+- [`compute_pi_rsm()`](https://sedzinfo.github.io/golemirt/reference/compute_pi_rsm.md)
+  : compute category response probabilities and derivatives under the
+  rating scale model
+- [`density_function()`](https://sedzinfo.github.io/golemirt/reference/density_function.md)
+  : compute normal density function
+- [`integrate_cat()`](https://sedzinfo.github.io/golemirt/reference/integrate_cat.md)
+  : compute integral of f(x)
+
 ## Plots
 
 The plots of the app
@@ -76,6 +194,8 @@ The plots of the app
   [`plot_posterior()`](https://sedzinfo.github.io/golemirt/reference/plot_prior.md)
   [`plot_eap_combined()`](https://sedzinfo.github.io/golemirt/reference/plot_prior.md)
   : Plot the parts of an EAP and MAP estimation
+- [`plot_cat_trajectory()`](https://sedzinfo.github.io/golemirt/reference/plot_cat_trajectory.md)
+  : Plot the course of a CAT session
 
 ## UI
 

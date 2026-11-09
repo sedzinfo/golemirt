@@ -13,7 +13,8 @@ likelihood with the Newton-Raphson method (Rasch model), an item's discriminatio
 difficulty by maximum likelihood (two- and three-parameter logistic models), and a person's
 ability by Bayesian expected a posteriori (EAP) and maximum a posteriori (MAP) estimation.
 Its examples follow de Ayala (2009), and the default settings reproduce his published
-results. The app has a dark mode, switched by the button at the right of the navbar."><meta property="og:description" content="Launches a Shiny app that shows item response theory (IRT) with interactive
+results. The CAT tab puts the estimation to work in a computerized adaptive test, for any
+questionnaire given as a csv file under six models. The app has a dark mode, switched by the button at the right of the navbar."><meta property="og:description" content="Launches a Shiny app that shows item response theory (IRT) with interactive
 plots, in two menus. The Models menu draws the item response functions of the main IRT
 models, so that you can see how each item parameter shapes them: the probability of each
 possible response is plotted against the latent trait and redrawn as soon as a parameter is
@@ -27,7 +28,8 @@ likelihood with the Newton-Raphson method (Rasch model), an item's discriminatio
 difficulty by maximum likelihood (two- and three-parameter logistic models), and a person's
 ability by Bayesian expected a posteriori (EAP) and maximum a posteriori (MAP) estimation.
 Its examples follow de Ayala (2009), and the default settings reproduce his published
-results. The app has a dark mode, switched by the button at the right of the navbar."></head><body>
+results. The CAT tab puts the estimation to work in a computerized adaptive test, for any
+questionnaire given as a csv file under six models. The app has a dark mode, switched by the button at the right of the navbar."></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
@@ -75,7 +77,8 @@ likelihood with the Newton-Raphson method (Rasch model), an item's discriminatio
 difficulty by maximum likelihood (two- and three-parameter logistic models), and a person's
 ability by Bayesian expected a posteriori (EAP) and maximum a posteriori (MAP) estimation.
 Its examples follow de Ayala (2009), and the default settings reproduce his published
-results. The app has a dark mode, switched by the button at the right of the navbar.</p>
+results. The CAT tab puts the estimation to work in a computerized adaptive test, for any
+questionnaire given as a csv file under six models. The app has a dark mode, switched by the button at the right of the navbar.</p>
     </div>
 
     <div class="section level2">
@@ -170,9 +173,9 @@ The Rasch model fixes \(\alpha = 1\) and \(c = 0\), the two-parameter
 logistic model (2PL) fixes \(c = 0\), and the three-parameter logistic model (3PL)
 estimates all three. The likelihood of a set of responses is the product of the
 probabilities of the responses given, and the log-likelihood is its logarithm.</p>
-<p>The app has eleven tabs, described in the sections below: Rasch-4PL, PCM-GPCM, GRM,
-RSM-GRSM, NRM, TIRT and MIRT Dichotomous in the Models menu, and MLE Rasch, MLE 2PL, MLE 3PL
-and EAP-MAP Rasch in the Estimation menu. The models and estimation methods are also
+<p>The app has twelve tabs, described in the sections below: Rasch-4PL, PCM-GPCM, GRM,
+RSM-GRSM, NRM, TIRT and MIRT Dichotomous in the Models menu, MLE Rasch, MLE 2PL, MLE 3PL
+and EAP-MAP Rasch in the Estimation menu, and CAT. The models and estimation methods are also
 available as functions, such as <code><a href="prob_gpcm.html">prob_gpcm()</a></code> and <code><a href="eap_map.html">eap_map()</a></code>, and
 each plot of the app as a <code>plot_*()</code> function, such as
 <code><a href="plot_category_curves.html">plot_category_curves()</a></code>.</p>
@@ -513,6 +516,36 @@ posterior \(L(X_r) A(X_r)\) is highest.</p><ul><li><p><strong>Controls:</strong>
 towards the prior mean, more quadrature points make both estimates more precise, and,
 unlike the maximum likelihood estimate, EAP and MAP stay finite for raw scores of 0 and 5.</p>
     </div>
+    <div class="section level2">
+    <h2 id="cat">CAT<a class="anchor" aria-label="anchor" href="#cat"></a></h2>
+
+
+<p>A computerized adaptive test (CAT) with its workings in view, on one of the example
+questionnaires or on a csv file of your own (see <code><a href="read_questionnaire.html">read_questionnaire()</a></code>). Each
+scale of the questionnaire is tested under its model: the 1PL to 4PL for right/wrong items,
+or the rating scale, partial credit, graded response, modified graded response or nominal
+response model for items with several options. After every answer the ability is
+estimated by EAP with the normal prior of the scale, the next item is the one left with
+the most Fisher information at that estimate, and a scale stops when its standard error,
+divided by the standard deviation of the prior, is at most the threshold chosen, or when
+its items run out. A threshold \(se\) aims at a reliability of about \(1 - se^2\).
+The engines are those of the EAP tutorials
+(<a href="https://sedzinfo.github.io/vignettes/cat_irt_eap/" class="external-link">https://sedzinfo.github.io/vignettes/cat_irt_eap/</a>), adapted from catR, and give
+the same results as catR.</p><ul><li><p><strong>Controls:</strong> the questionnaire, one of six examples (the 50 IPIP Big Five
+    statements under the rating scale, partial credit, graded response and modified graded
+    response models; the 32 SAT12 science questions under the 3PL and the nominal response
+    model) or a csv file uploaded, with a link to download it; the scales to test; and
+    the standard error at which a scale stops (0.10 to 0.70).</p></li>
+<li><p><strong>Item:</strong> the current question with its answer options. On a right/wrong
+    item whose text is not public, such as those of SAT12, the correct option is
+    highlighted.</p></li>
+<li><p><strong>Plot:</strong> the standardized ability estimate and its standard error after
+    every answer, one colour per scale, with the stopping threshold as a dashed line;
+    hovering a point shows the item and the answer
+    (<code><a href="plot_cat_trajectory.html">plot_cat_trajectory()</a></code>).</p></li>
+<li><p><strong>Tables:</strong> the progress of each scale (items answered, estimate, standard
+    error, status) and the history of every answer, with the score it was given.</p></li>
+</ul></div>
     <div class="section level2">
     <h2 id="acknowledgments">Acknowledgments<a class="anchor" aria-label="anchor" href="#acknowledgments"></a></h2>
 
