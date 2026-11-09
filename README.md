@@ -63,6 +63,15 @@ devtools::install_github("sedzinfo/golemirt")
 
 The dependencies (`shiny`, `golem`, `plotly`, `config` and `fGarch`) are installed automatically.
 
+Without devtools, install the source tarball of the [latest release](https://github.com/sedzinfo/golemirt/releases/tag/latest), which is rebuilt from `main` on every change, together with the PDF manual:
+
+```r
+install.packages(
+  "https://github.com/sedzinfo/golemirt/releases/download/latest/golemirt_0.0.0.9000.tar.gz",
+  repos = NULL, type = "source"
+)
+```
+
 ## Usage
 
 Launch the app with two lines of code:
