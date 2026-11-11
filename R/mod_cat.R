@@ -26,6 +26,8 @@ mod_cat_ui <- function(id) {
     sidebar = bslib::sidebar(
       title = "Settings",
       width = 320,
+      # on phones the settings sit above the test, not behind a toggle, as the test starts there
+      open = list(desktop = "open", mobile = "always-above"),
       selectInput(ns("source"), "Questionnaire",
         choices = c(names(examples), "Your own csv file\u2026" = "upload"),
         selected = names(examples)[1], width = "100%"

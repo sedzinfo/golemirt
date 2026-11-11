@@ -19,7 +19,7 @@
 mod_mle_2pl_ui <- function(id) {
   ns <- NS(id)
   tagList(
-    sidebarLayout(
+    plot_first_on_phones(sidebarLayout(
       sidebarPanel(
         width = 3,
         sliderInput(ns("a"), label = "Discrimination", min = -3, max = 3, value = 1, step = 0.1),
@@ -30,7 +30,7 @@ mod_mle_2pl_ui <- function(id) {
         width = 9,
         plotly::plotlyOutput(ns("plot"), width = "100%", height = "800px")
       )
-    )
+    ))
   )
 }
 ##########################################################################################

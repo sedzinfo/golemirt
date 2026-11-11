@@ -33,7 +33,11 @@ app_ui <- function(request, analytics = FALSE, keep_alive = TRUE) {
   tagList(
     add_external_resources(analytics, keep_alive),
     navbarPage(
-      title = "IRT Models and Estimation using IRTDemo",
+      # the full title from 768px wide; on phones a short one, which leaves room for the menu button
+      title = tagList(
+        span(class = "d-none d-md-inline", "IRT Models and Estimation using IRTDemo"),
+        span(class = "d-md-none", "IRT Explorer")
+      ),
       windowTitle = "IRT Explorer",
       collapsible = TRUE,
       # Bootstrap 5, whose classes the cookie banner of consent.js is styled with, and whose dark
@@ -89,7 +93,10 @@ app_meta <- list(
 #' Serves \code{inst/app/www} at \code{www/} and adds to the head of the page
 #' the description and Open Graph tags of \code{app_meta}, the favicon, the
 #' stylesheet of the app, the dark mode (\code{dark_mode.css},
-#' \code{dark_mode.js}) and, when asked, the script that pings the server
+#' \code{dark_mode.js}), the phone layout (\code{mobile.css}: charts sized to the
+#' screen, the chart above the sliders and kept in view, sideways-scrolling
+#' tabs, larger slider handles; \code{mobile.js}: page scrolling over 2D charts
+#' on touch screens) and, when asked, the script that pings the server
 #' (\code{keep_alive.js}) and the analytics scripts. Each file is added by
 #' name, so a new file in \code{inst/app/www} must be added here too.
 #'
@@ -122,7 +129,9 @@ add_external_resources <- function(analytics = FALSE, keep_alive = TRUE) {
     tags$link(rel = "icon", type = "image/svg+xml", href = "www/favicon.svg"),
     tags$link(rel = "stylesheet", href = "www/styles.css"),
     tags$link(rel = "stylesheet", href = "www/dark_mode.css"),
+    tags$link(rel = "stylesheet", href = "www/mobile.css"),
     tags$script(src = "www/dark_mode.js"),
+    tags$script(src = "www/mobile.js"),
     if (keep_alive) tags$script(src = "www/keep_alive.js"),
     if (analytics) analytics_resources()
   )

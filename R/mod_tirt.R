@@ -25,7 +25,7 @@ mod_tirt_ui <- function(id) {
     tabsetPanel(
       tabPanel(
         "$$\\phi\\,\\left[\\frac{-\\gamma_l+\\lambda_l\\eta}{\\sqrt{\\psi^2_l}}\\right]$$",
-        sidebarLayout(
+        plot_first_on_phones(sidebarLayout(
           sidebarPanel(
             sliderInput(ns("gamma"), label = "$$\\gamma$$", min = -10, max = 10, value = 0, step = 0.1),
             sliderInput(ns("lambda"), label = "$$\\lambda$$", min = -10, max = 10, value = 0.5, step = 0.1),
@@ -33,11 +33,11 @@ mod_tirt_ui <- function(id) {
             sliderInput(ns("psi"), label = "$$\\psi$$", min = 0, max = 10, value = 0.5, step = 0.1)
           ),
           mainPanel(plotly::plotlyOutput(ns("plot_single"), width = "100%", height = "700px"))
-        )
+        ))
       ),
       tabPanel(
         "$$\\phi\\,\\left[\\frac{-\\gamma+\\lambda_l\\eta_a-\\lambda_k\\eta_b}{\\sqrt{\\psi^2_i+\\psi^2_k}}\\right]$$",
-        sidebarLayout(
+        plot_first_on_phones(sidebarLayout(
           sidebarPanel(
             sliderInput(ns("gamma_pair"), label = "$$\\gamma$$", min = -10, max = 10, value = 0, step = 0.1),
             sliderInput(ns("lambda_i"), label = "$$\\lambda_i$$", min = -10, max = 10, value = 0.5, step = 0.1),
@@ -47,11 +47,11 @@ mod_tirt_ui <- function(id) {
             sliderInput(ns("psi_k"), label = "$$\\psi_k$$", min = 0, max = 10, value = 0.5, step = 0.1)
           ),
           mainPanel(plotly::plotlyOutput(ns("plot_pair"), width = "100%", height = "700px"))
-        )
+        ))
       ),
       tabPanel(
         "$$\\phi\\,\\left(\\alpha+\\left(\\beta_i-\\beta_k\\right)\\eta\\right)$$",
-        sidebarLayout(
+        plot_first_on_phones(sidebarLayout(
           sidebarPanel(
             sliderInput(ns("alpha"), label = "$$\\alpha$$", min = -10, max = 10, value = 0, step = 0.1),
             sliderInput(ns("beta_i"), label = "$$\\beta_i$$", min = -10, max = 10, value = 0.5, step = 0.1),
@@ -59,7 +59,7 @@ mod_tirt_ui <- function(id) {
             sliderInput(ns("range_intercept"), label = "$$\\eta$$", min = 1, max = 100, value = 6, step = 1)
           ),
           mainPanel(plotly::plotlyOutput(ns("plot_intercept"), width = "100%", height = "700px"))
-        )
+        ))
       )
     )
   )

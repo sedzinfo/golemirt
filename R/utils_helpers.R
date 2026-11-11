@@ -134,3 +134,21 @@ escape_html <- function(x) {
   x <- gsub(">", "&gt;", x, fixed = TRUE)
   gsub("\"", "&quot;", x, fixed = TRUE)
 }
+##########################################################################################
+#
+##########################################################################################
+#' Show the chart of a slider tab first on phones
+#'
+#' Marks a \code{sidebarLayout()} with the class \code{plot-first}: where
+#' Bootstrap stacks the sidebar above the main panel (screens narrower than
+#' 576px), \code{mobile.css} puts the main panel, the chart, first and keeps it
+#' at the top of the screen while the sliders scroll under it. Wider screens
+#' are not changed.
+#'
+#' @param layout The tag of \code{shiny::sidebarLayout()}.
+#'
+#' @return \code{layout} with the class \code{plot-first}.
+#' @noRd
+plot_first_on_phones <- function(layout) {
+  htmltools::tagAppendAttributes(layout, class = "plot-first")
+}

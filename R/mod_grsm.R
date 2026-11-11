@@ -20,7 +20,7 @@
 mod_grsm_ui <- function(id) {
   ns <- NS(id)
   tagList(
-    sidebarLayout(
+    plot_first_on_phones(sidebarLayout(
       sidebarPanel(
         selectInput(ns("D"), label = "Scaling Constant", choices = list("1" = 1, "1.702" = 2), selected = 1),
         sliderInput(ns("a"), label = "Discrimination", min = -10, max = 10, value = 1, step = 0.1),
@@ -31,7 +31,7 @@ mod_grsm_ui <- function(id) {
         sliderInput(ns("tau4"), label = "Threshold 4", min = -10, max = 10, value = 1, step = 0.1)
       ),
       mainPanel(plotly::plotlyOutput(ns("plot"), width = "100%", height = "700px"))
-    )
+    ))
   )
 }
 ##########################################################################################

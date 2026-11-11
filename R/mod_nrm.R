@@ -20,7 +20,7 @@
 mod_nrm_ui <- function(id) {
   ns <- NS(id)
   tagList(
-    sidebarLayout(
+    plot_first_on_phones(sidebarLayout(
       sidebarPanel(
         selectInput(ns("D"), label = "Scaling Constant", choices = list("1" = 1, "1.702" = 2), selected = 1),
         sliderInput(ns("a1"), label = "Discrimination 1", min = -10, max = 10, value = -4, step = 0.1),
@@ -33,7 +33,7 @@ mod_nrm_ui <- function(id) {
         sliderInput(ns("b4"), label = "Difficulty 4", min = -10, max = 10, value = 4, step = 0.1)
       ),
       mainPanel(plotly::plotlyOutput(ns("plot"), width = "100%", height = "700px"))
-    )
+    ))
   )
 }
 ##########################################################################################

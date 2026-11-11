@@ -20,7 +20,7 @@
 mod_mle_rasch_ui <- function(id) {
   ns <- NS(id)
   tagList(
-    sidebarLayout(
+    plot_first_on_phones(sidebarLayout(
       sidebarPanel(
         width = 4,
         sliderInput(ns("score"), label = "Raw Score (r)", min = 0, max = 5, value = 2, step = 1),
@@ -38,7 +38,7 @@ mod_mle_rasch_ui <- function(id) {
         plotly::plotlyOutput(ns("plot"), height = "800px"),
         verbatimTextOutput(ns("step"))
       )
-    )
+    ))
   )
 }
 ##########################################################################################

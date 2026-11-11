@@ -23,7 +23,7 @@
 mod_mirt_ui <- function(id) {
   ns <- NS(id)
   tagList(
-    sidebarLayout(
+    plot_first_on_phones(sidebarLayout(
       sidebarPanel(
         width = 3,
         selectInput(ns("D"),
@@ -58,7 +58,7 @@ mod_mirt_ui <- function(id) {
           )
         )
       )
-    )
+    ))
   )
 }
 ##########################################################################################

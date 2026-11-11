@@ -1,0 +1,93 @@
+/* Phones and small tablets. Desktop layouts are not changed. */
+
+/* Charts: the fixed heights of the app (700-800px) are taller than a phone's screen. Below 768px
+   wide, or on short screens such as a phone held sideways, a chart is at most most of the screen's
+   height (smaller charts keep their height). plotly sizes itself to its container, also after the
+   phone is turned. */
+@media (max-width: 767.98px), (max-height: 600px) {
+  .html-widget.plotly {
+    max-height: max(280px, 80vh);
+  }
+}
+
+/* The tabs of a tabset (the formulas of TIRT, the three charts of MIRT) scroll sideways
+   instead of breaking over several lines. */
+@media (max-width: 767.98px) {
+  .nav-tabs {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+  .nav-tabs .nav-link {
+    white-space: nowrap;
+  }
+  /* the formulas that name the TIRT tabs: smaller, without the space of displayed math */
+  .nav-tabs .MathJax_Display,
+  .nav-tabs mjx-container[display="true"] {
+    margin: 0 !important;
+  }
+  .nav-tabs .MathJax,
+  .nav-tabs mjx-container {
+    font-size: 70% !important;
+  }
+  /* the controls: less padding around them */
+  form.well {
+    padding: 0.75rem;
+  }
+  /* long navbar menus scroll inside the opened menu */
+  .navbar-collapse.show {
+    max-height: 80vh;
+    overflow-y: auto;
+  }
+}
+
+/* Tabs with sliders and one chart (class plot-first, see plot_first_on_phones()): where Bootstrap
+   stacks the sidebar above the chart (below 576px), the chart comes first and stays at the top of
+   the screen while the sliders scroll under it, so that a slider's effect is seen as it moves. */
+@media (max-width: 575.98px) {
+  .row.plot-first > [role="main"] {
+    order: -1;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    background-color: var(--bs-body-bg);
+    border-bottom: 1px solid var(--bs-border-color);
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.08);
+  }
+  .row.plot-first > [role="main"] .html-widget.plotly {
+    height: max(240px, 45vh) !important;
+  }
+  /* the iteration notes of MLE Rasch under its chart stay short */
+  .row.plot-first > [role="main"] pre {
+    max-height: 15vh;
+    overflow: auto;
+    margin-bottom: 0;
+  }
+  .row.plot-first > [class*="col-sm-"]:not([role="main"]) {
+    margin-top: 0.75rem;
+  }
+}
+
+/* Phones, also held sideways: plotly's toolbar would cover the title of a small chart; fingers zoom
+   with a pinch instead (and turn the 3D charts with a drag). */
+@media (max-width: 767.98px) and (pointer: coarse), (max-height: 600px) and (pointer: coarse) {
+  .js-plotly-plot .modebar-container {
+    display: none !important;
+  }
+}
+
+/* Touch screens: larger slider handles, easier to catch with a finger, still centred on the bar
+   (whose middle is 29px from the top of the slider). ion.rangeSlider measures the handle when it
+   starts, after this sheet is loaded, so it positions the larger handle correctly. */
+@media (pointer: coarse) {
+  .irs--shiny .irs-handle {
+    width: 28px;
+    height: 28px;
+    top: 15px;
+    border-radius: 28px;
+  }
+}

@@ -58,3 +58,16 @@ test_that("the head has the description and the address of the live app for link
   # search engines cut descriptions longer than about 160 characters
   expect_lte(nchar(app_meta$description), 160)
 })
+
+test_that("the page has the phone layout: its files, the short title, and the slider tabs marked plot-first", {
+  rendered <- htmltools::renderTags(app_ui(NULL))
+  expect_match(rendered$head, "www/mobile.css", fixed = TRUE)
+  expect_match(rendered$head, "www/mobile.js", fixed = TRUE)
+  expect_match(rendered$html, "<span class=\"d-md-none\">IRT Explorer</span>", fixed = TRUE)
+  # one per slider tab with a single chart: 9 tabs, and the 3 of TIRT; not EAP-MAP, whose 4 charts
+  # would not fit at the top of a phone's screen
+  rows <- regmatches(rendered$html, gregexpr("class=\"row plot-first\"", rendered$html))[[1]]
+  expect_length(rows, 12)
+  eap <- htmltools::renderTags(mod_eap_map_ui("eap_map"))$html
+  expect_no_match(eap, "plot-first", fixed = TRUE)
+})

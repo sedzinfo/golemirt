@@ -19,7 +19,7 @@
 mod_mle_3pl_ui <- function(id) {
   ns <- NS(id)
   tagList(
-    sidebarLayout(
+    plot_first_on_phones(sidebarLayout(
       sidebarPanel(
         width = 3,
         sliderInput(ns("c"), label = "Lower Asymptote", min = 0.05, max = 0.6, value = 0.4, step = 0.05),
@@ -30,7 +30,7 @@ mod_mle_3pl_ui <- function(id) {
         width = 9,
         plotly::plotlyOutput(ns("plot"), width = "100%", height = "800px")
       )
-    )
+    ))
   )
 }
 ##########################################################################################
