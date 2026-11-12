@@ -4017,7 +4017,7 @@
       "checksum": "05bdb783ee6514c8c072e47680af8ff7"
     },
     ".Rbuildignore": {
-      "checksum": "3f742ab9a4b72499bd3fdb32d500bbb6"
+      "checksum": "87f9d4ec0ffedff42d9aa1a7e04c6c96"
     },
     "app.R": {
       "checksum": "e52dd32739fd5a972cf14991eca7c0d0"
@@ -4059,7 +4059,7 @@
       "checksum": "0bfa4d69872a6ebfb543967c28964a9a"
     },
     "inst/extdata/examples/sat12_nrm.csv": {
-      "checksum": "a192dca22cb7aa66333345e9786bdaff"
+      "checksum": "97e0eef16aa768a6ee2f89ceb1703951"
     },
     "inst/golem-config.yml": {
       "checksum": "831f12e130fed5172a1ea52e19eb374e"
@@ -4113,7 +4113,7 @@
       "checksum": "7e23f24ecf4c6b5700eecb8b99ed74ea"
     },
     "R/fct_questionnaire.R": {
-      "checksum": "1d3ffb2a6f3076f2bdce53fd87cc666b"
+      "checksum": "f2a173b9f9fbcba97c4a52e6115a7967"
     },
     "R/mod_about.R": {
       "checksum": "ac8517c4daa7f9d403ddb7157fe6a533"

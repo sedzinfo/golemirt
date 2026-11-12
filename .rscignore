@@ -11,3 +11,4 @@ man
 pkgdown
 README.md
 tests
+data-raw
