@@ -130,9 +130,9 @@ add_external_resources <- function(analytics = FALSE, keep_alive = TRUE) {
     tags$link(rel = "stylesheet", href = "www/styles.css"),
     tags$link(rel = "stylesheet", href = "www/dark_mode.css"),
     tags$link(rel = "stylesheet", href = "www/mobile.css"),
-    tags$script(src = "www/dark_mode.js"),
+    tags$script(src = paste0(shared_url, "dark_mode.js")),
     tags$script(src = "www/mobile.js"),
-    if (keep_alive) tags$script(src = "www/keep_alive.js"),
+    if (keep_alive) tags$script(src = paste0(shared_url, "keep_alive.js")),
     if (analytics) analytics_resources()
   )
 }
