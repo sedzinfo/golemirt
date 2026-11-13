@@ -4010,20 +4010,11 @@
     "DESCRIPTION": {
       "checksum": "9236a7df5fbfb8e130d9b620e98d28fe"
     },
-    "inst/app/www/analytics.js": {
-      "checksum": "1918493ff537401c08c4ecd06ce1b03a"
-    },
     "inst/app/www/dark_mode.css": {
       "checksum": "906f8bfd10d00d585ffb293f9e6091f2"
     },
-    "inst/app/www/dark_mode.js": {
-      "checksum": "33cdc49155b3e1b44b3f799721502ea5"
-    },
     "inst/app/www/favicon.svg": {
       "checksum": "51c68e8b81eb22adcbc380bb8dee01ef"
-    },
-    "inst/app/www/keep_alive.js": {
-      "checksum": "84de9cc0ea9c7d485fd4c993ededf1a1"
     },
     "inst/app/www/mobile.css": {
       "checksum": "c849f3dedfbe9e39dcc4a807b1efea21"
@@ -4032,7 +4023,7 @@
       "checksum": "ac654d7ec5768b88f34e84e72f2c5d78"
     },
     "inst/app/www/styles.css": {
-      "checksum": "b3a8e8cb1d9a43275d618983da1ab987"
+      "checksum": "92a577d33e4ce3ca4ddb11eadf1a1ad1"
     },
     "inst/extdata/examples/ipip50_grm.csv": {
       "checksum": "8e123af61d6a603e2e1c0838ab51439f"
@@ -4068,7 +4059,7 @@
       "checksum": "8dc575fc0c983a44b4ab0f611a12b88f"
     },
     "R/app_ui.R": {
-      "checksum": "c4299743766eb3959e3a543d4569f60c"
+      "checksum": "657255637a6a7407c08114af28991e21"
     },
     "R/fct_cat_engine_common.R": {
       "checksum": "7e35026d380e763d63ca2814e347bbf4"
@@ -4149,7 +4140,7 @@
       "checksum": "12808556c728437586976f81769f069e"
     },
     "R/utils_analytics.R": {
-      "checksum": "7bdcde52845f52683ea475ad3dc39352"
+      "checksum": "b64c48cd02e44a3b6e67fc3086232cff"
     },
     "R/utils_helpers.R": {
       "checksum": "e3f4086563799fe830cd3225a285c811"
