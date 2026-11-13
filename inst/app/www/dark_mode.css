@@ -1,42 +1,6 @@
-/* Dark mode, switched on by dark_mode.js. Bootstrap 5 restyles the page itself (data-bs-theme="dark");
-   this styles the 2D charts, as plotly writes their colors inline, which only !important overrides. */
-#dark-mode-toggle {
-  font-size: 1.1rem;
-  line-height: 1.5;
-}
-
-/* plotly: a transparent background and light text, axes and grid */
-html.dark-mode .js-plotly-plot .main-svg {
-  background: transparent !important;
-}
-html.dark-mode .js-plotly-plot .bg,
-html.dark-mode .js-plotly-plot .legend .bg {
-  fill: transparent !important;
-}
-html.dark-mode .js-plotly-plot .main-svg text:not(.hoverlayer *) {
-  fill: #ddd !important;
-}
-html.dark-mode .js-plotly-plot .gridlayer path {
-  stroke: #444 !important;
-}
-/* the axes at zero, black in the charts of the app */
-html.dark-mode .js-plotly-plot .zerolinelayer path {
-  stroke: #aaa !important;
-}
-/* plotly's toolbar (modebar): plotly colors it once, when it draws the chart, from the chart's
-   white background: the buttons on half-transparent white, the icons light gray (darker on hover
-   and for the active button). The same in dark: half-transparent page color (Bootstrap's dark
-   body color) and light icons. */
-html.dark-mode .js-plotly-plot .modebar-group {
-  background-color: rgba(var(--bs-body-bg-rgb), 0.5) !important;
-}
-html.dark-mode .js-plotly-plot .modebar-btn .icon path {
-  fill: rgba(255, 255, 255, 0.35) !important;
-}
-html.dark-mode .js-plotly-plot .modebar-btn:hover .icon path,
-html.dark-mode .js-plotly-plot .modebar-btn.active .icon path {
-  fill: rgba(255, 255, 255, 0.8) !important;
-}
+/* Dark mode of golemirt, switched on by dark_mode.js (https://sedzinfo.github.io/shiny/). Bootstrap 5 restyles
+   the page itself (data-bs-theme="dark"), and the stylesheet shared by the apps (apps.css, same place) the
+   charts; this has what is golemirt's own: plotly writes the colors inline, which only !important overrides. */
 
 /* the black curves, outlines and reference lines, and the see-through black areas, would vanish
    into the dark background: light instead (plotly writes black as rgb(0, 0, 0), with its opacity apart) */

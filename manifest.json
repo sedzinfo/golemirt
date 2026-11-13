@@ -4011,19 +4011,16 @@
       "checksum": "9236a7df5fbfb8e130d9b620e98d28fe"
     },
     "inst/app/www/dark_mode.css": {
-      "checksum": "906f8bfd10d00d585ffb293f9e6091f2"
+      "checksum": "d06d67c382ac6c2c8468f26ed8efde32"
     },
     "inst/app/www/favicon.svg": {
       "checksum": "51c68e8b81eb22adcbc380bb8dee01ef"
     },
     "inst/app/www/mobile.css": {
-      "checksum": "c849f3dedfbe9e39dcc4a807b1efea21"
+      "checksum": "93c0b500049e473d2a12554ec82463c7"
     },
     "inst/app/www/mobile.js": {
       "checksum": "ac654d7ec5768b88f34e84e72f2c5d78"
-    },
-    "inst/app/www/styles.css": {
-      "checksum": "92a577d33e4ce3ca4ddb11eadf1a1ad1"
     },
     "inst/extdata/examples/ipip50_grm.csv": {
       "checksum": "8e123af61d6a603e2e1c0838ab51439f"
@@ -4059,7 +4056,7 @@
       "checksum": "8dc575fc0c983a44b4ab0f611a12b88f"
     },
     "R/app_ui.R": {
-      "checksum": "657255637a6a7407c08114af28991e21"
+      "checksum": "ba5b3c070e35556d4c9da7d6e1a07c9c"
     },
     "R/fct_cat_engine_common.R": {
       "checksum": "7e35026d380e763d63ca2814e347bbf4"
@@ -4140,7 +4137,7 @@
       "checksum": "12808556c728437586976f81769f069e"
     },
     "R/utils_analytics.R": {
-      "checksum": "b64c48cd02e44a3b6e67fc3086232cff"
+      "checksum": "95fec23c4cd85006bf41cb245427b8c1"
     },
     "R/utils_helpers.R": {
       "checksum": "e3f4086563799fe830cd3225a285c811"

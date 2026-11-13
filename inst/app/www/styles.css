@@ -1,4 +1,0 @@
-/* the footer with the Cookie settings and Privacy links: more space above it moves it lower */
-div:has(> a[href="#cookie-settings"]) {
-  margin-top: 2rem;
-}

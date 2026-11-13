@@ -127,7 +127,7 @@ add_external_resources <- function(analytics = FALSE, keep_alive = TRUE) {
     tags$meta(property = "og:image", content = app_meta$image),
     tags$meta(name = "twitter:card", content = "summary_large_image"),
     tags$link(rel = "icon", type = "image/svg+xml", href = "www/favicon.svg"),
-    tags$link(rel = "stylesheet", href = "www/styles.css"),
+    shared_css(),
     tags$link(rel = "stylesheet", href = "www/dark_mode.css"),
     tags$link(rel = "stylesheet", href = "www/mobile.css"),
     tags$script(src = paste0(shared_url, "dark_mode.js")),

@@ -79,15 +79,3 @@
     display: none !important;
   }
 }
-
-/* Touch screens: larger slider handles, easier to catch with a finger, still centred on the bar
-   (whose middle is 29px from the top of the slider). ion.rangeSlider measures the handle when it
-   starts, after this sheet is loaded, so it positions the larger handle correctly. */
-@media (pointer: coarse) {
-  .irs--shiny .irs-handle {
-    width: 28px;
-    height: 28px;
-    top: 15px;
-    border-radius: 28px;
-  }
-}
