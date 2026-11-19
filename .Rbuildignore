@@ -16,3 +16,4 @@
 ^rsconnect$
 ^manifest\.json$
 ^data-raw$
+^CITATION\.cff$

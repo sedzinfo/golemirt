@@ -1,0 +1,24 @@
+# How to cite this package. GitHub shows it as "Cite this repository"; Zenodo uses it for the DOI of each release.
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+type: software
+title: "golemirt: Interactive Item Response Theory Models and Estimation"
+abstract: "A 'shiny' application, built as a 'golem' package, for learning item response theory (IRT) with interactive 'plotly' charts. It draws the response curves of the Rasch and one- to four-parameter logistic models, the partial credit, generalized partial credit, graded response, rating scale and nominal response models, the probit response functions of Thurstonian IRT, and the response and information surfaces of an item that measures two abilities. It also shows how the estimates are found: a person's ability by maximum likelihood with the Newton-Raphson method, an item's parameters by maximum likelihood on log-likelihood surfaces, and a person's ability by expected and maximum a posteriori estimation. A computerized adaptive test (CAT) shows the estimation at work, item by item, for any questionnaire given as a csv file under six models (1PL to 4PL, rating scale, partial credit, graded response, modified graded response and nominal response), with engines that give the same results as 'catR'. It brings together the 'modelsirt' and 'mleirt' apps, adapted from the 'irtDemo' package."
+authors:
+  - family-names: "Zacharatos"
+    given-names: "Dimitrios"
+    orcid: "https://orcid.org/0000-0003-1789-8294"
+  - family-names: "Bonifay"
+    given-names: "Wes"
+  - family-names: "Bulus"
+    given-names: "Metin"
+license: GPL-3.0-only
+repository-code: "https://github.com/sedzinfo/golemirt"
+url: "https://sedzinfo.github.io/golemirt/"
+keywords:
+  - "golem"
+  - "shiny"
+  - "computerized-adaptive-testing"
+  - "education"
+  - "item-response-theory"
+  - "psychometrics"
