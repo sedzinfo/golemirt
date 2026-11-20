@@ -1,8 +1,8 @@
 <urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
 <url><loc>https://sedzinfo.github.io/golemirt/404.html</loc></url>
-<url><loc>https://sedzinfo.github.io/golemirt/LICENSE-text.html</loc></url>
 <url><loc>https://sedzinfo.github.io/golemirt/authors.html</loc></url>
 <url><loc>https://sedzinfo.github.io/golemirt/index.html</loc></url>
+<url><loc>https://sedzinfo.github.io/golemirt/LICENSE-text.html</loc></url>
 <url><loc>https://sedzinfo.github.io/golemirt/reference/analytics_footer.html</loc></url>
 <url><loc>https://sedzinfo.github.io/golemirt/reference/analytics_resources.html</loc></url>
 <url><loc>https://sedzinfo.github.io/golemirt/reference/cat_answer.html</loc></url>
@@ -81,8 +81,8 @@
 <url><loc>https://sedzinfo.github.io/golemirt/reference/mod_tirt_server.html</loc></url>
 <url><loc>https://sedzinfo.github.io/golemirt/reference/mod_tirt_ui.html</loc></url>
 <url><loc>https://sedzinfo.github.io/golemirt/reference/newton_raphson_rasch.html</loc></url>
-<url><loc>https://sedzinfo.github.io/golemirt/reference/plot_cat_trajectory.html</loc></url>
 <url><loc>https://sedzinfo.github.io/golemirt/reference/plot_category_curves.html</loc></url>
+<url><loc>https://sedzinfo.github.io/golemirt/reference/plot_cat_trajectory.html</loc></url>
 <url><loc>https://sedzinfo.github.io/golemirt/reference/plot_loglik_surface.html</loc></url>
 <url><loc>https://sedzinfo.github.io/golemirt/reference/plot_loglik_surfaces.html</loc></url>
 <url><loc>https://sedzinfo.github.io/golemirt/reference/plot_mirt_contour.html</loc></url>
