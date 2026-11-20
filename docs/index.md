@@ -1,10 +1,10 @@
 # Interactive Visualizations for Item Response Theory Models and Estimation
 
 **[Open the live
-app](https://sedzinfo-golemirt.share.connect.posit.cloud/)** ·
-[Website](https://sedzinfo.github.io/golemirt/)
+app](https://sedzinfo-golemirt.share.connect.posit.cloud/)** · [Help
+pages](https://sedzinfo.github.io/golemirt/reference/)
 
-## Overview
+## What it does
 
 **golemirt** is an R package with an interactive Shiny application,
 built with [golem](https://thinkr-open.github.io/golem/), for learning
@@ -78,34 +78,56 @@ The app has eleven tabs in two menus, and a CAT tab.
 
 ## Installation
 
-### Prerequisites
+### 1. Install R
 
-1.  **Install R** (version 4.1 or higher): <https://cran.r-project.org/>
-2.  **Install RStudio** (optional but recommended):
-    <https://posit.co/downloads/>
+Download R 4.1 or newer from [CRAN](https://cran.r-project.org/), for
+Windows, macOS or Linux, and run the installer.
 
-### Package Installation
+### 2. Install RStudio or Positron
 
-Open RStudio (or an R console) and run:
+An editor makes R easier to use. It is optional, and both are free, from
+Posit:
+
+- [RStudio Desktop](https://posit.co/download/rstudio-desktop/)
+- [Positron](https://positron.posit.co/download.html), which also runs
+  Python
+
+### 3. Install golemirt
+
+Run one of these in RStudio, Positron or the R console. Each one also
+installs the packages golemirt needs.
+
+#### From R-universe (recommended)
 
 [`install.packages`](https://rdrr.io/r/utils/install.packages.html)`(`` `` ``"golemirt"``,`` `` repos ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"https://sedzinfo.r-universe.dev"``, ``"https://cloud.r-project.org"``)`` ``)`
 
 [R-universe](https://sedzinfo.r-universe.dev/golemirt) builds golemirt
-from this repository, and CRAN provides the packages it needs.
+from this repository after every change, ready to install on Windows,
+macOS and Linux, and CRAN provides the packages it needs.
 
-To install from GitHub instead:
+#### From GitHub
 
-`# Install devtools if you haven't already`` `[`install.packages`](https://rdrr.io/r/utils/install.packages.html)`(``"devtools"``)`` ``# Install golemirt from GitHub`` ``devtools``::`[`install_github`](https://devtools.r-lib.org/reference/install-deprecated.html)`(``"sedzinfo/golemirt"``)`
+[`install.packages`](https://rdrr.io/r/utils/install.packages.html)`(``"pak"``)`` ``# once`` ``pak``::`[`pak`](https://pak.r-lib.org/reference/pak.html)`(``"sedzinfo/golemirt"``)`
 
-Or install the source tarball of the [latest
-release](https://github.com/sedzinfo/golemirt/releases/tag/latest),
-which is rebuilt from `main` on every change, together with the PDF
-manual:
+#### From the release tarball
 
-[`install.packages`](https://rdrr.io/r/utils/install.packages.html)`(`` `` ``"https://github.com/sedzinfo/golemirt/releases/download/latest/golemirt_0.0.0.9000.tar.gz"``,`` `` repos ``=`` ``NULL``, type ``=`` ``"source"`` ``)`
+The [latest
+release](https://github.com/sedzinfo/golemirt/releases/tag/latest) has
+the source tarball and the PDF manual, rebuilt from `main` on every
+change:
 
-The dependencies (`shiny`, `golem`, `plotly`, `config` and `fGarch`) are
-installed automatically.
+[`install.packages`](https://rdrr.io/r/utils/install.packages.html)`(``"pak"``)`` ``# once`` ``pak``::`[`pak`](https://pak.r-lib.org/reference/pak.html)`(``"url::https://github.com/sedzinfo/golemirt/releases/download/latest/golemirt_0.0.0.9000.tar.gz"``)`
+
+#### From a clone of the repository
+
+This repository keeps no files in [Git LFS](https://git-lfs.com), so a
+plain clone with [Git](https://git-scm.com/downloads) has everything:
+
+``` bash
+git clone https://github.com/sedzinfo/golemirt.git
+```
+
+[`install.packages`](https://rdrr.io/r/utils/install.packages.html)`(``"pak"``)`` ``# once`` ``pak``::`[`local_install`](https://pak.r-lib.org/reference/local_install.html)`(``"path/to/golemirt"``)`
 
 ## Usage
 
@@ -117,62 +139,6 @@ The app opens in your default web browser. Any
 [`shiny::shinyApp()`](https://shiny.posit.co/r/reference/shiny/latest/shinyapp.html)
 option can be passed on, for example
 `run_app(options = list(port = 8080))`.
-
-## Using the Functions in R
-
-The models, estimation methods and plots of the app are also available
-as functions, for scripts, R Markdown reports and teaching material:
-
-[`library`](https://rdrr.io/r/base/library.html)`(`[`golemirt`](https://sedzinfo.github.io/golemirt/)`)`` `` ``# category response curves of a polytomous item`` ``theta`` ``<-`` `[`seq`](https://rdrr.io/r/base/seq.html)`(``-``6``, ``6``, by ``=`` ``0.1``)`` `[`plot_category_curves`](https://sedzinfo.github.io/golemirt/reference/plot_category_curves.md)`(``theta``, `[`prob_gpcm`](https://sedzinfo.github.io/golemirt/reference/prob_gpcm.md)`(``theta``, a ``=`` ``1.5``)``, ``"Generalized Partial Credit Model"``)`` `[`plot_category_curves`](https://sedzinfo.github.io/golemirt/reference/plot_category_curves.md)`(``theta``, `[`prob_grm`](https://sedzinfo.github.io/golemirt/reference/prob_grm.md)`(``theta``, b ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``-``1.5``, ``0``, ``1.5``)``)``, ``"Graded Response Model"``)`` `` ``# an item that measures mostly the first of two abilities`` ``grid`` ``<-`` `[`seq`](https://rdrr.io/r/base/seq.html)`(``-``4``, ``4``, length.out ``=`` ``50``)`` ``a`` ``<-`` `[`c`](https://rdrr.io/r/base/c.html)`(``2``, ``0.5``)`` `[`plot_mirt_contour`](https://sedzinfo.github.io/golemirt/reference/plot_mirt_contour.md)`(``grid``, ``grid``, `[`prob_mirt`](https://sedzinfo.github.io/golemirt/reference/prob_mirt.md)`(``grid``, ``grid``, a ``=`` ``a``)``, level ``=`` ``0.5``, arrow ``=`` `[`item_vector`](https://sedzinfo.github.io/golemirt/reference/item_vector.md)`(``a``)``)`` `` ``# Newton-Raphson steps towards the maximum likelihood estimate of ability`` ``nr`` ``<-`` `[`newton_raphson_rasch`](https://sedzinfo.github.io/golemirt/reference/newton_raphson_rasch.md)`(`[`response_pattern`](https://sedzinfo.github.io/golemirt/reference/response_pattern.md)`(``2``)``, iterations ``=`` ``5``)`` ``nr``$``steps``[``, `[`c`](https://rdrr.io/r/base/c.html)`(``"start"``, ``"end"``)``]`` `[`plot_newton_raphson`](https://sedzinfo.github.io/golemirt/reference/plot_newton_raphson.md)`(``nr``)`` `` ``# EAP and MAP estimates with 40 quadrature points`` ``estimate`` ``<-`` `[`eap_map`](https://sedzinfo.github.io/golemirt/reference/eap_map.md)`(`[`response_pattern`](https://sedzinfo.github.io/golemirt/reference/response_pattern.md)`(``2``)``, quadrature ``=`` ``40``)`` `[`c`](https://rdrr.io/r/base/c.html)`(``EAP ``=`` ``estimate``$``eap``, MAP ``=`` ``estimate``$``map``)`` `[`plot_eap_combined`](https://sedzinfo.github.io/golemirt/reference/plot_prior.md)`(``estimate``)`
-
-An adaptive test runs the same way outside the app:
-
-`# the IPIP-50 Big Five example under the graded response model`` ``q`` ``<-`` `[`read_questionnaire`](https://sedzinfo.github.io/golemirt/reference/read_questionnaire.md)`(`[`example_questionnaires`](https://sedzinfo.github.io/golemirt/reference/example_questionnaires.md)`(``)``[``3``]``)`` ``s`` ``<-`` `[`cat_start`](https://sedzinfo.github.io/golemirt/reference/cat_start.md)`(``q``, scales ``=`` ``"Extraversion"``, se_threshold ``=`` ``0.40``)`` ``while`` ``(``s``$``stage`` ``==`` ``"testing"``)`` ``{`` `` ``item`` ``<-`` `[`cat_item`](https://sedzinfo.github.io/golemirt/reference/cat_item.md)`(``s``)`` `` ``s`` ``<-`` `[`cat_answer`](https://sedzinfo.github.io/golemirt/reference/cat_answer.md)`(``s``, ``4``)`` ``# the option chosen: "Moderately accurate"`` ``}`` `[`cat_results`](https://sedzinfo.github.io/golemirt/reference/cat_results.md)`(``s``)`` `[`plot_cat_trajectory`](https://sedzinfo.github.io/golemirt/reference/plot_cat_trajectory.md)`(``s``)`
-
-The help page of
-[`run_app()`](https://sedzinfo.github.io/golemirt/reference/run_app.md)
-describes every tab, with the formulas of the models and what each
-control and plot shows.
-
-## Your own questionnaire: one csv, six models
-
-The CAT tab runs any questionnaire given as a csv file, one row per
-item, under the six models of the [EAP
-tutorials](https://sedzinfo.github.io/vignettes/cat_irt_eap/):
-
-| Model | mirt `itemtype` | Example in the app |
-|----|----|----|
-| Dichotomous 1PL to 4PL | `Rasch` (2 categories), `2PL`, `3PL`, `4PL` | SAT12 science test, 3PL |
-| Rating scale (RSM) | `rsm` | IPIP-50 Big Five |
-| Partial credit (PCM) | `Rasch` (3+ categories) | IPIP-50 Big Five |
-| Graded response (GRM) | `graded` | IPIP-50 Big Five |
-| Modified graded response (MGRM) | `grsm` | IPIP-50 Big Five |
-| Nominal response (NRM) | `nominal` | SAT12 science test, option by option |
-
-The columns are the item text, its answer options and the coefficients
-**as mirt names them**, so a csv is written straight from a fitted
-model:
-
-[`library`](https://rdrr.io/r/base/library.html)`(`[`mirt`](https://philchalmers.github.io/mirt/)`)`` ``fit`` ``<-`` `[`mirt`](https://philchalmers.github.io/mirt/reference/mirt.html)`(``responses``, ``1``, itemtype ``=`` ``"graded"``)`` ``# one model per scale`` ``q`` ``<-`` `[`questionnaire_from_mirt`](https://sedzinfo.github.io/golemirt/reference/questionnaire_from_mirt.md)`(``fit``, ``"Anxiety"``,`` `` question ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"I worry a lot"``, ``"I feel tense"``, ``...``)``,`` `` options ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Never"``, ``"Sometimes"``, ``"Often"``, ``"Always"``)`` ``)`` `[`write_questionnaire`](https://sedzinfo.github.io/golemirt/reference/write_questionnaire.md)`(``q``, ``"anxiety.csv"``)`` ``# or a list of scales`
-
-| Column |  |
-|----|----|
-| `scale`, `question`, `itemtype` | required |
-| `item`, `stem` | optional id, and an instruction shown above the item |
-| `option1`, `option2`, … | the answer options in scoring order (numbered when absent) |
-| `key` | right/wrong items given as several options: the correct one |
-| `reverse` | `TRUE` for ordered items scored in reverse |
-| `public` | `FALSE` when the item text is not public and only a placeholder is shown: the CAT tab then highlights the correct option (`key`) in yellow |
-| `a1`, `b1`…, `c`, `d`, `d0`…, `ak0`…, `g`, `u` | the coefficients of `coef(fit, simplify = TRUE)$items` |
-| `prior_mean`, `prior_sd` | mean and sd of the latent trait of the scale (0 and 1 when absent) |
-
-[`read_questionnaire()`](https://sedzinfo.github.io/golemirt/reference/read_questionnaire.md)
-reads and checks a file, naming the row of any problem, and converts the
-coefficients to the catR parameters of each engine;
-[`validate_questionnaire_against_mirt()`](https://sedzinfo.github.io/golemirt/reference/validate_questionnaire_against_mirt.md)
-compares the result with the fitted model, item by item. The examples
-are made by `data-raw/examples.R` in exactly this way. Download one from
-the app to see a complete file.
 
 ## Screenshots
 
@@ -258,6 +224,62 @@ posterior in one plot](reference/figures/golemirt13.png)
 model](reference/figures/golemirt14.png)![An adaptive test of the SAT12
 science questions under the 3PL, with the correct option
 highlighted](reference/figures/golemirt15.png)
+
+## Using the Functions in R
+
+The models, estimation methods and plots of the app are also available
+as functions, for scripts, R Markdown reports and teaching material:
+
+[`library`](https://rdrr.io/r/base/library.html)`(`[`golemirt`](https://sedzinfo.github.io/golemirt/)`)`` `` ``# category response curves of a polytomous item`` ``theta`` ``<-`` `[`seq`](https://rdrr.io/r/base/seq.html)`(``-``6``, ``6``, by ``=`` ``0.1``)`` `[`plot_category_curves`](https://sedzinfo.github.io/golemirt/reference/plot_category_curves.md)`(``theta``, `[`prob_gpcm`](https://sedzinfo.github.io/golemirt/reference/prob_gpcm.md)`(``theta``, a ``=`` ``1.5``)``, ``"Generalized Partial Credit Model"``)`` `[`plot_category_curves`](https://sedzinfo.github.io/golemirt/reference/plot_category_curves.md)`(``theta``, `[`prob_grm`](https://sedzinfo.github.io/golemirt/reference/prob_grm.md)`(``theta``, b ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``-``1.5``, ``0``, ``1.5``)``)``, ``"Graded Response Model"``)`` `` ``# an item that measures mostly the first of two abilities`` ``grid`` ``<-`` `[`seq`](https://rdrr.io/r/base/seq.html)`(``-``4``, ``4``, length.out ``=`` ``50``)`` ``a`` ``<-`` `[`c`](https://rdrr.io/r/base/c.html)`(``2``, ``0.5``)`` `[`plot_mirt_contour`](https://sedzinfo.github.io/golemirt/reference/plot_mirt_contour.md)`(``grid``, ``grid``, `[`prob_mirt`](https://sedzinfo.github.io/golemirt/reference/prob_mirt.md)`(``grid``, ``grid``, a ``=`` ``a``)``, level ``=`` ``0.5``, arrow ``=`` `[`item_vector`](https://sedzinfo.github.io/golemirt/reference/item_vector.md)`(``a``)``)`` `` ``# Newton-Raphson steps towards the maximum likelihood estimate of ability`` ``nr`` ``<-`` `[`newton_raphson_rasch`](https://sedzinfo.github.io/golemirt/reference/newton_raphson_rasch.md)`(`[`response_pattern`](https://sedzinfo.github.io/golemirt/reference/response_pattern.md)`(``2``)``, iterations ``=`` ``5``)`` ``nr``$``steps``[``, `[`c`](https://rdrr.io/r/base/c.html)`(``"start"``, ``"end"``)``]`` `[`plot_newton_raphson`](https://sedzinfo.github.io/golemirt/reference/plot_newton_raphson.md)`(``nr``)`` `` ``# EAP and MAP estimates with 40 quadrature points`` ``estimate`` ``<-`` `[`eap_map`](https://sedzinfo.github.io/golemirt/reference/eap_map.md)`(`[`response_pattern`](https://sedzinfo.github.io/golemirt/reference/response_pattern.md)`(``2``)``, quadrature ``=`` ``40``)`` `[`c`](https://rdrr.io/r/base/c.html)`(``EAP ``=`` ``estimate``$``eap``, MAP ``=`` ``estimate``$``map``)`` `[`plot_eap_combined`](https://sedzinfo.github.io/golemirt/reference/plot_prior.md)`(``estimate``)`
+
+An adaptive test runs the same way outside the app:
+
+`# the IPIP-50 Big Five example under the graded response model`` ``q`` ``<-`` `[`read_questionnaire`](https://sedzinfo.github.io/golemirt/reference/read_questionnaire.md)`(`[`example_questionnaires`](https://sedzinfo.github.io/golemirt/reference/example_questionnaires.md)`(``)``[``3``]``)`` ``s`` ``<-`` `[`cat_start`](https://sedzinfo.github.io/golemirt/reference/cat_start.md)`(``q``, scales ``=`` ``"Extraversion"``, se_threshold ``=`` ``0.40``)`` ``while`` ``(``s``$``stage`` ``==`` ``"testing"``)`` ``{`` `` ``item`` ``<-`` `[`cat_item`](https://sedzinfo.github.io/golemirt/reference/cat_item.md)`(``s``)`` `` ``s`` ``<-`` `[`cat_answer`](https://sedzinfo.github.io/golemirt/reference/cat_answer.md)`(``s``, ``4``)`` ``# the option chosen: "Moderately accurate"`` ``}`` `[`cat_results`](https://sedzinfo.github.io/golemirt/reference/cat_results.md)`(``s``)`` `[`plot_cat_trajectory`](https://sedzinfo.github.io/golemirt/reference/plot_cat_trajectory.md)`(``s``)`
+
+The help page of
+[`run_app()`](https://sedzinfo.github.io/golemirt/reference/run_app.md)
+describes every tab, with the formulas of the models and what each
+control and plot shows.
+
+## Your own questionnaire: one csv, six models
+
+The CAT tab runs any questionnaire given as a csv file, one row per
+item, under the six models of the [EAP
+tutorials](https://sedzinfo.github.io/vignettes/cat_irt_eap/):
+
+| Model | mirt `itemtype` | Example in the app |
+|----|----|----|
+| Dichotomous 1PL to 4PL | `Rasch` (2 categories), `2PL`, `3PL`, `4PL` | SAT12 science test, 3PL |
+| Rating scale (RSM) | `rsm` | IPIP-50 Big Five |
+| Partial credit (PCM) | `Rasch` (3+ categories) | IPIP-50 Big Five |
+| Graded response (GRM) | `graded` | IPIP-50 Big Five |
+| Modified graded response (MGRM) | `grsm` | IPIP-50 Big Five |
+| Nominal response (NRM) | `nominal` | SAT12 science test, option by option |
+
+The columns are the item text, its answer options and the coefficients
+**as mirt names them**, so a csv is written straight from a fitted
+model:
+
+[`library`](https://rdrr.io/r/base/library.html)`(`[`mirt`](https://philchalmers.github.io/mirt/)`)`` ``fit`` ``<-`` `[`mirt`](https://philchalmers.github.io/mirt/reference/mirt.html)`(``responses``, ``1``, itemtype ``=`` ``"graded"``)`` ``# one model per scale`` ``q`` ``<-`` `[`questionnaire_from_mirt`](https://sedzinfo.github.io/golemirt/reference/questionnaire_from_mirt.md)`(``fit``, ``"Anxiety"``,`` `` question ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"I worry a lot"``, ``"I feel tense"``, ``...``)``,`` `` options ``=`` `[`c`](https://rdrr.io/r/base/c.html)`(``"Never"``, ``"Sometimes"``, ``"Often"``, ``"Always"``)`` ``)`` `[`write_questionnaire`](https://sedzinfo.github.io/golemirt/reference/write_questionnaire.md)`(``q``, ``"anxiety.csv"``)`` ``# or a list of scales`
+
+| Column |  |
+|----|----|
+| `scale`, `question`, `itemtype` | required |
+| `item`, `stem` | optional id, and an instruction shown above the item |
+| `option1`, `option2`, … | the answer options in scoring order (numbered when absent) |
+| `key` | right/wrong items given as several options: the correct one |
+| `reverse` | `TRUE` for ordered items scored in reverse |
+| `public` | `FALSE` when the item text is not public and only a placeholder is shown: the CAT tab then highlights the correct option (`key`) in yellow |
+| `a1`, `b1`…, `c`, `d`, `d0`…, `ak0`…, `g`, `u` | the coefficients of `coef(fit, simplify = TRUE)$items` |
+| `prior_mean`, `prior_sd` | mean and sd of the latent trait of the scale (0 and 1 when absent) |
+
+[`read_questionnaire()`](https://sedzinfo.github.io/golemirt/reference/read_questionnaire.md)
+reads and checks a file, naming the row of any problem, and converts the
+coefficients to the catR parameters of each engine;
+[`validate_questionnaire_against_mirt()`](https://sedzinfo.github.io/golemirt/reference/validate_questionnaire_against_mirt.md)
+compares the result with the fitted model, item by item. The examples
+are made by `data-raw/examples.R` in exactly this way. Download one from
+the app to see a complete file.
 
 ## Development
 

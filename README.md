@@ -1,8 +1,8 @@
 # Interactive Visualizations for Item Response Theory Models and Estimation
 
-**[Open the live app](https://sedzinfo-golemirt.share.connect.posit.cloud/)** · [Website](https://sedzinfo.github.io/golemirt/)
+**[Open the live app](https://sedzinfo-golemirt.share.connect.posit.cloud/)** · [Help pages](https://sedzinfo.github.io/golemirt/reference/)
 
-## Overview
+## What it does
 
 **golemirt** is an R package with an interactive Shiny application, built with [golem](https://thinkr-open.github.io/golem/), for learning and teaching Item Response Theory (IRT). It brings together two earlier apps in one site:
 
@@ -45,14 +45,22 @@ The app has eleven tabs in two menus, and a CAT tab.
 
 ## Installation
 
-### Prerequisites
+### 1. Install R
 
-1. **Install R** (version 4.1 or higher): https://cran.r-project.org/
-2. **Install RStudio** (optional but recommended): https://posit.co/downloads/
+Download R 4.1 or newer from [CRAN](https://cran.r-project.org/), for Windows, macOS or Linux, and run the installer.
 
-### Package Installation
+### 2. Install RStudio or Positron
 
-Open RStudio (or an R console) and run:
+An editor makes R easier to use. It is optional, and both are free, from Posit:
+
+- [RStudio Desktop](https://posit.co/download/rstudio-desktop/)
+- [Positron](https://positron.posit.co/download.html), which also runs Python
+
+### 3. Install golemirt
+
+Run one of these in RStudio, Positron or the R console. Each one also installs the packages golemirt needs.
+
+#### From R-universe (recommended)
 
 ```r
 install.packages(
@@ -61,27 +69,36 @@ install.packages(
 )
 ```
 
-[R-universe](https://sedzinfo.r-universe.dev/golemirt) builds golemirt from this repository, and CRAN provides the packages it needs.
+[R-universe](https://sedzinfo.r-universe.dev/golemirt) builds golemirt from this repository after every change, ready to install on Windows, macOS and Linux, and CRAN provides the packages it needs.
 
-To install from GitHub instead:
-
-```r
-# Install devtools if you haven't already
-install.packages("devtools")
-# Install golemirt from GitHub
-devtools::install_github("sedzinfo/golemirt")
-```
-
-Or install the source tarball of the [latest release](https://github.com/sedzinfo/golemirt/releases/tag/latest), which is rebuilt from `main` on every change, together with the PDF manual:
+#### From GitHub
 
 ```r
-install.packages(
-  "https://github.com/sedzinfo/golemirt/releases/download/latest/golemirt_0.0.0.9000.tar.gz",
-  repos = NULL, type = "source"
-)
+install.packages("pak")   # once
+pak::pak("sedzinfo/golemirt")
 ```
 
-The dependencies (`shiny`, `golem`, `plotly`, `config` and `fGarch`) are installed automatically.
+#### From the release tarball
+
+The [latest release](https://github.com/sedzinfo/golemirt/releases/tag/latest) has the source tarball and the PDF manual, rebuilt from `main` on every change:
+
+```r
+install.packages("pak")   # once
+pak::pak("url::https://github.com/sedzinfo/golemirt/releases/download/latest/golemirt_0.0.0.9000.tar.gz")
+```
+
+#### From a clone of the repository
+
+This repository keeps no files in [Git LFS](https://git-lfs.com), so a plain clone with [Git](https://git-scm.com/downloads) has everything:
+
+```bash
+git clone https://github.com/sedzinfo/golemirt.git
+```
+
+```r
+install.packages("pak")   # once
+pak::local_install("path/to/golemirt")
+```
 
 ## Usage
 
@@ -93,6 +110,47 @@ run_app()
 ```
 
 The app opens in your default web browser. Any [`shiny::shinyApp()`](https://shiny.posit.co/r/reference/shiny/latest/shinyapp.html) option can be passed on, for example `run_app(options = list(port = 8080))`.
+
+## Screenshots
+
+### Rasch-4PL
+![Item characteristic curves of the Rasch model](man/figures/golemirt1.png)
+
+### PCM-GPCM
+![Category response curves of the partial credit model](man/figures/golemirt2.png)
+
+### GRM
+![Category response curves of the graded response model](man/figures/golemirt3.png)
+
+### RSM-GRSM
+![Category response curves of the rating scale model](man/figures/golemirt4.png)
+
+### NRM
+![Category response curves of the nominal response model](man/figures/golemirt5.png)
+
+### TIRT
+![Probit response function of Thurstonian IRT](man/figures/golemirt6.png)
+
+### MIRT Dichotomous
+![Item response surface of a compensatory two-dimensional item](man/figures/golemirt7.png)
+![Contour plot of a compensatory two-dimensional item with its item vector](man/figures/golemirt8.png)
+
+### MLE Rasch
+![Newton-Raphson step on the log-likelihood of a Rasch response pattern](man/figures/golemirt9.png)
+
+### MLE 2PL
+![Log-likelihood surface of discrimination and difficulty with its maximum](man/figures/golemirt10.png)
+
+### MLE 3PL
+![Log-likelihood surfaces for twelve guessing values](man/figures/golemirt11.png)
+
+### EAP-MAP Rasch
+![Prior, item trace lines, likelihood and posterior of an EAP and MAP estimation](man/figures/golemirt12.png)
+![Prior, likelihood and posterior in one plot](man/figures/golemirt13.png)
+
+### CAT
+![An adaptive test of two Big Five traits under the graded response model](man/figures/golemirt14.png)
+![An adaptive test of the SAT12 science questions under the 3PL, with the correct option highlighted](man/figures/golemirt15.png)
 
 ## Using the Functions in R
 
@@ -180,47 +238,6 @@ write_questionnaire(q, "anxiety.csv")                # or a list of scales
 coefficients to the catR parameters of each engine; `validate_questionnaire_against_mirt()`
 compares the result with the fitted model, item by item. The examples are made by
 `data-raw/examples.R` in exactly this way. Download one from the app to see a complete file.
-
-## Screenshots
-
-### Rasch-4PL
-![Item characteristic curves of the Rasch model](man/figures/golemirt1.png)
-
-### PCM-GPCM
-![Category response curves of the partial credit model](man/figures/golemirt2.png)
-
-### GRM
-![Category response curves of the graded response model](man/figures/golemirt3.png)
-
-### RSM-GRSM
-![Category response curves of the rating scale model](man/figures/golemirt4.png)
-
-### NRM
-![Category response curves of the nominal response model](man/figures/golemirt5.png)
-
-### TIRT
-![Probit response function of Thurstonian IRT](man/figures/golemirt6.png)
-
-### MIRT Dichotomous
-![Item response surface of a compensatory two-dimensional item](man/figures/golemirt7.png)
-![Contour plot of a compensatory two-dimensional item with its item vector](man/figures/golemirt8.png)
-
-### MLE Rasch
-![Newton-Raphson step on the log-likelihood of a Rasch response pattern](man/figures/golemirt9.png)
-
-### MLE 2PL
-![Log-likelihood surface of discrimination and difficulty with its maximum](man/figures/golemirt10.png)
-
-### MLE 3PL
-![Log-likelihood surfaces for twelve guessing values](man/figures/golemirt11.png)
-
-### EAP-MAP Rasch
-![Prior, item trace lines, likelihood and posterior of an EAP and MAP estimation](man/figures/golemirt12.png)
-![Prior, likelihood and posterior in one plot](man/figures/golemirt13.png)
-
-### CAT
-![An adaptive test of two Big Five traits under the graded response model](man/figures/golemirt14.png)
-![An adaptive test of the SAT12 science questions under the 3PL, with the correct option highlighted](man/figures/golemirt15.png)
 
 ## Development
 
