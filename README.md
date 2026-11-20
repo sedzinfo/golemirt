@@ -55,15 +55,24 @@ The app has eleven tabs in two menus, and a CAT tab.
 Open RStudio (or an R console) and run:
 
 ```r
+install.packages(
+  "golemirt",
+  repos = c("https://sedzinfo.r-universe.dev", "https://cloud.r-project.org")
+)
+```
+
+[R-universe](https://sedzinfo.r-universe.dev/golemirt) builds golemirt from this repository, and CRAN provides the packages it needs.
+
+To install from GitHub instead:
+
+```r
 # Install devtools if you haven't already
 install.packages("devtools")
 # Install golemirt from GitHub
 devtools::install_github("sedzinfo/golemirt")
 ```
 
-The dependencies (`shiny`, `golem`, `plotly`, `config` and `fGarch`) are installed automatically.
-
-Without devtools, install the source tarball of the [latest release](https://github.com/sedzinfo/golemirt/releases/tag/latest), which is rebuilt from `main` on every change, together with the PDF manual:
+Or install the source tarball of the [latest release](https://github.com/sedzinfo/golemirt/releases/tag/latest), which is rebuilt from `main` on every change, together with the PDF manual:
 
 ```r
 install.packages(
@@ -71,6 +80,8 @@ install.packages(
   repos = NULL, type = "source"
 )
 ```
+
+The dependencies (`shiny`, `golem`, `plotly`, `config` and `fGarch`) are installed automatically.
 
 ## Usage
 
@@ -280,6 +291,7 @@ Contributions, issues, and feature requests are welcome! Feel free to check the 
 
 ---
 
+[![R-universe](https://sedzinfo.r-universe.dev/golemirt/badges/version)](https://sedzinfo.r-universe.dev/golemirt)
 ![Stars](https://img.shields.io/github/stars/sedzinfo/golemirt)
 ![Watchers](https://img.shields.io/github/watchers/sedzinfo/golemirt)
 ![Repo Size](https://img.shields.io/github/repo-size/sedzinfo/golemirt)
