@@ -1,6 +1,6 @@
 test_that("the page has the eleven tabs of the Models and Estimation menus, and the CAT tab", {
   html <- htmltools::renderTags(app_ui(NULL))$html
-  expect_match(html, "IRT Models and Estimation using IRTDemo", fixed = TRUE)
+  expect_match(html, "IRT Models and Estimation based on irtDemo", fixed = TRUE)
   expect_match(html, "data-value=\"Models\"", fixed = TRUE)
   expect_match(html, "data-value=\"Estimation\"", fixed = TRUE)
   tabs <- c(

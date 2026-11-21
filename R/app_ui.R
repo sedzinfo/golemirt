@@ -35,7 +35,7 @@ app_ui <- function(request, analytics = FALSE, keep_alive = TRUE) {
     navbarPage(
       # the full title from 768px wide; on phones a short one, which leaves room for the menu button
       title = tagList(
-        span(class = "d-none d-md-inline", "IRT Models and Estimation using IRTDemo"),
+        span(class = "d-none d-md-inline", "IRT Models and Estimation based on irtDemo"),
         span(class = "d-md-none", "IRT Explorer")
       ),
       windowTitle = "IRT Explorer",

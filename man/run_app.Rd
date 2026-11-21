@@ -497,7 +497,7 @@ the same results as catR.
 The plots of this app were originally developed by Wes Bonifay and Metin Bulus for the
 irtDemo package (Bulus and Bonifay, 2022), available on CRAN at
 \url{https://cran.r-project.org/package=irtDemo}; the title of the app, IRT Models and
-Estimation using IRTDemo, reflects this origin. Dimitrios Zacharatos modified and expanded
+Estimation based on irtDemo, reflects this origin. Dimitrios Zacharatos modified and expanded
 them in the modelsirt and mleirt packages, which this package brings together: he
 consolidated the IRT models into a single interface, rebuilt the visualisations with Plotly
 for interactivity, added further IRT models and improved the user interface. Special thanks
