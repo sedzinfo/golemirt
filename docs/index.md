@@ -322,12 +322,15 @@ builds the website, the PDF manual and the tarball.
 2.  Run `rsconnect::deployApp(appName = "golemirt")` from the package
     folder, or open `app.R` in RStudio and click Publish.
 
-## Background and Attribution
+## Acknowledgments
 
-The plots were originally developed by **Wes Bonifay** and **Metin
-Bulus** for the **irtDemo** package, which is available on CRAN.
-**Dimitrios Zacharatos** modified and expanded them in the modelsirt and
-mleirt packages, which golemirt brings together as one golem app:
+golemirt is written and maintained by **Dimitrios Zacharatos**.
+
+Its plots started from the
+[irtDemo](https://cran.r-project.org/package=irtDemo) package on CRAN by
+**Wes Bonifay** and **Metin Bulus** (Bulus & Bonifay, 2022). Dimitrios
+Zacharatos modified and expanded them in the modelsirt and mleirt
+packages, which golemirt brings together as one golem app:
 
 - consolidating the IRT models and estimation methods into a single
   interface
@@ -336,13 +339,7 @@ mleirt packages, which golemirt brings together as one golem app:
 - improving the user interface
 
 Special thanks to [Kostas Maistrelis](https://github.com/maisk) for
-contributing the implementation of the Thurstonian IRT curves. Each tab
-keeps the credit shown in the original apps.
-
-**Original Authors**: Wes Bonifay and Metin Bulus\
-**Current Maintainer**: Dimitrios Zacharatos\
-**Original CRAN Package**:
-[irtDemo](https://cran.r-project.org/package=irtDemo)
+contributing the implementation of the Thurstonian IRT curves.
 
 ## References
 

@@ -590,11 +590,7 @@ IRT models into a single interface, rebuilt the visualisations with
 Plotly for interactivity, added further IRT models and improved the user
 interface. Special thanks to Kostas Maistrelis
 (<https://github.com/maisk>) for contributing the implementation of the
-Thurstonian IRT curves. The tabs keep the credits shown in the apps: the
-Rasch-4PL, PCM-GPCM, RSM-GRSM and MLE 3PL tabs are credited to Metin
-Bulus, the EAP-MAP Rasch tab to Metin Bulus and Wes Bonifay, and the
-GRM, NRM, MIRT Dichotomous, MLE Rasch and MLE 2PL tabs to an unknown
-contributor.
+Thurstonian IRT curves.
 
 ## References
 

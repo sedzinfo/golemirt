@@ -3,8 +3,8 @@ Title: Interactive Item Response Theory Models and Estimation
 Version: 0.0.0.9000
 Authors@R: c(
     person("Dimitrios", "Zacharatos", email = "dzacharatos@yahoo.com", role = c("aut", "cre")),
-    person("Wes", "Bonifay", role = "aut", comment = "author of irtDemo, from which the app is adapted"),
-    person("Metin", "Bulus", role = "aut", comment = "author of irtDemo, from which the app is adapted"),
+    person("Wes", "Bonifay", role = c("ctb", "cph"), comment = "author of irtDemo, from which the app is adapted"),
+    person("Metin", "Bulus", role = c("ctb", "cph"), comment = "author of irtDemo, from which the app is adapted"),
     person("Kostas", "Maistrelis", role = "ctb", comment = "Thurstonian IRT curves")
     )
 Maintainer: Dimitrios Zacharatos <dzacharatos@yahoo.com>
