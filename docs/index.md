@@ -367,7 +367,7 @@ contributing the implementation of the Thurstonian IRT curves.
   37(4), 304-315.
 - Magis, D., & Barrada, J. R. (2017). Computerized adaptive testing with
   R: Recent updates of the package catR. *Journal of Statistical
-  Software*, 76(1), 1-19.
+  Software, Code Snippets*, 76(1), 1-19.
 - Masters, G. N. (1982). A Rasch model for partial credit scoring.
   *Psychometrika*, 47(2), 149-174.
 - Muraki, E. (1990). Fitting a polytomous item response model to
