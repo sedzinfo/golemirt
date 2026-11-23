@@ -4007,8 +4007,11 @@
     "app.R": {
       "checksum": "e52dd32739fd5a972cf14991eca7c0d0"
     },
+    "CITATION.cff": {
+      "checksum": "8203ff87d12b3ea168e59a77734057cd"
+    },
     "DESCRIPTION": {
-      "checksum": "9236a7df5fbfb8e130d9b620e98d28fe"
+      "checksum": "009cc9662381c17f35a30a69958ce106"
     },
     "inst/app/www/dark_mode.css": {
       "checksum": "d06d67c382ac6c2c8468f26ed8efde32"
@@ -4056,7 +4059,7 @@
       "checksum": "8dc575fc0c983a44b4ab0f611a12b88f"
     },
     "R/app_ui.R": {
-      "checksum": "ba5b3c070e35556d4c9da7d6e1a07c9c"
+      "checksum": "a607aacac77467310a94c9d74d52daa7"
     },
     "R/fct_cat_engine_common.R": {
       "checksum": "7e35026d380e763d63ca2814e347bbf4"
@@ -4095,7 +4098,7 @@
       "checksum": "f2a173b9f9fbcba97c4a52e6115a7967"
     },
     "R/mod_about.R": {
-      "checksum": "ac8517c4daa7f9d403ddb7157fe6a533"
+      "checksum": "3c68626e2482b038e44572b340d80848"
     },
     "R/mod_cat.R": {
       "checksum": "832704102c0a19522aa97088561777f9"
@@ -4134,7 +4137,7 @@
       "checksum": "eb30349c5c52fe2d798d773ce224293f"
     },
     "R/run_app.R": {
-      "checksum": "12808556c728437586976f81769f069e"
+      "checksum": "423acac3f97c62225782f7987c172950"
     },
     "R/utils_analytics.R": {
       "checksum": "95fec23c4cd85006bf41cb245427b8c1"
